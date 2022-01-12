@@ -1,5 +1,6 @@
 <script type="text/javascript">
 	import { onMount } from "svelte";
+	import CandidateList from "./CandidateList.svelte";
 
 	let allRaces =[];
 	let races = [];
@@ -18,5 +19,7 @@
 {:else}
 	{#each races as race}
 		<h2>{race.office}</h2>
+		<p>{race.blurb}</p>
+		<CandidateList candidates = {race.candidates}/>
 	{/each}
 {/if}
