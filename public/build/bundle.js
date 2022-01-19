@@ -1712,7 +1712,6 @@ var app = (function () {
 
     // (51:2) {#each items.races as race}
     function create_each_block(ctx) {
-    	let li;
     	let h2;
     	let t0_value = /*race*/ ctx[11].office + "";
     	let t0;
@@ -1722,7 +1721,6 @@ var app = (function () {
     	let t2;
     	let t3;
     	let candidatelist;
-    	let t4;
     	let current;
 
     	function func(...args) {
@@ -1738,7 +1736,6 @@ var app = (function () {
 
     	const block = {
     		c: function create() {
-    			li = element("li");
     			h2 = element("h2");
     			t0 = text(t0_value);
     			t1 = space();
@@ -1746,21 +1743,17 @@ var app = (function () {
     			t2 = text(t2_value);
     			t3 = space();
     			create_component(candidatelist.$$.fragment);
-    			t4 = space();
-    			add_location(h2, file, 52, 4, 1234);
-    			add_location(p, file, 53, 4, 1261);
-    			add_location(li, file, 51, 3, 1225);
+    			add_location(h2, file, 51, 3, 1225);
+    			add_location(p, file, 52, 3, 1251);
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, li, anchor);
-    			append_dev(li, h2);
+    			insert_dev(target, h2, anchor);
     			append_dev(h2, t0);
-    			append_dev(li, t1);
-    			append_dev(li, p);
+    			insert_dev(target, t1, anchor);
+    			insert_dev(target, p, anchor);
     			append_dev(p, t2);
-    			append_dev(li, t3);
-    			mount_component(candidatelist, li, null);
-    			append_dev(li, t4);
+    			insert_dev(target, t3, anchor);
+    			mount_component(candidatelist, target, anchor);
     			current = true;
     		},
     		p: function update(new_ctx, dirty) {
@@ -1781,8 +1774,11 @@ var app = (function () {
     			current = false;
     		},
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(li);
-    			destroy_component(candidatelist);
+    			if (detaching) detach_dev(h2);
+    			if (detaching) detach_dev(t1);
+    			if (detaching) detach_dev(p);
+    			if (detaching) detach_dev(t3);
+    			destroy_component(candidatelist, detaching);
     		}
     	};
 

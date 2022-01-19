@@ -49,13 +49,11 @@ Filter: <input bind:value={searchTerm} />
 		Loading...
 	{:then items}
 		{#each items.races as race}
-			<li>
-				<h2>{race.office}</h2>
-				<p>{race.blurb}</p>
-				<CandidateList candidates = {items.candidates.filter(
-					(item) => item["office-sought"].toUpperCase().indexOf(race.office.toUpperCase()) !== -1
-				)}/>
-			</li>
+			<h2>{race.office}</h2>
+			<p>{race.blurb}</p>
+			<CandidateList candidates = {items.candidates.filter(
+				(item) => item["office-sought"].toUpperCase().indexOf(race.office.toUpperCase()) !== -1
+			)}/>
 		{/each}
 	{/await}
 </div>
