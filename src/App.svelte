@@ -3,17 +3,6 @@
 	import CandidateList from "./CandidateList.svelte";
 	import VirtualList from '@sveltejs/svelte-virtual-list';
 
-
-	//let races = [];
-
-	/*onMount(async function() {
-		const response = await fetch(` https://s3.amazonaws.com/data.minnpost/projects/minnpost-whos-running-2022/candidate-tracker-sample-data.json`);
-		const json = await response.json();
-		races = json;
-		
-	});*/
-	//console.log(races);
-
 	let items = []
 	async function getData() {
 		let res = await fetch(`https://s3.amazonaws.com/data.minnpost/projects/minnpost-whos-running-2022/candidate-tracker-sample-data.json`);
@@ -27,11 +16,24 @@
 	let searchTerm = '';
 	$: filteredList = dataPromise.then((r) => {
 		var lowSearch = searchTerm.toLowerCase();
-		return items.filter(item =>
-			Object.values(item).some(val => 
-				String(val).toLowerCase().includes(lowSearch) 
+		let races = items.races.filter(
+			item => Object.values(item).some(
+				val => String(val).toLowerCase().includes(lowSearch) 
 			)
 		);
+		let candidates = items.candidates.filter(
+			item => Object.values(item).some(
+				val => String(val).toLowerCase().includes(lowSearch) 
+			)
+		);
+		let data = [];
+		if ( races ) {
+			data["races"] = races;
+		}
+		if ( candidates ) {
+			data["candidates"] = candidates;
+		}
+		return data;
 	});
 
 	let start, start2
@@ -46,10 +48,14 @@ Filter: <input bind:value={searchTerm} />
 	{#await filteredList}
 		Loading...
 	{:then items}
-		{#each items as race}
-			<h2>{race.office}</h2>
-			<p>{race.blurb}</p>
-			<CandidateList candidates = {race.candidates}/>
+		{#each items.races as race}
+			<li>
+				<h2>{race.office}</h2>
+				<p>{race.blurb}</p>
+				<CandidateList candidates = {items.candidates.filter(
+					(item) => item["office-sought"].toUpperCase().indexOf(race.office.toUpperCase()) !== -1
+				)}/>
+			</li>
 		{/each}
 	{/await}
 </div>
