@@ -1,7 +1,5 @@
 <script type="text/javascript">
-	import { onMount } from "svelte";
 	import CandidateList from "./CandidateList.svelte";
-	import VirtualList from '@sveltejs/svelte-virtual-list';
 
 	let items = []
 	async function getData() {
@@ -57,7 +55,7 @@
     
   </script>
 
-Filter: <input bind:value={searchTerm} />
+<input bind:value={searchTerm} />
 {searchTerm}
 
 <div class='container'>

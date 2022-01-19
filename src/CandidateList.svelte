@@ -1,11 +1,19 @@
 <script>
+	import PartyCandidates from "./PartyCandidates.svelte";
 
-  import Candidate from "./Candidate.svelte";
+	// candidates from App.svelte
+	export let candidates;
 
-  export let candidates;
-  let parties = Object.keys(candidates);
+	// the distinct party names from the candidates
+	let parties = [...new Set(candidates.map(item => item.party))];
+
 </script>
 
-{#each candidates as candidate}
-<Candidate candidate = {candidate}/>
+{#each parties as party}
+	<section class="candidates-list">
+		<h3>{party}</h3>
+		<PartyCandidates party_candidates = {candidates.filter(
+			(item) => item["party"].toUpperCase().indexOf(party.toUpperCase()) !== -1
+		)}/>
+	</section>
 {/each}
