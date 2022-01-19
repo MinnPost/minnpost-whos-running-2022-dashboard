@@ -725,7 +725,7 @@ var app = (function () {
     const file$2 = "src/Candidate.svelte";
 
     function create_fragment$3(ctx) {
-    	let div;
+    	let article;
     	let h4;
     	let t0_value = /*candidate*/ ctx[0].name + "";
     	let t0;
@@ -736,26 +736,26 @@ var app = (function () {
 
     	const block = {
     		c: function create() {
-    			div = element("div");
+    			article = element("article");
     			h4 = element("h4");
     			t0 = text(t0_value);
     			t1 = space();
     			p = element("p");
     			t2 = text(t2_value);
-    			add_location(h4, file$2, 5, 2, 70);
-    			add_location(p, file$2, 6, 2, 98);
-    			attr_dev(div, "class", "candidate");
-    			add_location(div, file$2, 4, 0, 44);
+    			add_location(h4, file$2, 5, 2, 74);
+    			add_location(p, file$2, 6, 2, 102);
+    			attr_dev(article, "class", "candidate");
+    			add_location(article, file$2, 4, 0, 44);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, div, anchor);
-    			append_dev(div, h4);
+    			insert_dev(target, article, anchor);
+    			append_dev(article, h4);
     			append_dev(h4, t0);
-    			append_dev(div, t1);
-    			append_dev(div, p);
+    			append_dev(article, t1);
+    			append_dev(article, p);
     			append_dev(p, t2);
     		},
     		p: function update(ctx, [dirty]) {
@@ -765,7 +765,7 @@ var app = (function () {
     		i: noop,
     		o: noop,
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div);
+    			if (detaching) detach_dev(article);
     		}
     	};
 
@@ -1614,7 +1614,7 @@ var app = (function () {
     	return block;
     }
 
-    // (50:1) {:then items}
+    // (66:1) {:then items}
     function create_then_block(ctx) {
     	let each_1_anchor;
     	let current;
@@ -1703,15 +1703,16 @@ var app = (function () {
     		block,
     		id: create_then_block.name,
     		type: "then",
-    		source: "(50:1) {:then items}",
+    		source: "(66:1) {:then items}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (51:2) {#each items.races as race}
+    // (67:2) {#each items.races as race}
     function create_each_block(ctx) {
+    	let section;
     	let h2;
     	let t0_value = /*race*/ ctx[11].office + "";
     	let t0;
@@ -1721,6 +1722,7 @@ var app = (function () {
     	let t2;
     	let t3;
     	let candidatelist;
+    	let t4;
     	let current;
 
     	function func(...args) {
@@ -1736,6 +1738,7 @@ var app = (function () {
 
     	const block = {
     		c: function create() {
+    			section = element("section");
     			h2 = element("h2");
     			t0 = text(t0_value);
     			t1 = space();
@@ -1743,17 +1746,21 @@ var app = (function () {
     			t2 = text(t2_value);
     			t3 = space();
     			create_component(candidatelist.$$.fragment);
-    			add_location(h2, file, 51, 3, 1225);
-    			add_location(p, file, 52, 3, 1251);
+    			t4 = space();
+    			add_location(h2, file, 68, 4, 1902);
+    			add_location(p, file, 69, 4, 1929);
+    			add_location(section, file, 67, 3, 1888);
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, h2, anchor);
+    			insert_dev(target, section, anchor);
+    			append_dev(section, h2);
     			append_dev(h2, t0);
-    			insert_dev(target, t1, anchor);
-    			insert_dev(target, p, anchor);
+    			append_dev(section, t1);
+    			append_dev(section, p);
     			append_dev(p, t2);
-    			insert_dev(target, t3, anchor);
-    			mount_component(candidatelist, target, anchor);
+    			append_dev(section, t3);
+    			mount_component(candidatelist, section, null);
+    			append_dev(section, t4);
     			current = true;
     		},
     		p: function update(new_ctx, dirty) {
@@ -1774,11 +1781,8 @@ var app = (function () {
     			current = false;
     		},
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(h2);
-    			if (detaching) detach_dev(t1);
-    			if (detaching) detach_dev(p);
-    			if (detaching) detach_dev(t3);
-    			destroy_component(candidatelist, detaching);
+    			if (detaching) detach_dev(section);
+    			destroy_component(candidatelist);
     		}
     	};
 
@@ -1786,14 +1790,14 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(51:2) {#each items.races as race}",
+    		source: "(67:2) {#each items.races as race}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (48:22)    Loading...  {:then items}
+    // (64:22)    Loading...  {:then items}
     function create_pending_block(ctx) {
     	let t;
 
@@ -1816,7 +1820,7 @@ var app = (function () {
     		block,
     		id: create_pending_block.name,
     		type: "pending",
-    		source: "(48:22)    Loading...  {:then items}",
+    		source: "(64:22)    Loading...  {:then items}",
     		ctx
     	});
 
@@ -1858,9 +1862,9 @@ var app = (function () {
     			t3 = space();
     			div = element("div");
     			info.block.c();
-    			add_location(input, file, 43, 8, 1069);
+    			add_location(input, file, 59, 8, 1732);
     			attr_dev(div, "class", "container");
-    			add_location(div, file, 46, 0, 1117);
+    			add_location(div, file, 62, 0, 1780);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1998,16 +2002,34 @@ var app = (function () {
     	$$self.$$.update = () => {
     		if ($$self.$$.dirty & /*searchTerm, items*/ 3) {
     			$$invalidate(2, filteredList = dataPromise.then(r => {
+    				// if the user has entered a filter term
     				var lowSearch = searchTerm.toLowerCase();
+
+    				// filter the races and/or candidates by the search term
     				let races = items.races.filter(item => Object.values(item).some(val => String(val).toLowerCase().includes(lowSearch)));
+
     				let candidates = items.candidates.filter(item => Object.values(item).some(val => String(val).toLowerCase().includes(lowSearch)));
+
+    				// if there are no races but there are candidates, get the key from the candidate
+    				// then get the corresponding race and push it
+    				// after the loop, we still need to assign races to races
+    				if (races.length === 0 && candidates.length !== 0) {
+    					candidates.forEach(async function (candidate) {
+    						let candidate_race = items.races[candidate["race-key"]];
+    						races.push(candidate_race);
+    					});
+
+    					races = races;
+    				}
+
+    				// make the final data array of races and candidates for filteredList to use and return it
     				let data = [];
 
-    				if (races) {
+    				if (typeof races !== "undefined") {
     					data["races"] = races;
     				}
 
-    				if (candidates) {
+    				if (typeof candidates !== "undefined") {
     					data["candidates"] = candidates;
     				}
 
