@@ -1106,7 +1106,7 @@ var app = (function () {
     	return block;
     }
 
-    // (64:1) {:then items}
+    // (75:1) {:then items}
     function create_then_block(ctx) {
     	let each_1_anchor;
     	let current;
@@ -1195,14 +1195,14 @@ var app = (function () {
     		block,
     		id: create_then_block.name,
     		type: "then",
-    		source: "(64:1) {:then items}",
+    		source: "(75:1) {:then items}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (65:2) {#each items.races as race}
+    // (76:2) {#each items.races as race}
     function create_each_block(ctx) {
     	let section;
     	let h2;
@@ -1239,9 +1239,9 @@ var app = (function () {
     			t3 = space();
     			create_component(candidatelist.$$.fragment);
     			t4 = space();
-    			add_location(h2, file, 66, 4, 1801);
-    			add_location(p, file, 67, 4, 1828);
-    			add_location(section, file, 65, 3, 1787);
+    			add_location(h2, file, 77, 4, 2229);
+    			add_location(p, file, 78, 4, 2256);
+    			add_location(section, file, 76, 3, 2215);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, section, anchor);
@@ -1282,14 +1282,14 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(65:2) {#each items.races as race}",
+    		source: "(76:2) {#each items.races as race}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (62:22)    Loading...  {:then items}
+    // (73:22)    Loading...  {:then items}
     function create_pending_block(ctx) {
     	let t;
 
@@ -1312,7 +1312,7 @@ var app = (function () {
     		block,
     		id: create_pending_block.name,
     		type: "pending",
-    		source: "(62:22)    Loading...  {:then items}",
+    		source: "(73:22)    Loading...  {:then items}",
     		ctx
     	});
 
@@ -1352,9 +1352,9 @@ var app = (function () {
     			t2 = space();
     			div = element("div");
     			info.block.c();
-    			add_location(input, file, 57, 0, 1631);
+    			add_location(input, file, 68, 0, 2059);
     			attr_dev(div, "class", "container");
-    			add_location(div, file, 60, 0, 1679);
+    			add_location(div, file, 71, 0, 2107);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1428,6 +1428,22 @@ var app = (function () {
     	return block;
     }
 
+    function filterResults(searchTerm, data) {
+    	var lowSearch = searchTerm.toLowerCase();
+    	let skipKeys = ['blurb'];
+
+    	/*let searchInAllKeys = data.filter(
+    	item => Object.values(item).some(
+    		val => String(val).toLowerCase().includes(lowSearch) 
+    	)
+    );*/
+    	let searchInDesiredKeys = data.filter(item => Object.entries(item).some(([key, val]) => !skipKeys.includes(key)
+    	? String(val).toLowerCase().includes(lowSearch)
+    	: false));
+
+    	return searchInDesiredKeys;
+    }
+
     function instance($$self, $$props, $$invalidate) {
     	let filteredList;
     	let { $$slots: slots = {}, $$scope } = $$props;
@@ -1462,6 +1478,7 @@ var app = (function () {
     		CandidateList,
     		items,
     		getData,
+    		filterResults,
     		dataPromise,
     		searchTerm,
     		start,
@@ -1488,13 +1505,10 @@ var app = (function () {
     	$$self.$$.update = () => {
     		if ($$self.$$.dirty & /*searchTerm, items*/ 3) {
     			$$invalidate(2, filteredList = dataPromise.then(r => {
-    				// if the user has entered a filter term
-    				var lowSearch = searchTerm.toLowerCase();
-
     				// filter the races and/or candidates by the search term
-    				let races = items.races.filter(item => Object.values(item).some(val => String(val).toLowerCase().includes(lowSearch)));
+    				let races = filterResults(searchTerm, items.races);
 
-    				let candidates = items.candidates.filter(item => Object.values(item).some(val => String(val).toLowerCase().includes(lowSearch)));
+    				let candidates = filterResults(searchTerm, items.candidates);
 
     				// if there are no races but there are candidates, get the key from the candidate
     				// then get the corresponding race and push it

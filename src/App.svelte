@@ -9,24 +9,35 @@
 		return items;
 	}
 
+	/*$: filteredList = items.filter(
+        (item) => item.office.toUpperCase().indexOf(searchTerm.toUpperCase()) !== -1
+    )*/
+
+	// this method allows us to specify keys that should not be searched
+	function filterResults(searchTerm, data) {
+		var lowSearch = searchTerm.toLowerCase();
+		let skipKeys = ['blurb'];
+		/*let searchInAllKeys = data.filter(
+			item => Object.values(item).some(
+				val => String(val).toLowerCase().includes(lowSearch) 
+			)
+		);*/
+		let searchInDesiredKeys = data.filter(
+			item => Object.entries(item).some(
+				([key, val]) => ! skipKeys.includes(key) ? String(val).toLowerCase().includes(lowSearch) : false
+			)
+		);
+		return searchInDesiredKeys;
+	}
+
 	const dataPromise = getData();
 
 	let searchTerm = '';
 	$: filteredList = dataPromise.then((r) => {
-		// if the user has entered a filter term
-		var lowSearch = searchTerm.toLowerCase();
 
 		// filter the races and/or candidates by the search term
-		let races = items.races.filter(
-			item => Object.values(item).some(
-				val => String(val).toLowerCase().includes(lowSearch) 
-			)
-		);
-		let candidates = items.candidates.filter(
-			item => Object.values(item).some(
-				val => String(val).toLowerCase().includes(lowSearch) 
-			)
-		);
+		let races = filterResults(searchTerm, items.races);
+		let candidates = filterResults(searchTerm, items.candidates);
 
 		// if there are no races but there are candidates, get the key from the candidate
 		// then get the corresponding race and push it
