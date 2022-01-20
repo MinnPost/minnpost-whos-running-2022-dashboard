@@ -6,5 +6,5 @@
 </script>
 
 {#each party_candidates as candidate}
-	<Candidate candidate = {candidate}/>
+	<Candidate candidate = {candidate} />
 {/each}

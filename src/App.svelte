@@ -77,9 +77,11 @@
 			<section>
 				<h2>{race.office}</h2>
 				<p>{race.blurb}</p>
-				<CandidateList candidates = {items.candidates.filter(
-					(item) => item["office-sought"].toUpperCase().indexOf(race.office.toUpperCase()) !== -1
-				)}/>
+				<CandidateList
+					candidates = {items.candidates.filter(
+						(item) => item["office-sought"].toUpperCase().indexOf(race.office.toUpperCase()) !== -1
+					)}
+				/>
 			</section>
 		{/each}
 	{/await}

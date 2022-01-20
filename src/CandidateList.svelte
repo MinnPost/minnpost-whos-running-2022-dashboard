@@ -12,8 +12,10 @@
 {#each parties as party}
 	<section class="candidates-list">
 		<h3>{party}</h3>
-		<PartyCandidates party_candidates = {candidates.filter(
-			(item) => item["party"].toUpperCase().indexOf(party.toUpperCase()) !== -1
-		)}/>
+		<PartyCandidates
+			party_candidates = {candidates.filter(
+				(item) => item["party"].toUpperCase().indexOf(party.toUpperCase()) !== -1
+			)}
+		/>
 	</section>
 {/each}
