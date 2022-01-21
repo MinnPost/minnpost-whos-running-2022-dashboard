@@ -1,17 +1,20 @@
 <script>
-    import Candidate from "./Candidate.svelte";
-    export let params;
+    // all data for candidates and races
     export let items;
 
-    // load the candidates from App.svelte
+	// page.js data, such as the party we want
+	export let params;
+
+	// the candidates from App.svelte
 	let candidates = items.candidates;
 
+	// what party/parties do we want
     let parties = [];
-    if (params.party) {
+    if (params && params.party) {
         parties = [params.party];
     } else {
         // the distinct party names from the candidates
-	    parties = [...new Set(candidates.map(item => item.party))];
+	    parties = items.all_parties;
     }
 
 	// create a list of candidates for a party
@@ -21,8 +24,8 @@
 		);
 	}
 
-	// the distinct party names from the candidates
-	//let parties = [...new Set(candidates.map(item => item.party))];
+	// single candidate template
+	import Candidate from "./Candidate.svelte";
 
 </script>
 

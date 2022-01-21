@@ -1,17 +1,20 @@
 <script>
-    import Candidate from "./Candidate.svelte";
-    export let params;
+	// all data for candidates and races
     export let items;
 
-    // load the candidates from App.svelte
+	// page.js data, such as the office we want
+	export let params;
+
+	// the candidates from App.svelte
 	let candidates = items.candidates;
 
+	// what office(s) do we want
     let offices = [];
-    if (params.office) {
+    if (params && params.office) {
         offices = [params.office];
     } else {
         // the distinct office names from the candidates
-	    offices = [...new Set(candidates.map(item => item["office-sought"]))];
+	    offices = items.all_offices;
     }
 
 	// create a list of candidates for a office
@@ -20,6 +23,9 @@
 			(item) => item["office-sought"].toUpperCase().indexOf(office.toUpperCase()) !== -1
 		);
 	}
+
+	// single candidate template
+    import Candidate from "./Candidate.svelte";
 
 </script>
 
