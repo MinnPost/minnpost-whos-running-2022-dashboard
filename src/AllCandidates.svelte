@@ -6,7 +6,7 @@
 	let candidates = items.candidates;
 
     // the distinct party names from the candidates
-    let parties = items.all_parties;
+    let parties = [...new Set(candidates.map(item => item.party))];
 
     // create a list of candidates for a party
     let party_candidates = function(party) {
@@ -17,7 +17,7 @@
 
     // single candidate template
 	import Candidate from "./Candidate.svelte";
-
+    
 </script>
 
 {#each items.races as race}
