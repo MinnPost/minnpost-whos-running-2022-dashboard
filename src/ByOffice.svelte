@@ -8,19 +8,21 @@
 	// the candidates from App.svelte
 	let candidates = items.candidates;
 
-	// what office(s) do we want
-    let offices = [];
+	// the races from App.svelte
+	let races = items.races;
+
+	// what office do we want?
     if (params && params.office) {
-        offices = [params.office];
+		races = [items.races[params.office]];
     } else {
         // the distinct office names from the candidates
-	    offices = items.all_offices;
+	    races = items.races;
     }
 
 	// create a list of candidates for a office
 	let office_candidates = function(office) {
 		return candidates.filter(
-			(item) => item["office-sought"].toUpperCase().indexOf(office.toUpperCase()) !== -1
+			(item) => item["office-sought"].indexOf(office) !== -1
 		);
 	}
 
@@ -29,10 +31,10 @@
 
 </script>
 
-{#each offices as office}
+{#each races as race, key}
 	<section class="candidates-list">
-		<h3>{office}</h3>
-		{#each office_candidates(office) as candidate}
+		<h3>{race.office}</h3>
+		{#each office_candidates(race.office) as candidate}
 			<Candidate candidate = {candidate} />
 		{/each}
 	</section>

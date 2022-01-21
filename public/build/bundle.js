@@ -1858,7 +1858,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    function get_each_context_1$2(ctx, list, i) {
+    function get_each_context_1$3(ctx, list, i) {
     	const child_ctx = ctx.slice();
     	child_ctx[7] = list[i];
     	return child_ctx;
@@ -1915,7 +1915,7 @@ var app = (function () {
     }
 
     // (27:8) {#each parties as party}
-    function create_each_block_1$2(ctx) {
+    function create_each_block_1$3(ctx) {
     	let section;
     	let h3;
     	let t0_value = /*party*/ ctx[7] + "";
@@ -2016,7 +2016,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_each_block_1$2.name,
+    		id: create_each_block_1$3.name,
     		type: "each",
     		source: "(27:8) {#each parties as party}",
     		ctx
@@ -2043,7 +2043,7 @@ var app = (function () {
     	let each_blocks = [];
 
     	for (let i = 0; i < each_value_1.length; i += 1) {
-    		each_blocks[i] = create_each_block_1$2(get_each_context_1$2(ctx, each_value_1, i));
+    		each_blocks[i] = create_each_block_1$3(get_each_context_1$3(ctx, each_value_1, i));
     	}
 
     	const out = i => transition_out(each_blocks[i], 1, 1, () => {
@@ -2095,13 +2095,13 @@ var app = (function () {
     				let i;
 
     				for (i = 0; i < each_value_1.length; i += 1) {
-    					const child_ctx = get_each_context_1$2(ctx, each_value_1, i);
+    					const child_ctx = get_each_context_1$3(ctx, each_value_1, i);
 
     					if (each_blocks[i]) {
     						each_blocks[i].p(child_ctx, dirty);
     						transition_in(each_blocks[i], 1);
     					} else {
-    						each_blocks[i] = create_each_block_1$2(child_ctx);
+    						each_blocks[i] = create_each_block_1$3(child_ctx);
     						each_blocks[i].c();
     						transition_in(each_blocks[i], 1);
     						each_blocks[i].m(section, t4);
@@ -2333,17 +2333,18 @@ var app = (function () {
     function get_each_context$2(ctx, list, i) {
     	const child_ctx = ctx.slice();
     	child_ctx[5] = list[i];
+    	child_ctx[7] = i;
     	return child_ctx;
     }
 
-    function get_each_context_1$1(ctx, list, i) {
+    function get_each_context_1$2(ctx, list, i) {
     	const child_ctx = ctx.slice();
     	child_ctx[8] = list[i];
     	return child_ctx;
     }
 
-    // (35:2) {#each office_candidates(office) as candidate}
-    function create_each_block_1$1(ctx) {
+    // (37:2) {#each office_candidates(race.office) as candidate}
+    function create_each_block_1$2(ctx) {
     	let candidate;
     	let current;
 
@@ -2362,7 +2363,7 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			const candidate_changes = {};
-    			if (dirty & /*offices*/ 1) candidate_changes.candidate = /*candidate*/ ctx[8];
+    			if (dirty & /*races*/ 1) candidate_changes.candidate = /*candidate*/ ctx[8];
     			candidate.$set(candidate_changes);
     		},
     		i: function intro(local) {
@@ -2381,30 +2382,30 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_each_block_1$1.name,
+    		id: create_each_block_1$2.name,
     		type: "each",
-    		source: "(35:2) {#each office_candidates(office) as candidate}",
+    		source: "(37:2) {#each office_candidates(race.office) as candidate}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (32:0) {#each offices as office}
+    // (34:0) {#each races as race, key}
     function create_each_block$2(ctx) {
     	let section;
     	let h3;
-    	let t0_value = /*office*/ ctx[5] + "";
+    	let t0_value = /*race*/ ctx[5].office + "";
     	let t0;
     	let t1;
     	let t2;
     	let current;
-    	let each_value_1 = /*office_candidates*/ ctx[1](/*office*/ ctx[5]);
+    	let each_value_1 = /*office_candidates*/ ctx[1](/*race*/ ctx[5].office);
     	validate_each_argument(each_value_1);
     	let each_blocks = [];
 
     	for (let i = 0; i < each_value_1.length; i += 1) {
-    		each_blocks[i] = create_each_block_1$1(get_each_context_1$1(ctx, each_value_1, i));
+    		each_blocks[i] = create_each_block_1$2(get_each_context_1$2(ctx, each_value_1, i));
     	}
 
     	const out = i => transition_out(each_blocks[i], 1, 1, () => {
@@ -2423,9 +2424,9 @@ var app = (function () {
     			}
 
     			t2 = space();
-    			add_location(h3, file$2, 33, 2, 806);
+    			add_location(h3, file$2, 35, 2, 809);
     			attr_dev(section, "class", "candidates-list");
-    			add_location(section, file$2, 32, 1, 770);
+    			add_location(section, file$2, 34, 1, 773);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, section, anchor);
@@ -2441,21 +2442,21 @@ var app = (function () {
     			current = true;
     		},
     		p: function update(ctx, dirty) {
-    			if ((!current || dirty & /*offices*/ 1) && t0_value !== (t0_value = /*office*/ ctx[5] + "")) set_data_dev(t0, t0_value);
+    			if ((!current || dirty & /*races*/ 1) && t0_value !== (t0_value = /*race*/ ctx[5].office + "")) set_data_dev(t0, t0_value);
 
-    			if (dirty & /*office_candidates, offices*/ 3) {
-    				each_value_1 = /*office_candidates*/ ctx[1](/*office*/ ctx[5]);
+    			if (dirty & /*office_candidates, races*/ 3) {
+    				each_value_1 = /*office_candidates*/ ctx[1](/*race*/ ctx[5].office);
     				validate_each_argument(each_value_1);
     				let i;
 
     				for (i = 0; i < each_value_1.length; i += 1) {
-    					const child_ctx = get_each_context_1$1(ctx, each_value_1, i);
+    					const child_ctx = get_each_context_1$2(ctx, each_value_1, i);
 
     					if (each_blocks[i]) {
     						each_blocks[i].p(child_ctx, dirty);
     						transition_in(each_blocks[i], 1);
     					} else {
-    						each_blocks[i] = create_each_block_1$1(child_ctx);
+    						each_blocks[i] = create_each_block_1$2(child_ctx);
     						each_blocks[i].c();
     						transition_in(each_blocks[i], 1);
     						each_blocks[i].m(section, t2);
@@ -2499,7 +2500,7 @@ var app = (function () {
     		block,
     		id: create_each_block$2.name,
     		type: "each",
-    		source: "(32:0) {#each offices as office}",
+    		source: "(34:0) {#each races as race, key}",
     		ctx
     	});
 
@@ -2509,7 +2510,7 @@ var app = (function () {
     function create_fragment$2(ctx) {
     	let each_1_anchor;
     	let current;
-    	let each_value = /*offices*/ ctx[0];
+    	let each_value = /*races*/ ctx[0];
     	validate_each_argument(each_value);
     	let each_blocks = [];
 
@@ -2541,8 +2542,8 @@ var app = (function () {
     			current = true;
     		},
     		p: function update(ctx, [dirty]) {
-    			if (dirty & /*office_candidates, offices*/ 3) {
-    				each_value = /*offices*/ ctx[0];
+    			if (dirty & /*office_candidates, races*/ 3) {
+    				each_value = /*races*/ ctx[0];
     				validate_each_argument(each_value);
     				let i;
 
@@ -2613,19 +2614,20 @@ var app = (function () {
     	// the candidates from App.svelte
     	let candidates = items.candidates;
 
-    	// what office(s) do we want
-    	let offices = [];
+    	// the races from App.svelte
+    	let races = items.races;
 
+    	// what office do we want?
     	if (params && params.office) {
-    		offices = [params.office];
+    		races = [items.races[params.office]];
     	} else {
     		// the distinct office names from the candidates
-    		offices = items.all_offices;
+    		races = items.races;
     	}
 
     	// create a list of candidates for a office
     	let office_candidates = function (office) {
-    		return candidates.filter(item => item["office-sought"].toUpperCase().indexOf(office.toUpperCase()) !== -1);
+    		return candidates.filter(item => item["office-sought"].indexOf(office) !== -1);
     	};
 
     	const writable_props = ['items', 'params'];
@@ -2643,7 +2645,7 @@ var app = (function () {
     		items,
     		params,
     		candidates,
-    		offices,
+    		races,
     		office_candidates,
     		Candidate
     	});
@@ -2652,7 +2654,7 @@ var app = (function () {
     		if ('items' in $$props) $$invalidate(2, items = $$props.items);
     		if ('params' in $$props) $$invalidate(3, params = $$props.params);
     		if ('candidates' in $$props) candidates = $$props.candidates;
-    		if ('offices' in $$props) $$invalidate(0, offices = $$props.offices);
+    		if ('races' in $$props) $$invalidate(0, races = $$props.races);
     		if ('office_candidates' in $$props) $$invalidate(1, office_candidates = $$props.office_candidates);
     	};
 
@@ -2660,7 +2662,7 @@ var app = (function () {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [offices, office_candidates, items, params];
+    	return [races, office_candidates, items, params];
     }
 
     class ByOffice extends SvelteComponentDev {
@@ -2713,14 +2715,14 @@ var app = (function () {
     	return child_ctx;
     }
 
-    function get_each_context_1(ctx, list, i) {
+    function get_each_context_1$1(ctx, list, i) {
     	const child_ctx = ctx.slice();
     	child_ctx[8] = list[i];
     	return child_ctx;
     }
 
-    // (35:2) {#each party_candidates(party) as candidate}
-    function create_each_block_1(ctx) {
+    // (37:2) {#each party_candidates(party) as candidate}
+    function create_each_block_1$1(ctx) {
     	let candidate;
     	let current;
 
@@ -2758,16 +2760,16 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_each_block_1.name,
+    		id: create_each_block_1$1.name,
     		type: "each",
-    		source: "(35:2) {#each party_candidates(party) as candidate}",
+    		source: "(37:2) {#each party_candidates(party) as candidate}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (32:0) {#each parties as party}
+    // (34:0) {#each parties as party}
     function create_each_block$1(ctx) {
     	let section;
     	let h3;
@@ -2781,7 +2783,7 @@ var app = (function () {
     	let each_blocks = [];
 
     	for (let i = 0; i < each_value_1.length; i += 1) {
-    		each_blocks[i] = create_each_block_1(get_each_context_1(ctx, each_value_1, i));
+    		each_blocks[i] = create_each_block_1$1(get_each_context_1$1(ctx, each_value_1, i));
     	}
 
     	const out = i => transition_out(each_blocks[i], 1, 1, () => {
@@ -2800,9 +2802,9 @@ var app = (function () {
     			}
 
     			t2 = space();
-    			add_location(h3, file$1, 33, 2, 793);
+    			add_location(h3, file$1, 35, 2, 825);
     			attr_dev(section, "class", "candidates-list");
-    			add_location(section, file$1, 32, 1, 757);
+    			add_location(section, file$1, 34, 1, 789);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, section, anchor);
@@ -2826,13 +2828,13 @@ var app = (function () {
     				let i;
 
     				for (i = 0; i < each_value_1.length; i += 1) {
-    					const child_ctx = get_each_context_1(ctx, each_value_1, i);
+    					const child_ctx = get_each_context_1$1(ctx, each_value_1, i);
 
     					if (each_blocks[i]) {
     						each_blocks[i].p(child_ctx, dirty);
     						transition_in(each_blocks[i], 1);
     					} else {
-    						each_blocks[i] = create_each_block_1(child_ctx);
+    						each_blocks[i] = create_each_block_1$1(child_ctx);
     						each_blocks[i].c();
     						transition_in(each_blocks[i], 1);
     						each_blocks[i].m(section, t2);
@@ -2876,7 +2878,7 @@ var app = (function () {
     		block,
     		id: create_each_block$1.name,
     		type: "each",
-    		source: "(32:0) {#each parties as party}",
+    		source: "(34:0) {#each parties as party}",
     		ctx
     	});
 
@@ -2994,7 +2996,8 @@ var app = (function () {
     	let parties = [];
 
     	if (params && params.party) {
-    		parties = [params.party];
+    		let key = items.all_party_ids.indexOf(params.party);
+    		parties = [items.all_parties[key]];
     	} else {
     		// the distinct party names from the candidates
     		parties = items.all_parties;
@@ -3002,7 +3005,7 @@ var app = (function () {
 
     	// create a list of candidates for a party
     	let party_candidates = function (party) {
-    		return candidates.filter(item => item["party"].toUpperCase().indexOf(party.toUpperCase()) !== -1);
+    		return candidates.filter(item => item["party"].indexOf(party) !== -1);
     	};
 
     	const writable_props = ['items', 'params'];
@@ -3089,6 +3092,14 @@ var app = (function () {
     function get_each_context(ctx, list, i) {
     	const child_ctx = ctx.slice();
     	child_ctx[12] = list[i];
+    	child_ctx[14] = i;
+    	return child_ctx;
+    }
+
+    function get_each_context_1(ctx, list, i) {
+    	const child_ctx = ctx.slice();
+    	child_ctx[15] = list[i];
+    	child_ctx[14] = i;
     	return child_ctx;
     }
 
@@ -3114,13 +3125,24 @@ var app = (function () {
     	return block;
     }
 
-    // (102:1) {:then items}
+    // (99:1) {:then items}
     function create_then_block(ctx) {
-    	let t;
+    	let ul0;
+    	let t0;
+    	let ul1;
+    	let t1;
     	let switch_instance;
     	let switch_instance_anchor;
     	let current;
-    	let each_value = /*items*/ ctx[1].all_parties;
+    	let each_value_1 = /*items*/ ctx[1].all_party_ids;
+    	validate_each_argument(each_value_1);
+    	let each_blocks_1 = [];
+
+    	for (let i = 0; i < each_value_1.length; i += 1) {
+    		each_blocks_1[i] = create_each_block_1(get_each_context_1(ctx, each_value_1, i));
+    	}
+
+    	let each_value = /*items*/ ctx[1].races;
     	validate_each_argument(each_value);
     	let each_blocks = [];
 
@@ -3146,20 +3168,40 @@ var app = (function () {
 
     	const block = {
     		c: function create() {
+    			ul0 = element("ul");
+
+    			for (let i = 0; i < each_blocks_1.length; i += 1) {
+    				each_blocks_1[i].c();
+    			}
+
+    			t0 = space();
+    			ul1 = element("ul");
+
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].c();
     			}
 
-    			t = space();
+    			t1 = space();
     			if (switch_instance) create_component(switch_instance.$$.fragment);
     			switch_instance_anchor = empty();
+    			add_location(ul0, file, 99, 2, 2954);
+    			add_location(ul1, file, 104, 2, 3095);
     		},
     		m: function mount(target, anchor) {
-    			for (let i = 0; i < each_blocks.length; i += 1) {
-    				each_blocks[i].m(target, anchor);
+    			insert_dev(target, ul0, anchor);
+
+    			for (let i = 0; i < each_blocks_1.length; i += 1) {
+    				each_blocks_1[i].m(ul0, null);
     			}
 
-    			insert_dev(target, t, anchor);
+    			insert_dev(target, t0, anchor);
+    			insert_dev(target, ul1, anchor);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].m(ul1, null);
+    			}
+
+    			insert_dev(target, t1, anchor);
 
     			if (switch_instance) {
     				mount_component(switch_instance, target, anchor);
@@ -3170,7 +3212,31 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			if (dirty & /*filteredList*/ 16) {
-    				each_value = /*items*/ ctx[1].all_parties;
+    				each_value_1 = /*items*/ ctx[1].all_party_ids;
+    				validate_each_argument(each_value_1);
+    				let i;
+
+    				for (i = 0; i < each_value_1.length; i += 1) {
+    					const child_ctx = get_each_context_1(ctx, each_value_1, i);
+
+    					if (each_blocks_1[i]) {
+    						each_blocks_1[i].p(child_ctx, dirty);
+    					} else {
+    						each_blocks_1[i] = create_each_block_1(child_ctx);
+    						each_blocks_1[i].c();
+    						each_blocks_1[i].m(ul0, null);
+    					}
+    				}
+
+    				for (; i < each_blocks_1.length; i += 1) {
+    					each_blocks_1[i].d(1);
+    				}
+
+    				each_blocks_1.length = each_value_1.length;
+    			}
+
+    			if (dirty & /*filteredList*/ 16) {
+    				each_value = /*items*/ ctx[1].races;
     				validate_each_argument(each_value);
     				let i;
 
@@ -3182,7 +3248,7 @@ var app = (function () {
     					} else {
     						each_blocks[i] = create_each_block(child_ctx);
     						each_blocks[i].c();
-    						each_blocks[i].m(t.parentNode, t);
+    						each_blocks[i].m(ul1, null);
     					}
     				}
 
@@ -3231,8 +3297,12 @@ var app = (function () {
     			current = false;
     		},
     		d: function destroy(detaching) {
+    			if (detaching) detach_dev(ul0);
+    			destroy_each(each_blocks_1, detaching);
+    			if (detaching) detach_dev(t0);
+    			if (detaching) detach_dev(ul1);
     			destroy_each(each_blocks, detaching);
-    			if (detaching) detach_dev(t);
+    			if (detaching) detach_dev(t1);
     			if (detaching) detach_dev(switch_instance_anchor);
     			if (switch_instance) destroy_component(switch_instance, detaching);
     		}
@@ -3242,30 +3312,84 @@ var app = (function () {
     		block,
     		id: create_then_block.name,
     		type: "then",
-    		source: "(102:1) {:then items}",
+    		source: "(99:1) {:then items}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (103:2) {#each items.all_parties as party}
+    // (101:3) {#each items.all_party_ids as party, key}
+    function create_each_block_1(ctx) {
+    	let li;
+    	let a;
+    	let t_value = /*items*/ ctx[1].all_parties[/*key*/ ctx[14]] + "";
+    	let t;
+    	let a_href_value;
+
+    	const block = {
+    		c: function create() {
+    			li = element("li");
+    			a = element("a");
+    			t = text(t_value);
+    			attr_dev(a, "href", a_href_value = "/by-party/" + /*party*/ ctx[15]);
+    			add_location(a, file, 101, 8, 3012);
+    			add_location(li, file, 101, 4, 3008);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, li, anchor);
+    			append_dev(li, a);
+    			append_dev(a, t);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*filteredList*/ 16 && t_value !== (t_value = /*items*/ ctx[1].all_parties[/*key*/ ctx[14]] + "")) set_data_dev(t, t_value);
+
+    			if (dirty & /*filteredList*/ 16 && a_href_value !== (a_href_value = "/by-party/" + /*party*/ ctx[15])) {
+    				attr_dev(a, "href", a_href_value);
+    			}
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(li);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_each_block_1.name,
+    		type: "each",
+    		source: "(101:3) {#each items.all_party_ids as party, key}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (106:3) {#each items.races as race, key}
     function create_each_block(ctx) {
-    	let t_value = /*party*/ ctx[12] + "";
+    	let li;
+    	let a;
+    	let t_value = /*race*/ ctx[12].office + "";
     	let t;
 
     	const block = {
     		c: function create() {
+    			li = element("li");
+    			a = element("a");
     			t = text(t_value);
+    			attr_dev(a, "href", "/by-office/" + /*key*/ ctx[14]);
+    			add_location(a, file, 106, 8, 3144);
+    			add_location(li, file, 106, 4, 3140);
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, t, anchor);
+    			insert_dev(target, li, anchor);
+    			append_dev(li, a);
+    			append_dev(a, t);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*filteredList*/ 16 && t_value !== (t_value = /*party*/ ctx[12] + "")) set_data_dev(t, t_value);
+    			if (dirty & /*filteredList*/ 16 && t_value !== (t_value = /*race*/ ctx[12].office + "")) set_data_dev(t, t_value);
     		},
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(t);
+    			if (detaching) detach_dev(li);
     		}
     	};
 
@@ -3273,14 +3397,14 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(103:2) {#each items.all_parties as party}",
+    		source: "(106:3) {#each items.races as race, key}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (100:22)    Loading...  {:then items}
+    // (97:22)    Loading...  {:then items}
     function create_pending_block(ctx) {
     	let t;
 
@@ -3303,7 +3427,7 @@ var app = (function () {
     		block,
     		id: create_pending_block.name,
     		type: "pending",
-    		source: "(100:22)    Loading...  {:then items}",
+    		source: "(97:22)    Loading...  {:then items}",
     		ctx
     	});
 
@@ -3343,9 +3467,9 @@ var app = (function () {
     			t2 = space();
     			div = element("div");
     			info.block.c();
-    			add_location(input, file, 93, 0, 2826);
+    			add_location(input, file, 93, 0, 2829);
     			attr_dev(div, "class", "container");
-    			add_location(div, file, 98, 0, 2876);
+    			add_location(div, file, 95, 0, 2877);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -3537,8 +3661,8 @@ var app = (function () {
     				let races = filterResults(searchTerm, items.races);
 
     				let candidates = filterResults(searchTerm, items.candidates);
-    				let all_offices = [...new Set(items.candidates.map(item => item["office-sought"]))];
     				let all_parties = [...new Set(items.candidates.map(item => item.party))];
+    				let all_party_ids = [...new Set(items.candidates.map(item => item["party-id"]))];
 
     				// if there are no races but there are candidates, get the key from the candidate
     				// then get the corresponding race and push it
@@ -3555,12 +3679,12 @@ var app = (function () {
     				// make the final data array of races and candidates, and parties and offices, for filteredList to use and return it
     				let data = [];
 
-    				if (typeof all_offices !== "undefined") {
-    					data["all_offices"] = all_offices;
-    				}
-
     				if (typeof all_parties !== "undefined") {
     					data["all_parties"] = all_parties;
+    				}
+
+    				if (typeof all_party_ids !== "undefined") {
+    					data["all_party_ids"] = all_party_ids;
     				}
 
     				if (typeof races !== "undefined") {

@@ -1,4 +1,5 @@
 <script>
+
     // all data for candidates and races
     export let items;
 
@@ -11,7 +12,8 @@
 	// what party/parties do we want
     let parties = [];
     if (params && params.party) {
-        parties = [params.party];
+		let key = items.all_party_ids.indexOf(params.party);
+		parties = [items.all_parties[key]];
     } else {
         // the distinct party names from the candidates
 	    parties = items.all_parties;
@@ -20,7 +22,7 @@
 	// create a list of candidates for a party
 	let party_candidates = function(party) {
 		return candidates.filter(
-			(item) => item["party"].toUpperCase().indexOf(party.toUpperCase()) !== -1
+			(item) => item["party"].indexOf(party) !== -1
 		);
 	}
 

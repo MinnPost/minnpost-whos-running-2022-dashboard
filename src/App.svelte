@@ -42,8 +42,8 @@
 		// filter the races and/or candidates by the search term
 		let races = filterResults(searchTerm, items.races);
 		let candidates = filterResults(searchTerm, items.candidates);
-		let all_offices = [...new Set(items.candidates.map(item => item["office-sought"]))];
 		let all_parties = [...new Set(items.candidates.map(item => item.party))];
+		let all_party_ids = [...new Set(items.candidates.map(item => item["party-id"]))];
 
 		// if there are no races but there are candidates, get the key from the candidate
 		// then get the corresponding race and push it
@@ -58,11 +58,11 @@
 
 		// make the final data array of races and candidates, and parties and offices, for filteredList to use and return it
 		let data = [];
-		if ( typeof all_offices !== "undefined" ) {
-			data["all_offices"] = all_offices;
-		}
 		if ( typeof all_parties !== "undefined" ) {
 			data["all_parties"] = all_parties;
+		}
+		if ( typeof all_party_ids !== "undefined" ) {
+			data["all_party_ids"] = all_party_ids;
 		}
 		if ( typeof races !== "undefined" ) {
 			data["races"] = races;
@@ -91,20 +91,22 @@
 
 </script>
 
-<input bind:value={searchTerm} />
-{searchTerm}
-
-
+<input bind:value={searchTerm} /> {searchTerm}
 
 <div class='container'>
 	{#await filteredList}
 		Loading...
 	{:then items}
-		{#each items.all_parties as party}
-			{party}
-		{/each}
+		<ul>
+			{#each items.all_party_ids as party, key}
+				<li><a href="/by-party/{party}">{items.all_parties[key]}</a></li>
+			{/each}
+		</ul>
+		<ul>
+			{#each items.races as race, key}
+				<li><a href="/by-office/{key}">{race.office}</a></li>
+			{/each}
+		</ul>
 		<svelte:component this={results} params="{params}" items="{items}" />
 	{/await}
 </div>
-
-
