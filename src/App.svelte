@@ -1,6 +1,7 @@
 <script>
 	// router
-	import router from "page";
+	import router from "page"
+  	import routes from './routes'
 	
 	// result sets
 	import AllCandidates from "./AllCandidates.svelte";
@@ -77,16 +78,24 @@
     let end, end2
 
 	// template router
-	router('/', () => results = AllCandidates)
-	router('/by-office', () => results = ByOffice)
-	router('/by-office/:office', (context, next) => {
-  		params = context.params
-  		next()}, () => results = ByOffice)
-	router.start();
-	router('/by-party', () => results = ByParty)
-	router('/by-party/:party', (context, next) => {
-  		params = context.params
-  		next()}, () => results = ByParty)
+	// Loop around all of the routes and create a new instance of
+	// router for reach one with some rudimentary checks.
+	routes.forEach(route => {
+		router(
+			route.path,
+			// Set the params variable to the context.
+			// We use this on the component initialisation
+			(context, next) => {
+				params = context.params
+				next()
+			},
+			() => {
+				results = route.component;
+			}
+		)
+	});
+
+	// Start the router
 	router.start();
 
 </script>
