@@ -5,11 +5,11 @@
 	// page.js data, such as the office we want
 	export let params;
 
-	// the candidates from App.svelte
-	let candidates = items.candidates;
-
 	// the races from App.svelte
 	let races = items.races;
+
+	// the parties from App.svelte
+	let parties = items.all_parties;
 
 	// what office do we want?
     if (params && params.office) {
@@ -20,10 +20,10 @@
     }
 
 	// create a list of candidates for a office
-	let office_candidates = function(office) {
-		return candidates.filter(
-			(item) => item["office-sought"].indexOf(office) !== -1
-		);
+	let office_candidates = function(office, party) {
+		return items.candidates.filter(
+			item => item["office-sought"].indexOf(office) !== -1 && item["party"].indexOf(party) !== -1
+		)
 	}
 
 	// single candidate template
@@ -34,8 +34,16 @@
 {#each races as race, key}
 	<section class="candidates-list">
 		<h3>{race.office}</h3>
-		{#each office_candidates(race.office) as candidate}
-			<Candidate candidate = {candidate} />
+		<p>{race.blurb}</p>
+		{#each parties as party}
+			{#if office_candidates(race.office, party).length > 0}
+				<section class="candidates-list">
+					<h4>{party}</h4>
+					{#each office_candidates(race.office, party) as candidate}
+						<Candidate candidate = {candidate} />
+					{/each}
+				</section>
+			{/if}
 		{/each}
 	</section>
 {/each}

@@ -1863,14 +1863,14 @@ var app = (function () {
     	return child_ctx;
     }
 
-    function get_each_context_2(ctx, list, i) {
+    function get_each_context_2$2(ctx, list, i) {
     	const child_ctx = ctx.slice();
     	child_ctx[10] = list[i];
     	return child_ctx;
     }
 
     // (30:16) {#each party_candidates(party) as candidate}
-    function create_each_block_2(ctx) {
+    function create_each_block_2$2(ctx) {
     	let candidate;
     	let current;
 
@@ -1904,7 +1904,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_each_block_2.name,
+    		id: create_each_block_2$2.name,
     		type: "each",
     		source: "(30:16) {#each party_candidates(party) as candidate}",
     		ctx
@@ -1926,7 +1926,7 @@ var app = (function () {
     	let each_blocks = [];
 
     	for (let i = 0; i < each_value_2.length; i += 1) {
-    		each_blocks[i] = create_each_block_2(get_each_context_2(ctx, each_value_2, i));
+    		each_blocks[i] = create_each_block_2$2(get_each_context_2$2(ctx, each_value_2, i));
     	}
 
     	const out = i => transition_out(each_blocks[i], 1, 1, () => {
@@ -1967,13 +1967,13 @@ var app = (function () {
     				let i;
 
     				for (i = 0; i < each_value_2.length; i += 1) {
-    					const child_ctx = get_each_context_2(ctx, each_value_2, i);
+    					const child_ctx = get_each_context_2$2(ctx, each_value_2, i);
 
     					if (each_blocks[i]) {
     						each_blocks[i].p(child_ctx, dirty);
     						transition_in(each_blocks[i], 1);
     					} else {
-    						each_blocks[i] = create_each_block_2(child_ctx);
+    						each_blocks[i] = create_each_block_2$2(child_ctx);
     						each_blocks[i].c();
     						transition_in(each_blocks[i], 1);
     						each_blocks[i].m(section, null);
@@ -2342,13 +2342,130 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (37:2) {#each office_candidates(race.office) as candidate}
-    function create_each_block_1$2(ctx) {
+    function get_each_context_2$1(ctx, list, i) {
+    	const child_ctx = ctx.slice();
+    	child_ctx[11] = list[i];
+    	return child_ctx;
+    }
+
+    // (39:3) {#if office_candidates(race.office, party).length > 0}
+    function create_if_block$1(ctx) {
+    	let section;
+    	let h4;
+    	let t0_value = /*party*/ ctx[8] + "";
+    	let t0;
+    	let t1;
+    	let current;
+    	let each_value_2 = /*office_candidates*/ ctx[2](/*race*/ ctx[5].office, /*party*/ ctx[8]);
+    	validate_each_argument(each_value_2);
+    	let each_blocks = [];
+
+    	for (let i = 0; i < each_value_2.length; i += 1) {
+    		each_blocks[i] = create_each_block_2$1(get_each_context_2$1(ctx, each_value_2, i));
+    	}
+
+    	const out = i => transition_out(each_blocks[i], 1, 1, () => {
+    		each_blocks[i] = null;
+    	});
+
+    	const block = {
+    		c: function create() {
+    			section = element("section");
+    			h4 = element("h4");
+    			t0 = text(t0_value);
+    			t1 = space();
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].c();
+    			}
+
+    			add_location(h4, file$2, 40, 5, 1026);
+    			attr_dev(section, "class", "candidates-list");
+    			add_location(section, file$2, 39, 4, 987);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, section, anchor);
+    			append_dev(section, h4);
+    			append_dev(h4, t0);
+    			append_dev(section, t1);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].m(section, null);
+    			}
+
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*office_candidates, races, parties*/ 7) {
+    				each_value_2 = /*office_candidates*/ ctx[2](/*race*/ ctx[5].office, /*party*/ ctx[8]);
+    				validate_each_argument(each_value_2);
+    				let i;
+
+    				for (i = 0; i < each_value_2.length; i += 1) {
+    					const child_ctx = get_each_context_2$1(ctx, each_value_2, i);
+
+    					if (each_blocks[i]) {
+    						each_blocks[i].p(child_ctx, dirty);
+    						transition_in(each_blocks[i], 1);
+    					} else {
+    						each_blocks[i] = create_each_block_2$1(child_ctx);
+    						each_blocks[i].c();
+    						transition_in(each_blocks[i], 1);
+    						each_blocks[i].m(section, null);
+    					}
+    				}
+
+    				group_outros();
+
+    				for (i = each_value_2.length; i < each_blocks.length; i += 1) {
+    					out(i);
+    				}
+
+    				check_outros();
+    			}
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+
+    			for (let i = 0; i < each_value_2.length; i += 1) {
+    				transition_in(each_blocks[i]);
+    			}
+
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			each_blocks = each_blocks.filter(Boolean);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				transition_out(each_blocks[i]);
+    			}
+
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(section);
+    			destroy_each(each_blocks, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block$1.name,
+    		type: "if",
+    		source: "(39:3) {#if office_candidates(race.office, party).length > 0}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (42:5) {#each office_candidates(race.office, party) as candidate}
+    function create_each_block_2$1(ctx) {
     	let candidate;
     	let current;
 
     	candidate = new Candidate({
-    			props: { candidate: /*candidate*/ ctx[8] },
+    			props: { candidate: /*candidate*/ ctx[11] },
     			$$inline: true
     		});
 
@@ -2362,7 +2479,7 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			const candidate_changes = {};
-    			if (dirty & /*races*/ 1) candidate_changes.candidate = /*candidate*/ ctx[8];
+    			if (dirty & /*races*/ 1) candidate_changes.candidate = /*candidate*/ ctx[11];
     			candidate.$set(candidate_changes);
     		},
     		i: function intro(local) {
@@ -2381,9 +2498,78 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
+    		id: create_each_block_2$1.name,
+    		type: "each",
+    		source: "(42:5) {#each office_candidates(race.office, party) as candidate}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (38:2) {#each parties as party}
+    function create_each_block_1$2(ctx) {
+    	let show_if = /*office_candidates*/ ctx[2](/*race*/ ctx[5].office, /*party*/ ctx[8]).length > 0;
+    	let if_block_anchor;
+    	let current;
+    	let if_block = show_if && create_if_block$1(ctx);
+
+    	const block = {
+    		c: function create() {
+    			if (if_block) if_block.c();
+    			if_block_anchor = empty();
+    		},
+    		m: function mount(target, anchor) {
+    			if (if_block) if_block.m(target, anchor);
+    			insert_dev(target, if_block_anchor, anchor);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*races*/ 1) show_if = /*office_candidates*/ ctx[2](/*race*/ ctx[5].office, /*party*/ ctx[8]).length > 0;
+
+    			if (show_if) {
+    				if (if_block) {
+    					if_block.p(ctx, dirty);
+
+    					if (dirty & /*races*/ 1) {
+    						transition_in(if_block, 1);
+    					}
+    				} else {
+    					if_block = create_if_block$1(ctx);
+    					if_block.c();
+    					transition_in(if_block, 1);
+    					if_block.m(if_block_anchor.parentNode, if_block_anchor);
+    				}
+    			} else if (if_block) {
+    				group_outros();
+
+    				transition_out(if_block, 1, 1, () => {
+    					if_block = null;
+    				});
+
+    				check_outros();
+    			}
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(if_block);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(if_block);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (if_block) if_block.d(detaching);
+    			if (detaching) detach_dev(if_block_anchor);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
     		id: create_each_block_1$2.name,
     		type: "each",
-    		source: "(37:2) {#each office_candidates(race.office) as candidate}",
+    		source: "(38:2) {#each parties as party}",
     		ctx
     	});
 
@@ -2397,9 +2583,13 @@ var app = (function () {
     	let t0_value = /*race*/ ctx[5].office + "";
     	let t0;
     	let t1;
+    	let p;
+    	let t2_value = /*race*/ ctx[5].blurb + "";
     	let t2;
+    	let t3;
+    	let t4;
     	let current;
-    	let each_value_1 = /*office_candidates*/ ctx[1](/*race*/ ctx[5].office);
+    	let each_value_1 = /*parties*/ ctx[1];
     	validate_each_argument(each_value_1);
     	let each_blocks = [];
 
@@ -2417,34 +2607,42 @@ var app = (function () {
     			h3 = element("h3");
     			t0 = text(t0_value);
     			t1 = space();
+    			p = element("p");
+    			t2 = text(t2_value);
+    			t3 = space();
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].c();
     			}
 
-    			t2 = space();
-    			add_location(h3, file$2, 35, 2, 809);
+    			t4 = space();
+    			add_location(h3, file$2, 35, 2, 853);
+    			add_location(p, file$2, 36, 2, 878);
     			attr_dev(section, "class", "candidates-list");
-    			add_location(section, file$2, 34, 1, 773);
+    			add_location(section, file$2, 34, 1, 817);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, section, anchor);
     			append_dev(section, h3);
     			append_dev(h3, t0);
     			append_dev(section, t1);
+    			append_dev(section, p);
+    			append_dev(p, t2);
+    			append_dev(section, t3);
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].m(section, null);
     			}
 
-    			append_dev(section, t2);
+    			append_dev(section, t4);
     			current = true;
     		},
     		p: function update(ctx, dirty) {
     			if ((!current || dirty & /*races*/ 1) && t0_value !== (t0_value = /*race*/ ctx[5].office + "")) set_data_dev(t0, t0_value);
+    			if ((!current || dirty & /*races*/ 1) && t2_value !== (t2_value = /*race*/ ctx[5].blurb + "")) set_data_dev(t2, t2_value);
 
-    			if (dirty & /*office_candidates, races*/ 3) {
-    				each_value_1 = /*office_candidates*/ ctx[1](/*race*/ ctx[5].office);
+    			if (dirty & /*office_candidates, races, parties*/ 7) {
+    				each_value_1 = /*parties*/ ctx[1];
     				validate_each_argument(each_value_1);
     				let i;
 
@@ -2458,7 +2656,7 @@ var app = (function () {
     						each_blocks[i] = create_each_block_1$2(child_ctx);
     						each_blocks[i].c();
     						transition_in(each_blocks[i], 1);
-    						each_blocks[i].m(section, t2);
+    						each_blocks[i].m(section, t4);
     					}
     				}
 
@@ -2541,7 +2739,7 @@ var app = (function () {
     			current = true;
     		},
     		p: function update(ctx, [dirty]) {
-    			if (dirty & /*office_candidates, races*/ 3) {
+    			if (dirty & /*parties, office_candidates, races*/ 7) {
     				each_value = /*races*/ ctx[0];
     				validate_each_argument(each_value);
     				let i;
@@ -2610,11 +2808,11 @@ var app = (function () {
     	let { items } = $$props;
     	let { params } = $$props;
 
-    	// the candidates from App.svelte
-    	let candidates = items.candidates;
-
     	// the races from App.svelte
     	let races = items.races;
+
+    	// the parties from App.svelte
+    	let parties = items.all_parties;
 
     	// what office do we want?
     	if (params && params.office) {
@@ -2625,8 +2823,8 @@ var app = (function () {
     	}
 
     	// create a list of candidates for a office
-    	let office_candidates = function (office) {
-    		return candidates.filter(item => item["office-sought"].indexOf(office) !== -1);
+    	let office_candidates = function (office, party) {
+    		return items.candidates.filter(item => item["office-sought"].indexOf(office) !== -1 && item["party"].indexOf(party) !== -1);
     	};
 
     	const writable_props = ['items', 'params'];
@@ -2636,38 +2834,38 @@ var app = (function () {
     	});
 
     	$$self.$$set = $$props => {
-    		if ('items' in $$props) $$invalidate(2, items = $$props.items);
-    		if ('params' in $$props) $$invalidate(3, params = $$props.params);
+    		if ('items' in $$props) $$invalidate(3, items = $$props.items);
+    		if ('params' in $$props) $$invalidate(4, params = $$props.params);
     	};
 
     	$$self.$capture_state = () => ({
     		items,
     		params,
-    		candidates,
     		races,
+    		parties,
     		office_candidates,
     		Candidate
     	});
 
     	$$self.$inject_state = $$props => {
-    		if ('items' in $$props) $$invalidate(2, items = $$props.items);
-    		if ('params' in $$props) $$invalidate(3, params = $$props.params);
-    		if ('candidates' in $$props) candidates = $$props.candidates;
+    		if ('items' in $$props) $$invalidate(3, items = $$props.items);
+    		if ('params' in $$props) $$invalidate(4, params = $$props.params);
     		if ('races' in $$props) $$invalidate(0, races = $$props.races);
-    		if ('office_candidates' in $$props) $$invalidate(1, office_candidates = $$props.office_candidates);
+    		if ('parties' in $$props) $$invalidate(1, parties = $$props.parties);
+    		if ('office_candidates' in $$props) $$invalidate(2, office_candidates = $$props.office_candidates);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [races, office_candidates, items, params];
+    	return [races, parties, office_candidates, items, params];
     }
 
     class ByOffice extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$2, create_fragment$2, safe_not_equal, { items: 2, params: 3 });
+    		init(this, options, instance$2, create_fragment$2, safe_not_equal, { items: 3, params: 4 });
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -2679,11 +2877,11 @@ var app = (function () {
     		const { ctx } = this.$$;
     		const props = options.props || {};
 
-    		if (/*items*/ ctx[2] === undefined && !('items' in props)) {
+    		if (/*items*/ ctx[3] === undefined && !('items' in props)) {
     			console.warn("<ByOffice> was created without expected prop 'items'");
     		}
 
-    		if (/*params*/ ctx[3] === undefined && !('params' in props)) {
+    		if (/*params*/ ctx[4] === undefined && !('params' in props)) {
     			console.warn("<ByOffice> was created without expected prop 'params'");
     		}
     	}
@@ -2717,16 +2915,145 @@ var app = (function () {
     function get_each_context_1$1(ctx, list, i) {
     	const child_ctx = ctx.slice();
     	child_ctx[8] = list[i];
+    	child_ctx[10] = i;
     	return child_ctx;
     }
 
-    // (36:2) {#each party_candidates(party) as candidate}
-    function create_each_block_1$1(ctx) {
+    function get_each_context_2(ctx, list, i) {
+    	const child_ctx = ctx.slice();
+    	child_ctx[11] = list[i];
+    	return child_ctx;
+    }
+
+    // (37:3) {#if party_candidates(party, race.office).length > 0}
+    function create_if_block(ctx) {
+    	let section;
+    	let h4;
+    	let t0_value = /*race*/ ctx[8].office + "";
+    	let t0;
+    	let t1;
+    	let p;
+    	let t2_value = /*race*/ ctx[8].blurb + "";
+    	let t2;
+    	let t3;
+    	let current;
+    	let each_value_2 = /*party_candidates*/ ctx[2](/*party*/ ctx[5], /*race*/ ctx[8].office);
+    	validate_each_argument(each_value_2);
+    	let each_blocks = [];
+
+    	for (let i = 0; i < each_value_2.length; i += 1) {
+    		each_blocks[i] = create_each_block_2(get_each_context_2(ctx, each_value_2, i));
+    	}
+
+    	const out = i => transition_out(each_blocks[i], 1, 1, () => {
+    		each_blocks[i] = null;
+    	});
+
+    	const block = {
+    		c: function create() {
+    			section = element("section");
+    			h4 = element("h4");
+    			t0 = text(t0_value);
+    			t1 = space();
+    			p = element("p");
+    			t2 = text(t2_value);
+    			t3 = space();
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].c();
+    			}
+
+    			add_location(h4, file$1, 38, 5, 1014);
+    			add_location(p, file$1, 39, 5, 1042);
+    			attr_dev(section, "class", "candidates-list");
+    			add_location(section, file$1, 37, 4, 975);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, section, anchor);
+    			append_dev(section, h4);
+    			append_dev(h4, t0);
+    			append_dev(section, t1);
+    			append_dev(section, p);
+    			append_dev(p, t2);
+    			append_dev(section, t3);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].m(section, null);
+    			}
+
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*party_candidates, parties, races*/ 7) {
+    				each_value_2 = /*party_candidates*/ ctx[2](/*party*/ ctx[5], /*race*/ ctx[8].office);
+    				validate_each_argument(each_value_2);
+    				let i;
+
+    				for (i = 0; i < each_value_2.length; i += 1) {
+    					const child_ctx = get_each_context_2(ctx, each_value_2, i);
+
+    					if (each_blocks[i]) {
+    						each_blocks[i].p(child_ctx, dirty);
+    						transition_in(each_blocks[i], 1);
+    					} else {
+    						each_blocks[i] = create_each_block_2(child_ctx);
+    						each_blocks[i].c();
+    						transition_in(each_blocks[i], 1);
+    						each_blocks[i].m(section, null);
+    					}
+    				}
+
+    				group_outros();
+
+    				for (i = each_value_2.length; i < each_blocks.length; i += 1) {
+    					out(i);
+    				}
+
+    				check_outros();
+    			}
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+
+    			for (let i = 0; i < each_value_2.length; i += 1) {
+    				transition_in(each_blocks[i]);
+    			}
+
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			each_blocks = each_blocks.filter(Boolean);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				transition_out(each_blocks[i]);
+    			}
+
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(section);
+    			destroy_each(each_blocks, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block.name,
+    		type: "if",
+    		source: "(37:3) {#if party_candidates(party, race.office).length > 0}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (41:5) {#each party_candidates(party, race.office) as candidate}
+    function create_each_block_2(ctx) {
     	let candidate;
     	let current;
 
     	candidate = new Candidate({
-    			props: { candidate: /*candidate*/ ctx[8] },
+    			props: { candidate: /*candidate*/ ctx[11] },
     			$$inline: true
     		});
 
@@ -2740,7 +3067,7 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			const candidate_changes = {};
-    			if (dirty & /*parties*/ 1) candidate_changes.candidate = /*candidate*/ ctx[8];
+    			if (dirty & /*parties*/ 1) candidate_changes.candidate = /*candidate*/ ctx[11];
     			candidate.$set(candidate_changes);
     		},
     		i: function intro(local) {
@@ -2759,9 +3086,78 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
+    		id: create_each_block_2.name,
+    		type: "each",
+    		source: "(41:5) {#each party_candidates(party, race.office) as candidate}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (36:2) {#each races as race, key}
+    function create_each_block_1$1(ctx) {
+    	let show_if = /*party_candidates*/ ctx[2](/*party*/ ctx[5], /*race*/ ctx[8].office).length > 0;
+    	let if_block_anchor;
+    	let current;
+    	let if_block = show_if && create_if_block(ctx);
+
+    	const block = {
+    		c: function create() {
+    			if (if_block) if_block.c();
+    			if_block_anchor = empty();
+    		},
+    		m: function mount(target, anchor) {
+    			if (if_block) if_block.m(target, anchor);
+    			insert_dev(target, if_block_anchor, anchor);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*parties*/ 1) show_if = /*party_candidates*/ ctx[2](/*party*/ ctx[5], /*race*/ ctx[8].office).length > 0;
+
+    			if (show_if) {
+    				if (if_block) {
+    					if_block.p(ctx, dirty);
+
+    					if (dirty & /*parties*/ 1) {
+    						transition_in(if_block, 1);
+    					}
+    				} else {
+    					if_block = create_if_block(ctx);
+    					if_block.c();
+    					transition_in(if_block, 1);
+    					if_block.m(if_block_anchor.parentNode, if_block_anchor);
+    				}
+    			} else if (if_block) {
+    				group_outros();
+
+    				transition_out(if_block, 1, 1, () => {
+    					if_block = null;
+    				});
+
+    				check_outros();
+    			}
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(if_block);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(if_block);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (if_block) if_block.d(detaching);
+    			if (detaching) detach_dev(if_block_anchor);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
     		id: create_each_block_1$1.name,
     		type: "each",
-    		source: "(36:2) {#each party_candidates(party) as candidate}",
+    		source: "(36:2) {#each races as race, key}",
     		ctx
     	});
 
@@ -2777,7 +3173,7 @@ var app = (function () {
     	let t1;
     	let t2;
     	let current;
-    	let each_value_1 = /*party_candidates*/ ctx[1](/*party*/ ctx[5]);
+    	let each_value_1 = /*races*/ ctx[1];
     	validate_each_argument(each_value_1);
     	let each_blocks = [];
 
@@ -2801,9 +3197,9 @@ var app = (function () {
     			}
 
     			t2 = space();
-    			add_location(h3, file$1, 34, 2, 824);
+    			add_location(h3, file$1, 34, 2, 868);
     			attr_dev(section, "class", "candidates-list");
-    			add_location(section, file$1, 33, 1, 788);
+    			add_location(section, file$1, 33, 1, 832);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, section, anchor);
@@ -2821,8 +3217,8 @@ var app = (function () {
     		p: function update(ctx, dirty) {
     			if ((!current || dirty & /*parties*/ 1) && t0_value !== (t0_value = /*party*/ ctx[5] + "")) set_data_dev(t0, t0_value);
 
-    			if (dirty & /*party_candidates, parties*/ 3) {
-    				each_value_1 = /*party_candidates*/ ctx[1](/*party*/ ctx[5]);
+    			if (dirty & /*party_candidates, parties, races*/ 7) {
+    				each_value_1 = /*races*/ ctx[1];
     				validate_each_argument(each_value_1);
     				let i;
 
@@ -2919,7 +3315,7 @@ var app = (function () {
     			current = true;
     		},
     		p: function update(ctx, [dirty]) {
-    			if (dirty & /*party_candidates, parties*/ 3) {
+    			if (dirty & /*races, party_candidates, parties*/ 7) {
     				each_value = /*parties*/ ctx[0];
     				validate_each_argument(each_value);
     				let i;
@@ -2988,8 +3384,8 @@ var app = (function () {
     	let { items } = $$props;
     	let { params } = $$props;
 
-    	// the candidates from App.svelte
-    	let candidates = items.candidates;
+    	// the races from App.svelte
+    	let races = items.races;
 
     	// what party/parties do we want
     	let parties = [];
@@ -3003,8 +3399,8 @@ var app = (function () {
     	}
 
     	// create a list of candidates for a party
-    	let party_candidates = function (party) {
-    		return candidates.filter(item => item["party"].indexOf(party) !== -1);
+    	let party_candidates = function (party, office) {
+    		return items.candidates.filter(item => item["party"].indexOf(party) !== -1 && item["office-sought"].indexOf(office) !== -1);
     	};
 
     	const writable_props = ['items', 'params'];
@@ -3014,38 +3410,38 @@ var app = (function () {
     	});
 
     	$$self.$$set = $$props => {
-    		if ('items' in $$props) $$invalidate(2, items = $$props.items);
-    		if ('params' in $$props) $$invalidate(3, params = $$props.params);
+    		if ('items' in $$props) $$invalidate(3, items = $$props.items);
+    		if ('params' in $$props) $$invalidate(4, params = $$props.params);
     	};
 
     	$$self.$capture_state = () => ({
     		items,
     		params,
-    		candidates,
+    		races,
     		parties,
     		party_candidates,
     		Candidate
     	});
 
     	$$self.$inject_state = $$props => {
-    		if ('items' in $$props) $$invalidate(2, items = $$props.items);
-    		if ('params' in $$props) $$invalidate(3, params = $$props.params);
-    		if ('candidates' in $$props) candidates = $$props.candidates;
+    		if ('items' in $$props) $$invalidate(3, items = $$props.items);
+    		if ('params' in $$props) $$invalidate(4, params = $$props.params);
+    		if ('races' in $$props) $$invalidate(1, races = $$props.races);
     		if ('parties' in $$props) $$invalidate(0, parties = $$props.parties);
-    		if ('party_candidates' in $$props) $$invalidate(1, party_candidates = $$props.party_candidates);
+    		if ('party_candidates' in $$props) $$invalidate(2, party_candidates = $$props.party_candidates);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [parties, party_candidates, items, params];
+    	return [parties, races, party_candidates, items, params];
     }
 
     class ByParty extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$1, create_fragment$1, safe_not_equal, { items: 2, params: 3 });
+    		init(this, options, instance$1, create_fragment$1, safe_not_equal, { items: 3, params: 4 });
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -3057,11 +3453,11 @@ var app = (function () {
     		const { ctx } = this.$$;
     		const props = options.props || {};
 
-    		if (/*items*/ ctx[2] === undefined && !('items' in props)) {
+    		if (/*items*/ ctx[3] === undefined && !('items' in props)) {
     			console.warn("<ByParty> was created without expected prop 'items'");
     		}
 
-    		if (/*params*/ ctx[3] === undefined && !('params' in props)) {
+    		if (/*params*/ ctx[4] === undefined && !('params' in props)) {
     			console.warn("<ByParty> was created without expected prop 'params'");
     		}
     	}
