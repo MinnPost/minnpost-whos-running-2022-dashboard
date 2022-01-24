@@ -1,5 +1,4 @@
 <script>
-
     // all data for candidates and races
     export let items;
 

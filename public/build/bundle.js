@@ -2720,7 +2720,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (37:2) {#each party_candidates(party) as candidate}
+    // (36:2) {#each party_candidates(party) as candidate}
     function create_each_block_1$1(ctx) {
     	let candidate;
     	let current;
@@ -2761,14 +2761,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1$1.name,
     		type: "each",
-    		source: "(37:2) {#each party_candidates(party) as candidate}",
+    		source: "(36:2) {#each party_candidates(party) as candidate}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (34:0) {#each parties as party}
+    // (33:0) {#each parties as party}
     function create_each_block$1(ctx) {
     	let section;
     	let h3;
@@ -2801,9 +2801,9 @@ var app = (function () {
     			}
 
     			t2 = space();
-    			add_location(h3, file$1, 35, 2, 825);
+    			add_location(h3, file$1, 34, 2, 824);
     			attr_dev(section, "class", "candidates-list");
-    			add_location(section, file$1, 34, 1, 789);
+    			add_location(section, file$1, 33, 1, 788);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, section, anchor);
@@ -2877,7 +2877,7 @@ var app = (function () {
     		block,
     		id: create_each_block$1.name,
     		type: "each",
-    		source: "(34:0) {#each parties as party}",
+    		source: "(33:0) {#each parties as party}",
     		ctx
     	});
 
