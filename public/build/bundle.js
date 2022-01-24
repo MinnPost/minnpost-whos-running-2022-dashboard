@@ -3155,8 +3155,8 @@ var app = (function () {
     	let t0;
     	let ul1;
     	let t1;
-    	let switch_instance;
-    	let switch_instance_anchor;
+    	let previous_key = /*params*/ ctx[3];
+    	let key_block_anchor;
     	let current;
     	let each_value_1 = /*items*/ ctx[1].all_party_ids;
     	validate_each_argument(each_value_1);
@@ -3174,21 +3174,7 @@ var app = (function () {
     		each_blocks[i] = create_each_block(get_each_context(ctx, each_value, i));
     	}
 
-    	var switch_value = /*results*/ ctx[2];
-
-    	function switch_props(ctx) {
-    		return {
-    			props: {
-    				params: /*params*/ ctx[3],
-    				items: /*items*/ ctx[1]
-    			},
-    			$$inline: true
-    		};
-    	}
-
-    	if (switch_value) {
-    		switch_instance = new switch_value(switch_props(ctx));
-    	}
+    	let key_block = create_key_block(ctx);
 
     	const block = {
     		c: function create() {
@@ -3206,8 +3192,8 @@ var app = (function () {
     			}
 
     			t1 = space();
-    			if (switch_instance) create_component(switch_instance.$$.fragment);
-    			switch_instance_anchor = empty();
+    			key_block.c();
+    			key_block_anchor = empty();
     			add_location(ul0, file, 108, 2, 3011);
     			add_location(ul1, file, 113, 2, 3152);
     		},
@@ -3226,12 +3212,8 @@ var app = (function () {
     			}
 
     			insert_dev(target, t1, anchor);
-
-    			if (switch_instance) {
-    				mount_component(switch_instance, target, anchor);
-    			}
-
-    			insert_dev(target, switch_instance_anchor, anchor);
+    			key_block.m(target, anchor);
+    			insert_dev(target, key_block_anchor, anchor);
     			current = true;
     		},
     		p: function update(ctx, dirty) {
@@ -3283,41 +3265,25 @@ var app = (function () {
     				each_blocks.length = each_value.length;
     			}
 
-    			const switch_instance_changes = {};
-    			if (dirty & /*params*/ 8) switch_instance_changes.params = /*params*/ ctx[3];
-    			if (dirty & /*filteredList*/ 16) switch_instance_changes.items = /*items*/ ctx[1];
-
-    			if (switch_value !== (switch_value = /*results*/ ctx[2])) {
-    				if (switch_instance) {
-    					group_outros();
-    					const old_component = switch_instance;
-
-    					transition_out(old_component.$$.fragment, 1, 0, () => {
-    						destroy_component(old_component, 1);
-    					});
-
-    					check_outros();
-    				}
-
-    				if (switch_value) {
-    					switch_instance = new switch_value(switch_props(ctx));
-    					create_component(switch_instance.$$.fragment);
-    					transition_in(switch_instance.$$.fragment, 1);
-    					mount_component(switch_instance, switch_instance_anchor.parentNode, switch_instance_anchor);
-    				} else {
-    					switch_instance = null;
-    				}
-    			} else if (switch_value) {
-    				switch_instance.$set(switch_instance_changes);
+    			if (dirty & /*params*/ 8 && safe_not_equal(previous_key, previous_key = /*params*/ ctx[3])) {
+    				group_outros();
+    				transition_out(key_block, 1, 1, noop);
+    				check_outros();
+    				key_block = create_key_block(ctx);
+    				key_block.c();
+    				transition_in(key_block);
+    				key_block.m(key_block_anchor.parentNode, key_block_anchor);
+    			} else {
+    				key_block.p(ctx, dirty);
     			}
     		},
     		i: function intro(local) {
     			if (current) return;
-    			if (switch_instance) transition_in(switch_instance.$$.fragment, local);
+    			transition_in(key_block);
     			current = true;
     		},
     		o: function outro(local) {
-    			if (switch_instance) transition_out(switch_instance.$$.fragment, local);
+    			transition_out(key_block);
     			current = false;
     		},
     		d: function destroy(detaching) {
@@ -3327,8 +3293,8 @@ var app = (function () {
     			if (detaching) detach_dev(ul1);
     			destroy_each(each_blocks, detaching);
     			if (detaching) detach_dev(t1);
-    			if (detaching) detach_dev(switch_instance_anchor);
-    			if (switch_instance) destroy_component(switch_instance, detaching);
+    			if (detaching) detach_dev(key_block_anchor);
+    			key_block.d(detaching);
     		}
     	};
 
@@ -3422,6 +3388,95 @@ var app = (function () {
     		id: create_each_block.name,
     		type: "each",
     		source: "(115:3) {#each items.races as race, key}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (119:2) {#key params}
+    function create_key_block(ctx) {
+    	let switch_instance;
+    	let switch_instance_anchor;
+    	let current;
+    	var switch_value = /*results*/ ctx[2];
+
+    	function switch_props(ctx) {
+    		return {
+    			props: {
+    				params: /*params*/ ctx[3],
+    				items: /*items*/ ctx[1]
+    			},
+    			$$inline: true
+    		};
+    	}
+
+    	if (switch_value) {
+    		switch_instance = new switch_value(switch_props(ctx));
+    	}
+
+    	const block = {
+    		c: function create() {
+    			if (switch_instance) create_component(switch_instance.$$.fragment);
+    			switch_instance_anchor = empty();
+    		},
+    		m: function mount(target, anchor) {
+    			if (switch_instance) {
+    				mount_component(switch_instance, target, anchor);
+    			}
+
+    			insert_dev(target, switch_instance_anchor, anchor);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			const switch_instance_changes = {};
+    			if (dirty & /*params*/ 8) switch_instance_changes.params = /*params*/ ctx[3];
+    			if (dirty & /*filteredList*/ 16) switch_instance_changes.items = /*items*/ ctx[1];
+
+    			if (switch_value !== (switch_value = /*results*/ ctx[2])) {
+    				if (switch_instance) {
+    					group_outros();
+    					const old_component = switch_instance;
+
+    					transition_out(old_component.$$.fragment, 1, 0, () => {
+    						destroy_component(old_component, 1);
+    					});
+
+    					check_outros();
+    				}
+
+    				if (switch_value) {
+    					switch_instance = new switch_value(switch_props(ctx));
+    					create_component(switch_instance.$$.fragment);
+    					transition_in(switch_instance.$$.fragment, 1);
+    					mount_component(switch_instance, switch_instance_anchor.parentNode, switch_instance_anchor);
+    				} else {
+    					switch_instance = null;
+    				}
+    			} else if (switch_value) {
+    				switch_instance.$set(switch_instance_changes);
+    			}
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			if (switch_instance) transition_in(switch_instance.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			if (switch_instance) transition_out(switch_instance.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(switch_instance_anchor);
+    			if (switch_instance) destroy_component(switch_instance, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_key_block.name,
+    		type: "key",
+    		source: "(119:2) {#key params}",
     		ctx
     	});
 

@@ -116,6 +116,8 @@
 				<li><a href="/by-office/{key}">{race.office}</a></li>
 			{/each}
 		</ul>
-		<svelte:component this={results} params="{params}" items="{items}" />
+		{#key params}
+			<svelte:component this={results} params="{params}" items="{items}" />
+		{/key}
 	{/await}
 </div>
