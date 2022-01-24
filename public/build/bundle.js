@@ -459,6 +459,10 @@ var app = (function () {
         else
             dispatch_dev('SvelteDOMSetAttribute', { node, attribute, value });
     }
+    function prop_dev(node, property, value) {
+        node[property] = value;
+        dispatch_dev('SvelteDOMSetProperty', { node, property, value });
+    }
     function set_data_dev(text, data) {
         data = '' + data;
         if (text.wholeText === data)
@@ -1863,14 +1867,14 @@ var app = (function () {
     	return child_ctx;
     }
 
-    function get_each_context_2$2(ctx, list, i) {
+    function get_each_context_2$3(ctx, list, i) {
     	const child_ctx = ctx.slice();
     	child_ctx[10] = list[i];
     	return child_ctx;
     }
 
     // (30:16) {#each party_candidates(party) as candidate}
-    function create_each_block_2$2(ctx) {
+    function create_each_block_2$3(ctx) {
     	let candidate;
     	let current;
 
@@ -1904,7 +1908,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_each_block_2$2.name,
+    		id: create_each_block_2$3.name,
     		type: "each",
     		source: "(30:16) {#each party_candidates(party) as candidate}",
     		ctx
@@ -1926,7 +1930,7 @@ var app = (function () {
     	let each_blocks = [];
 
     	for (let i = 0; i < each_value_2.length; i += 1) {
-    		each_blocks[i] = create_each_block_2$2(get_each_context_2$2(ctx, each_value_2, i));
+    		each_blocks[i] = create_each_block_2$3(get_each_context_2$3(ctx, each_value_2, i));
     	}
 
     	const out = i => transition_out(each_blocks[i], 1, 1, () => {
@@ -1967,13 +1971,13 @@ var app = (function () {
     				let i;
 
     				for (i = 0; i < each_value_2.length; i += 1) {
-    					const child_ctx = get_each_context_2$2(ctx, each_value_2, i);
+    					const child_ctx = get_each_context_2$3(ctx, each_value_2, i);
 
     					if (each_blocks[i]) {
     						each_blocks[i].p(child_ctx, dirty);
     						transition_in(each_blocks[i], 1);
     					} else {
-    						each_blocks[i] = create_each_block_2$2(child_ctx);
+    						each_blocks[i] = create_each_block_2$3(child_ctx);
     						each_blocks[i].c();
     						transition_in(each_blocks[i], 1);
     						each_blocks[i].m(section, null);
@@ -2342,7 +2346,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    function get_each_context_2$1(ctx, list, i) {
+    function get_each_context_2$2(ctx, list, i) {
     	const child_ctx = ctx.slice();
     	child_ctx[11] = list[i];
     	return child_ctx;
@@ -2361,7 +2365,7 @@ var app = (function () {
     	let each_blocks = [];
 
     	for (let i = 0; i < each_value_2.length; i += 1) {
-    		each_blocks[i] = create_each_block_2$1(get_each_context_2$1(ctx, each_value_2, i));
+    		each_blocks[i] = create_each_block_2$2(get_each_context_2$2(ctx, each_value_2, i));
     	}
 
     	const out = i => transition_out(each_blocks[i], 1, 1, () => {
@@ -2402,13 +2406,13 @@ var app = (function () {
     				let i;
 
     				for (i = 0; i < each_value_2.length; i += 1) {
-    					const child_ctx = get_each_context_2$1(ctx, each_value_2, i);
+    					const child_ctx = get_each_context_2$2(ctx, each_value_2, i);
 
     					if (each_blocks[i]) {
     						each_blocks[i].p(child_ctx, dirty);
     						transition_in(each_blocks[i], 1);
     					} else {
-    						each_blocks[i] = create_each_block_2$1(child_ctx);
+    						each_blocks[i] = create_each_block_2$2(child_ctx);
     						each_blocks[i].c();
     						transition_in(each_blocks[i], 1);
     						each_blocks[i].m(section, null);
@@ -2460,7 +2464,7 @@ var app = (function () {
     }
 
     // (42:5) {#each office_candidates(race.office, party) as candidate}
-    function create_each_block_2$1(ctx) {
+    function create_each_block_2$2(ctx) {
     	let candidate;
     	let current;
 
@@ -2498,7 +2502,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_each_block_2$1.name,
+    		id: create_each_block_2$2.name,
     		type: "each",
     		source: "(42:5) {#each office_candidates(race.office, party) as candidate}",
     		ctx
@@ -2919,7 +2923,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    function get_each_context_2(ctx, list, i) {
+    function get_each_context_2$1(ctx, list, i) {
     	const child_ctx = ctx.slice();
     	child_ctx[11] = list[i];
     	return child_ctx;
@@ -2942,7 +2946,7 @@ var app = (function () {
     	let each_blocks = [];
 
     	for (let i = 0; i < each_value_2.length; i += 1) {
-    		each_blocks[i] = create_each_block_2(get_each_context_2(ctx, each_value_2, i));
+    		each_blocks[i] = create_each_block_2$1(get_each_context_2$1(ctx, each_value_2, i));
     	}
 
     	const out = i => transition_out(each_blocks[i], 1, 1, () => {
@@ -2990,13 +2994,13 @@ var app = (function () {
     				let i;
 
     				for (i = 0; i < each_value_2.length; i += 1) {
-    					const child_ctx = get_each_context_2(ctx, each_value_2, i);
+    					const child_ctx = get_each_context_2$1(ctx, each_value_2, i);
 
     					if (each_blocks[i]) {
     						each_blocks[i].p(child_ctx, dirty);
     						transition_in(each_blocks[i], 1);
     					} else {
-    						each_blocks[i] = create_each_block_2(child_ctx);
+    						each_blocks[i] = create_each_block_2$1(child_ctx);
     						each_blocks[i].c();
     						transition_in(each_blocks[i], 1);
     						each_blocks[i].m(section, null);
@@ -3048,7 +3052,7 @@ var app = (function () {
     }
 
     // (41:5) {#each party_candidates(party, race.office) as candidate}
-    function create_each_block_2(ctx) {
+    function create_each_block_2$1(ctx) {
     	let candidate;
     	let current;
 
@@ -3086,7 +3090,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_each_block_2.name,
+    		id: create_each_block_2$1.name,
     		type: "each",
     		source: "(41:5) {#each party_candidates(party, race.office) as candidate}",
     		ctx
@@ -3523,7 +3527,14 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (1:0) <script>  // router  import router from "page"    import routes from './routes'    // result sets  import AllCandidates from "./AllCandidates.svelte";     import ByOffice from './ByOffice.svelte';  import ByParty from './ByParty.svelte';   // current result set  let results;   // url parameters  let params;   // remote data  let items = []  async function getData() {   let res = await fetch(`https://s3.amazonaws.com/data.minnpost/projects/minnpost-whos-running-2022/candidate-tracker-sample-data.json`);   let data = await res.json();   items = data   return items;  }
+    function get_each_context_2(ctx, list, i) {
+    	const child_ctx = ctx.slice();
+    	child_ctx[15] = list[i];
+    	child_ctx[14] = i;
+    	return child_ctx;
+    }
+
+    // (1:0) <script>  // router  import router from "page"    import routes from './routes'   // current result set  let results;   // url parameters  let params;   // remote data  let items = []  async function getData() {   let res = await fetch(`https://s3.amazonaws.com/data.minnpost/projects/minnpost-whos-running-2022/candidate-tracker-sample-data.json`);   let data = await res.json();   items = data   return items;  }
     function create_catch_block(ctx) {
     	const block = {
     		c: noop,
@@ -3538,7 +3549,7 @@ var app = (function () {
     		block,
     		id: create_catch_block.name,
     		type: "catch",
-    		source: "(1:0) <script>  // router  import router from \\\"page\\\"    import routes from './routes'    // result sets  import AllCandidates from \\\"./AllCandidates.svelte\\\";     import ByOffice from './ByOffice.svelte';  import ByParty from './ByParty.svelte';   // current result set  let results;   // url parameters  let params;   // remote data  let items = []  async function getData() {   let res = await fetch(`https://s3.amazonaws.com/data.minnpost/projects/minnpost-whos-running-2022/candidate-tracker-sample-data.json`);   let data = await res.json();   items = data   return items;  }",
+    		source: "(1:0) <script>  // router  import router from \\\"page\\\"    import routes from './routes'   // current result set  let results;   // url parameters  let params;   // remote data  let items = []  async function getData() {   let res = await fetch(`https://s3.amazonaws.com/data.minnpost/projects/minnpost-whos-running-2022/candidate-tracker-sample-data.json`);   let data = await res.json();   items = data   return items;  }",
     		ctx
     	});
 
@@ -3547,13 +3558,25 @@ var app = (function () {
 
     // (108:1) {:then items}
     function create_then_block(ctx) {
-    	let ul0;
+    	let select;
     	let t0;
-    	let ul1;
+    	let ul0;
     	let t1;
+    	let ul1;
+    	let t2;
     	let previous_key = /*params*/ ctx[3];
     	let key_block_anchor;
     	let current;
+    	let mounted;
+    	let dispose;
+    	let each_value_2 = /*items*/ ctx[1].all_party_ids;
+    	validate_each_argument(each_value_2);
+    	let each_blocks_2 = [];
+
+    	for (let i = 0; i < each_value_2.length; i += 1) {
+    		each_blocks_2[i] = create_each_block_2(get_each_context_2(ctx, each_value_2, i));
+    	}
+
     	let each_value_1 = /*items*/ ctx[1].all_party_ids;
     	validate_each_argument(each_value_1);
     	let each_blocks_1 = [];
@@ -3574,45 +3597,89 @@ var app = (function () {
 
     	const block = {
     		c: function create() {
+    			select = element("select");
+
+    			for (let i = 0; i < each_blocks_2.length; i += 1) {
+    				each_blocks_2[i].c();
+    			}
+
+    			t0 = space();
     			ul0 = element("ul");
 
     			for (let i = 0; i < each_blocks_1.length; i += 1) {
     				each_blocks_1[i].c();
     			}
 
-    			t0 = space();
+    			t1 = space();
     			ul1 = element("ul");
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].c();
     			}
 
-    			t1 = space();
+    			t2 = space();
     			key_block.c();
     			key_block_anchor = empty();
-    			add_location(ul0, file, 108, 2, 3011);
-    			add_location(ul1, file, 113, 2, 3152);
+    			add_location(select, file, 108, 2, 2942);
+    			add_location(ul0, file, 113, 2, 3118);
+    			add_location(ul1, file, 118, 2, 3259);
     		},
     		m: function mount(target, anchor) {
+    			insert_dev(target, select, anchor);
+
+    			for (let i = 0; i < each_blocks_2.length; i += 1) {
+    				each_blocks_2[i].m(select, null);
+    			}
+
+    			insert_dev(target, t0, anchor);
     			insert_dev(target, ul0, anchor);
 
     			for (let i = 0; i < each_blocks_1.length; i += 1) {
     				each_blocks_1[i].m(ul0, null);
     			}
 
-    			insert_dev(target, t0, anchor);
+    			insert_dev(target, t1, anchor);
     			insert_dev(target, ul1, anchor);
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].m(ul1, null);
     			}
 
-    			insert_dev(target, t1, anchor);
+    			insert_dev(target, t2, anchor);
     			key_block.m(target, anchor);
     			insert_dev(target, key_block_anchor, anchor);
     			current = true;
+
+    			if (!mounted) {
+    				dispose = listen_dev(select, "change", handleSelect, false, false, false);
+    				mounted = true;
+    			}
     		},
     		p: function update(ctx, dirty) {
+    			if (dirty & /*filteredList*/ 16) {
+    				each_value_2 = /*items*/ ctx[1].all_party_ids;
+    				validate_each_argument(each_value_2);
+    				let i;
+
+    				for (i = 0; i < each_value_2.length; i += 1) {
+    					const child_ctx = get_each_context_2(ctx, each_value_2, i);
+
+    					if (each_blocks_2[i]) {
+    						each_blocks_2[i].p(child_ctx, dirty);
+    					} else {
+    						each_blocks_2[i] = create_each_block_2(child_ctx);
+    						each_blocks_2[i].c();
+    						each_blocks_2[i].m(select, null);
+    					}
+    				}
+
+    				for (; i < each_blocks_2.length; i += 1) {
+    					each_blocks_2[i].d(1);
+    				}
+
+    				each_blocks_2.length = each_value_2.length;
+    			}
+
     			if (dirty & /*filteredList*/ 16) {
     				each_value_1 = /*items*/ ctx[1].all_party_ids;
     				validate_each_argument(each_value_1);
@@ -3683,14 +3750,19 @@ var app = (function () {
     			current = false;
     		},
     		d: function destroy(detaching) {
+    			if (detaching) detach_dev(select);
+    			destroy_each(each_blocks_2, detaching);
+    			if (detaching) detach_dev(t0);
     			if (detaching) detach_dev(ul0);
     			destroy_each(each_blocks_1, detaching);
-    			if (detaching) detach_dev(t0);
+    			if (detaching) detach_dev(t1);
     			if (detaching) detach_dev(ul1);
     			destroy_each(each_blocks, detaching);
-    			if (detaching) detach_dev(t1);
+    			if (detaching) detach_dev(t2);
     			if (detaching) detach_dev(key_block_anchor);
     			key_block.d(detaching);
+    			mounted = false;
+    			dispose();
     		}
     	};
 
@@ -3706,6 +3778,49 @@ var app = (function () {
     }
 
     // (110:3) {#each items.all_party_ids as party, key}
+    function create_each_block_2(ctx) {
+    	let option;
+    	let t_value = /*items*/ ctx[1].all_parties[/*key*/ ctx[14]] + "";
+    	let t;
+    	let option_value_value;
+
+    	const block = {
+    		c: function create() {
+    			option = element("option");
+    			t = text(t_value);
+    			option.__value = option_value_value = "/by-party/" + /*party*/ ctx[15];
+    			option.value = option.__value;
+    			add_location(option, file, 110, 4, 3025);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, option, anchor);
+    			append_dev(option, t);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*filteredList*/ 16 && t_value !== (t_value = /*items*/ ctx[1].all_parties[/*key*/ ctx[14]] + "")) set_data_dev(t, t_value);
+
+    			if (dirty & /*filteredList*/ 16 && option_value_value !== (option_value_value = "/by-party/" + /*party*/ ctx[15])) {
+    				prop_dev(option, "__value", option_value_value);
+    				option.value = option.__value;
+    			}
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(option);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_each_block_2.name,
+    		type: "each",
+    		source: "(110:3) {#each items.all_party_ids as party, key}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (115:3) {#each items.all_party_ids as party, key}
     function create_each_block_1(ctx) {
     	let li;
     	let a;
@@ -3719,8 +3834,8 @@ var app = (function () {
     			a = element("a");
     			t = text(t_value);
     			attr_dev(a, "href", a_href_value = "/by-party/" + /*party*/ ctx[15]);
-    			add_location(a, file, 110, 8, 3069);
-    			add_location(li, file, 110, 4, 3065);
+    			add_location(a, file, 115, 8, 3176);
+    			add_location(li, file, 115, 4, 3172);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, li, anchor);
@@ -3743,14 +3858,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1.name,
     		type: "each",
-    		source: "(110:3) {#each items.all_party_ids as party, key}",
+    		source: "(115:3) {#each items.all_party_ids as party, key}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (115:3) {#each items.races as race, key}
+    // (120:3) {#each items.races as race, key}
     function create_each_block(ctx) {
     	let li;
     	let a;
@@ -3763,8 +3878,8 @@ var app = (function () {
     			a = element("a");
     			t = text(t_value);
     			attr_dev(a, "href", "/by-office/" + /*key*/ ctx[14]);
-    			add_location(a, file, 115, 8, 3201);
-    			add_location(li, file, 115, 4, 3197);
+    			add_location(a, file, 120, 8, 3308);
+    			add_location(li, file, 120, 4, 3304);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, li, anchor);
@@ -3783,14 +3898,14 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(115:3) {#each items.races as race, key}",
+    		source: "(120:3) {#each items.races as race, key}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (119:2) {#key params}
+    // (124:2) {#key params}
     function create_key_block(ctx) {
     	let switch_instance;
     	let switch_instance_anchor;
@@ -3872,7 +3987,7 @@ var app = (function () {
     		block,
     		id: create_key_block.name,
     		type: "key",
-    		source: "(119:2) {#key params}",
+    		source: "(124:2) {#key params}",
     		ctx
     	});
 
@@ -3942,9 +4057,9 @@ var app = (function () {
     			t2 = space();
     			div = element("div");
     			info.block.c();
-    			add_location(input, file, 102, 0, 2886);
+    			add_location(input, file, 102, 0, 2817);
     			attr_dev(div, "class", "container");
-    			add_location(div, file, 104, 0, 2934);
+    			add_location(div, file, 104, 0, 2865);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -4029,6 +4144,11 @@ var app = (function () {
     	return searchInDesiredKeys;
     }
 
+    function handleSelect(e) {
+    	//console.log(e);
+    	window.location = '/by-party/dfl';
+    }
+
     function instance($$self, $$props, $$invalidate) {
     	let filteredList;
     	let { $$slots: slots = {}, $$scope } = $$props;
@@ -4091,9 +4211,6 @@ var app = (function () {
     	$$self.$capture_state = () => ({
     		router,
     		routes,
-    		AllCandidates,
-    		ByOffice,
-    		ByParty,
     		results,
     		params,
     		items,
@@ -4105,6 +4222,7 @@ var app = (function () {
     		start2,
     		end,
     		end2,
+    		handleSelect,
     		filteredList
     	});
 

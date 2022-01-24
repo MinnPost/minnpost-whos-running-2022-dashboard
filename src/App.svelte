@@ -2,11 +2,6 @@
 	// router
 	import router from "page"
   	import routes from './routes'
-	
-	// result sets
-	import AllCandidates from "./AllCandidates.svelte";
-    import ByOffice from './ByOffice.svelte';
-	import ByParty from './ByParty.svelte';
 
 	// current result set
 	let results;
@@ -98,6 +93,11 @@
 	// Start the router
 	router.start();
 
+	function handleSelect(e) {
+		//console.log(e);
+		window.location = '/by-party/dfl';
+	}
+
 </script>
 
 <input bind:value={searchTerm} /> {searchTerm}
@@ -106,6 +106,11 @@
 	{#await filteredList}
 		Loading...
 	{:then items}
+		<select on:change={handleSelect}>
+			{#each items.all_party_ids as party, key}
+				<option value="/by-party/{party}">{items.all_parties[key]}</option>
+			{/each}
+		</select>
 		<ul>
 			{#each items.all_party_ids as party, key}
 				<li><a href="/by-party/{party}">{items.all_parties[key]}</a></li>
