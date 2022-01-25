@@ -137,7 +137,7 @@
 	{:then items}
 		<Select items={items.party_select} on:select={handlePartySelect}></Select>
 		<Select items={items.race_select} on:select={handleOfficeSelect}></Select>
-		<ul>
+		<!--<ul>
 			{#each items.all_party_ids as party, key}
 				<li><a href="/by-party/{party}">{items.all_parties[key]}</a></li>
 			{/each}
@@ -146,7 +146,7 @@
 			{#each items.races as race, key}
 				<li><a href="/by-office/{key}">{race.office}</a></li>
 			{/each}
-		</ul>
+		</ul>-->
 		{#key params}
 			<svelte:component this={results} params="{params}" items="{items}" />
 		{/key}

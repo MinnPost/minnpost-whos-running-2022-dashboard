@@ -1,9 +1,11 @@
 <script>
-	// candidate from PartyCandidates.svelte
+	// a single candidate record from AllCandidates.svelte, ByOffice.svelte, or ByParty.svelte
 	export let candidate;
 </script>
 
 <article class="candidate">
 	<h4>{candidate.name}</h4>
-	<p>{candidate.blurb}</p>
+	{#if candidate.blurb != null}
+		<p>{candidate.blurb}</p>
+	{/if}
 </article>
