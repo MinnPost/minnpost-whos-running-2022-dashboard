@@ -1,6 +1,18 @@
-<script type="text/javascript">
-	import CandidateList from "./CandidateList.svelte";
+<script>
+	// router
+	import router from "page";
+  	import routes from "./routes";
 
+	// the nice Svelte select element
+	import Select from 'svelte-select';
+
+	// current result set
+	let results;
+
+	// url parameters
+	let params;
+
+	// remote data
 	let items = []
 	async function getData() {
 		let res = await fetch(`https://s3.amazonaws.com/data.minnpost/projects/minnpost-whos-running-2022/candidate-tracker-sample-data.json`);
@@ -8,20 +20,12 @@
 		items = data
 		return items;
 	}
+    const dataPromise = getData();
 
-	/*$: filteredList = items.filter(
-        (item) => item.office.toUpperCase().indexOf(searchTerm.toUpperCase()) !== -1
-    )*/
-
-	// this method allows us to specify keys that should not be searched
+	// this method allows us to specify keys that should not be searched and then filter the results
 	function filterResults(searchTerm, data) {
 		var lowSearch = searchTerm.toLowerCase();
 		let skipKeys = ['blurb'];
-		/*let searchInAllKeys = data.filter(
-			item => Object.values(item).some(
-				val => String(val).toLowerCase().includes(lowSearch) 
-			)
-		);*/
 		let searchInDesiredKeys = data.filter(
 			item => Object.entries(item).some(
 				([key, val]) => ! skipKeys.includes(key) ? String(val).toLowerCase().includes(lowSearch) : false
@@ -30,14 +34,15 @@
 		return searchInDesiredKeys;
 	}
 
-	const dataPromise = getData();
-
+	// filter by text
 	let searchTerm = '';
 	$: filteredList = dataPromise.then((r) => {
 
 		// filter the races and/or candidates by the search term
 		let races = filterResults(searchTerm, items.races);
 		let candidates = filterResults(searchTerm, items.candidates);
+		let all_parties = [...new Set(items.candidates.map(item => item.party))];
+		let all_party_ids = [...new Set(items.candidates.map(item => item["party-id"]))];
 
 		// if there are no races but there are candidates, get the key from the candidate
 		// then get the corresponding race and push it
@@ -50,8 +55,23 @@
 			races = races;
 		}
 
-		// make the final data array of races and candidates for filteredList to use and return it
+		// make the final data array of races and candidates, and parties and offices, for filteredList to use and return it
 		let data = [];
+		if ( typeof all_parties !== "undefined" ) {
+			data["all_parties"] = all_parties;
+		}
+		if ( typeof all_party_ids !== "undefined" ) {
+			data["all_party_ids"] = all_party_ids;
+		}
+		if ( typeof all_party_ids !== "undefined" && typeof all_parties !== "undefined" ) {
+			let party_select = [];
+			all_parties.forEach(function(party, index) {
+				let party_choice = {value: all_party_ids[index], label: party, group: ''};
+				party_select.push(party_choice);
+			});
+			data["party_select"] = party_select;
+			console.log(party_select);
+		}
 		if ( typeof races !== "undefined" ) {
 			data["races"] = races;
 		}
@@ -63,26 +83,54 @@
 
 	let start, start2
     let end, end2
-    
-  </script>
 
-<input bind:value={searchTerm} />
-{searchTerm}
+	// template router
+	// Loop around all of the routes and create a new instance of
+	// router for reach one with some rudimentary checks.
+	routes.forEach(route => {
+		router(
+			route.path,
+			// Set the params variable to the context.
+			// We use this on the component initialisation
+			(context, next) => {
+				params = context.params
+				next()
+			},
+			() => {
+				results = route.component;
+			}
+		)
+	});
+
+	// Start the router
+	router.start();
+
+	function handlePartySelect(event) {
+		let party = event.detail.value;
+		router('/by-party/' + party);
+	}
+
+</script>
+
+<input bind:value={searchTerm} /> {searchTerm}
 
 <div class='container'>
 	{#await filteredList}
 		Loading...
 	{:then items}
-		{#each items.races as race}
-			<section>
-				<h2>{race.office}</h2>
-				<p>{race.blurb}</p>
-				<CandidateList
-					candidates = {items.candidates.filter(
-						(item) => item["office-sought"].toUpperCase().indexOf(race.office.toUpperCase()) !== -1
-					)}
-				/>
-			</section>
-		{/each}
+		<Select items={items.party_select} on:select={handlePartySelect}></Select>
+		<ul>
+			{#each items.all_party_ids as party, key}
+				<li><a href="/by-party/{party}">{items.all_parties[key]}</a></li>
+			{/each}
+		</ul>
+		<ul>
+			{#each items.races as race, key}
+				<li><a href="/by-office/{key}">{race.office}</a></li>
+			{/each}
+		</ul>
+		{#key params}
+			<svelte:component this={results} params="{params}" items="{items}" />
+		{/key}
 	{/await}
 </div>
