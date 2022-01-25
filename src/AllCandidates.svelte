@@ -9,11 +9,11 @@
     let parties = [...new Set(candidates.map(item => item.party))];
 
     // create a list of candidates for a party
-    let party_candidates = function(party) {
-        return candidates.filter(
-            (item) => item["party"].toUpperCase().indexOf(party.toUpperCase()) !== -1
-        );
-    }
+	let party_candidates = function(party, office) {
+		return items.candidates.filter(
+			item => item["party"].indexOf(party) !== -1 && item["office-sought"].indexOf(office) !== -1
+		)
+	}
 
     // single candidate template
 	import Candidate from "./Candidate.svelte";
@@ -27,7 +27,7 @@
         {#each parties as party}
             <section class="candidates-list">
                 <h3>{party}</h3>
-                {#each party_candidates(party) as candidate}
+                {#each party_candidates(party, race.office) as candidate}
                     <Candidate candidate = {candidate} />
                 {/each}
             </section>

@@ -2266,7 +2266,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (30:16) {#each party_candidates(party) as candidate}
+    // (30:16) {#each party_candidates(party, race.office) as candidate}
     function create_each_block_2$2(ctx) {
     	let candidate;
     	let current;
@@ -2284,7 +2284,11 @@ var app = (function () {
     			mount_component(candidate, target, anchor);
     			current = true;
     		},
-    		p: noop,
+    		p: function update(ctx, dirty) {
+    			const candidate_changes = {};
+    			if (dirty & /*items*/ 1) candidate_changes.candidate = /*candidate*/ ctx[10];
+    			candidate.$set(candidate_changes);
+    		},
     		i: function intro(local) {
     			if (current) return;
     			transition_in(candidate.$$.fragment, local);
@@ -2303,7 +2307,7 @@ var app = (function () {
     		block,
     		id: create_each_block_2$2.name,
     		type: "each",
-    		source: "(30:16) {#each party_candidates(party) as candidate}",
+    		source: "(30:16) {#each party_candidates(party, race.office) as candidate}",
     		ctx
     	});
 
@@ -2318,7 +2322,7 @@ var app = (function () {
     	let t0;
     	let t1;
     	let current;
-    	let each_value_2 = /*party_candidates*/ ctx[2](/*party*/ ctx[7]);
+    	let each_value_2 = /*party_candidates*/ ctx[2](/*party*/ ctx[7], /*race*/ ctx[4].office);
     	validate_each_argument(each_value_2);
     	let each_blocks = [];
 
@@ -2341,9 +2345,9 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			add_location(h3, file$a, 28, 16, 789);
+    			add_location(h3, file$a, 28, 16, 793);
     			attr_dev(section, "class", "candidates-list");
-    			add_location(section, file$a, 27, 12, 739);
+    			add_location(section, file$a, 27, 12, 743);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, section, anchor);
@@ -2358,8 +2362,8 @@ var app = (function () {
     			current = true;
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*party_candidates, parties*/ 6) {
-    				each_value_2 = /*party_candidates*/ ctx[2](/*party*/ ctx[7]);
+    			if (dirty & /*party_candidates, parties, items*/ 7) {
+    				each_value_2 = /*party_candidates*/ ctx[2](/*party*/ ctx[7], /*race*/ ctx[4].office);
     				validate_each_argument(each_value_2);
     				let i;
 
@@ -2461,9 +2465,9 @@ var app = (function () {
     			}
 
     			t4 = space();
-    			add_location(h2, file$a, 24, 8, 643);
-    			add_location(p, file$a, 25, 8, 674);
-    			add_location(section, file$a, 23, 4, 625);
+    			add_location(h2, file$a, 24, 8, 647);
+    			add_location(p, file$a, 25, 8, 678);
+    			add_location(section, file$a, 23, 4, 629);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, section, anchor);
@@ -2485,7 +2489,7 @@ var app = (function () {
     			if ((!current || dirty & /*items*/ 1) && t0_value !== (t0_value = /*race*/ ctx[4].office + "")) set_data_dev(t0, t0_value);
     			if ((!current || dirty & /*items*/ 1) && t2_value !== (t2_value = /*race*/ ctx[4].blurb + "")) set_data_dev(t2, t2_value);
 
-    			if (dirty & /*party_candidates, parties*/ 6) {
+    			if (dirty & /*party_candidates, parties, items*/ 7) {
     				each_value_1 = /*parties*/ ctx[1];
     				validate_each_argument(each_value_1);
     				let i;
@@ -2658,8 +2662,8 @@ var app = (function () {
     	let parties = [...new Set(candidates.map(item => item.party))];
 
     	// create a list of candidates for a party
-    	let party_candidates = function (party) {
-    		return candidates.filter(item => item["party"].toUpperCase().indexOf(party.toUpperCase()) !== -1);
+    	let party_candidates = function (party, office) {
+    		return items.candidates.filter(item => item["party"].indexOf(party) !== -1 && item["office-sought"].indexOf(office) !== -1);
     	};
 
     	const writable_props = ['items'];
