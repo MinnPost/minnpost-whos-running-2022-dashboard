@@ -25,12 +25,14 @@
         <h2>{race.office}</h2>
         <p>{race.blurb}</p>
         {#each parties as party}
-            <section class="candidates-list">
-                <h3>{party}</h3>
-                {#each party_candidates(party, race.office) as candidate}
-                    <Candidate candidate = {candidate} />
-                {/each}
-            </section>
+            {#if party_candidates(party, race.office).length > 0}
+                <section class="candidates-list">
+                    <h3>{party}</h3>
+                    {#each party_candidates(party, race.office) as candidate}
+                        <Candidate candidate = {candidate} />
+                    {/each}
+                </section>
+            {/if}
         {/each}
     </section>
 {/each}

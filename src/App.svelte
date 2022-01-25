@@ -6,6 +6,9 @@
 	// the nice Svelte select element
 	import Select from 'svelte-select';
 
+	// the Svelte toggle switch
+	import Switch from './components/Switch.svelte';
+
 	// current result set
 	let results;
 
@@ -22,8 +25,8 @@
 	}
     const dataPromise = getData();
 
-	// this method allows us to specify keys that should not be searched and then filter the results
-	function filterResults(searchTerm, data) {
+	// this method allows us to specify keys that should not be searched and then search the results
+	function searchResults(searchTerm, data) {
 		var lowSearch = searchTerm.toLowerCase();
 		let skipKeys = ['blurb'];
 		let searchInDesiredKeys = data.filter(
@@ -34,14 +37,31 @@
 		return searchInDesiredKeys;
 	}
 
-	// filter by text
+	// this allows us to specify a key that should be exactly matched to a value
+	function matchResults(key, value, data) {
+		let result = data.filter(item => item[key] === value);
+		return result;
+	}
+
+	// create the promise result
 	let searchTerm = '';
 	$: filteredList = dataPromise.then((r) => {
 
 		// filter the races and/or candidates by the search term
-		let races = filterResults(searchTerm, items.races);
+		let races = searchResults(searchTerm, items.races);
+		let candidates = searchResults(searchTerm, items.candidates);
+
+		let active_candidates = matchResults("dropped-out", false, candidates);
+
+		if (showDroppedOutCandidates == true) {
+			let dropped_out_candidates = matchResults("dropped-out", true, candidates);
+			candidates = active_candidates.concat(dropped_out_candidates);
+		} else {
+			candidates = active_candidates;
+		}
+
+		// create array of race ids, parties, and party ids
 		let all_race_ids = [...new Set(items.candidates.map(item => item["race-id"]))];
-		let candidates = filterResults(searchTerm, items.candidates);
 		let all_parties = [...new Set(items.candidates.map(item => item.party))];
 		let all_party_ids = [...new Set(items.candidates.map(item => item["party-id"]))];
 
@@ -93,6 +113,9 @@
 		return data;
 	});
 
+	// whether to show candidates who have dropped out
+	let showDroppedOutCandidates = false;
+
 	let start, start2
     let end, end2
 
@@ -130,6 +153,7 @@
 </script>
 
 <input bind:value={searchTerm} /> {searchTerm}
+<Switch bind:checked={showDroppedOutCandidates}></Switch> {showDroppedOutCandidates}
 
 <div class='container'>
 	{#await filteredList}
