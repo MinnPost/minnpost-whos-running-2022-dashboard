@@ -140,14 +140,22 @@
 	// Start the router
 	router.start();
 
-	function handlePartySelect(event) {
-		let party = event.detail.value;
-		router('/by-party/' + party);
-	}
+	let selectParty;
+	let selectOffice;
 
+	let selectedParty = undefined;
+	function handlePartySelect(event) {
+		selectOffice.handleClear();
+		selectedParty = event.detail.value;
+		router('/by-party/' + selectedParty);
+	}
+	
+	let selectedOffice = undefined;
 	function handleOfficeSelect(event) {
-		let office = event.detail.value;
-		router('/by-office/' + office);
+		selectParty.handleClear();
+		selectedOffice = event.detail.value;
+		console.log(window.location);
+		router('/by-office/' + selectedOffice);
 	}
 
 </script>
@@ -155,12 +163,12 @@
 <input bind:value={searchTerm} /> {searchTerm}
 <Switch bind:checked={showDroppedOutCandidates}></Switch> {showDroppedOutCandidates}
 
-<div class='container'>
+<section class="container m-archive m-archive-excerpt m-archive-date">
 	{#await filteredList}
 		Loading...
 	{:then items}
-		<Select items={items.party_select} on:select={handlePartySelect}></Select>
-		<Select items={items.race_select} on:select={handleOfficeSelect}></Select>
+		<Select items={items.party_select} on:select={handlePartySelect} bind:this="{selectParty}"></Select>
+		<Select items={items.race_select} on:select={handleOfficeSelect} bind:this="{selectOffice}"></Select>
 		<!--<ul>
 			{#each items.all_party_ids as party, key}
 				<li><a href="/by-party/{party}">{items.all_parties[key]}</a></li>
@@ -175,4 +183,4 @@
 			<svelte:component this={results} params="{params}" items="{items}" />
 		{/key}
 	{/await}
-</div>
+</section>
