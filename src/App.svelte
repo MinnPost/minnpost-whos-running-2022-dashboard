@@ -40,6 +40,7 @@
 
 		// filter the races and/or candidates by the search term
 		let races = filterResults(searchTerm, items.races);
+		let all_race_ids = [...new Set(items.candidates.map(item => item["race-id"]))];
 		let candidates = filterResults(searchTerm, items.candidates);
 		let all_parties = [...new Set(items.candidates.map(item => item.party))];
 		let all_party_ids = [...new Set(items.candidates.map(item => item["party-id"]))];
@@ -49,7 +50,8 @@
 		// after the loop, we still need to assign races to races
 		if (races.length === 0 && candidates.length !== 0) {
 			candidates.forEach(async function(candidate) {
-				let candidate_race = items.races[candidate["race-key"]]
+				//let candidate_race = items.races[candidate["race-key"]]
+				let candidate_race = items.races.find(item => item["office-id"] === candidate["race-id"]);
 				races.push(candidate_race);
 			});
 			races = races;
@@ -70,10 +72,20 @@
 				party_select.push(party_choice);
 			});
 			data["party_select"] = party_select;
-			console.log(party_select);
 		}
 		if ( typeof races !== "undefined" ) {
 			data["races"] = races;
+		}
+		if ( typeof all_race_ids !== "undefined" ) {
+			data["all_race_ids"] = all_race_ids;
+		}
+		if ( typeof races !== "undefined" ) {
+			let race_select = [];
+			races.forEach(function(race, index) {
+				let race_choice = {value: race["office-id"], label: race.office, group: ''};
+				race_select.push(race_choice);
+			});
+			data["race_select"] = race_select;
 		}
 		if ( typeof candidates !== "undefined" ) {
 			data["candidates"] = candidates;
@@ -110,6 +122,11 @@
 		router('/by-party/' + party);
 	}
 
+	function handleOfficeSelect(event) {
+		let office = event.detail.value;
+		router('/by-office/' + office);
+	}
+
 </script>
 
 <input bind:value={searchTerm} /> {searchTerm}
@@ -119,6 +136,7 @@
 		Loading...
 	{:then items}
 		<Select items={items.party_select} on:select={handlePartySelect}></Select>
+		<Select items={items.race_select} on:select={handleOfficeSelect}></Select>
 		<ul>
 			{#each items.all_party_ids as party, key}
 				<li><a href="/by-party/{party}">{items.all_parties[key]}</a></li>

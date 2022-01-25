@@ -13,7 +13,7 @@
 
 	// what office do we want?
     if (params && params.office) {
-		races = [items.races[params.office]];
+		races = [items.races.find(item => item["office-id"] === params["office"])];
     } else {
         // the distinct office names from the candidates
 	    races = items.races;
@@ -22,7 +22,7 @@
 	// create a list of candidates for a office
 	let office_candidates = function(office, party) {
 		return items.candidates.filter(
-			item => item["office-sought"].indexOf(office) !== -1 && item["party"].indexOf(party) !== -1
+			item => item["race-id"].indexOf(office) !== -1 && item["party"].indexOf(party) !== -1
 		)
 	}
 
@@ -36,10 +36,10 @@
 		<h3>{race.office}</h3>
 		<p>{race.blurb}</p>
 		{#each parties as party}
-			{#if office_candidates(race.office, party).length > 0}
+			{#if office_candidates(race["office-id"], party).length > 0}
 				<section class="candidates-list">
 					<h4>{party}</h4>
-					{#each office_candidates(race.office, party) as candidate}
+					{#each office_candidates(race["office-id"], party) as candidate}
 						<Candidate candidate = {candidate} />
 					{/each}
 				</section>
