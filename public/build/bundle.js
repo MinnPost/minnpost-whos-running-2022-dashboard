@@ -2090,7 +2090,49 @@ var app = (function () {
 
     const file$c = "src/Candidate.svelte";
 
-    // (16:2) {#if candidate["dropped-out"]}
+    // (49:2) {#if candidate["incumbent"]}
+    function create_if_block_2$2(ctx) {
+    	let div;
+    	let span;
+    	let i;
+    	let t;
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			span = element("span");
+    			i = element("i");
+    			t = text(" Incumbent");
+    			attr_dev(i, "class", "fas fa-star");
+    			add_location(i, file$c, 49, 54, 1171);
+    			attr_dev(span, "class", "incumbent-icon svelte-1ewi44u");
+    			add_location(span, file$c, 49, 25, 1142);
+    			attr_dev(div, "class", "incumbent");
+    			add_location(div, file$c, 49, 2, 1119);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			append_dev(div, span);
+    			append_dev(span, i);
+    			append_dev(div, t);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_2$2.name,
+    		type: "if",
+    		source: "(49:2) {#if candidate[\\\"incumbent\\\"]}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (52:2) {#if candidate["dropped-out"]}
     function create_if_block_1$2(ctx) {
     	let span;
     	let t0;
@@ -2102,7 +2144,7 @@ var app = (function () {
     			span = element("span");
     			t0 = text("dropped out on ");
     			t1 = text(t1_value);
-    			add_location(span, file$c, 16, 3, 342);
+    			add_location(span, file$c, 52, 2, 1265);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, span, anchor);
@@ -2121,14 +2163,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1$2.name,
     		type: "if",
-    		source: "(16:2) {#if candidate[\\\"dropped-out\\\"]}",
+    		source: "(52:2) {#if candidate[\\\"dropped-out\\\"]}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (21:1) {#if candidate.blurb != null}
+    // (56:1) {#if candidate.blurb != null}
     function create_if_block$6(ctx) {
     	let div;
     	let p;
@@ -2140,9 +2182,9 @@ var app = (function () {
     			div = element("div");
     			p = element("p");
     			t = text(t_value);
-    			add_location(p, file$c, 22, 3, 537);
-    			attr_dev(div, "class", "m-entry-excerpt");
-    			add_location(div, file$c, 21, 2, 504);
+    			add_location(p, file$c, 57, 3, 1396);
+    			attr_dev(div, "class", "blurb");
+    			add_location(div, file$c, 56, 2, 1373);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -2161,7 +2203,7 @@ var app = (function () {
     		block,
     		id: create_if_block$6.name,
     		type: "if",
-    		source: "(21:1) {#if candidate.blurb != null}",
+    		source: "(56:1) {#if candidate.blurb != null}",
     		ctx
     	});
 
@@ -2169,81 +2211,135 @@ var app = (function () {
     }
 
     function create_fragment$c(ctx) {
-    	let article;
-    	let header;
-    	let t0;
+    	let div2;
     	let h3;
-    	let t1_value = /*candidate*/ ctx[0].name + "";
+    	let t0_value = /*candidate*/ ctx[0].name + "";
+    	let t0;
     	let t1;
+    	let div1;
+    	let div0;
+    	let i;
+    	let i_class_value;
     	let t2;
-    	let if_block0 = /*candidate*/ ctx[0]["dropped-out"] && create_if_block_1$2(ctx);
-    	let if_block1 = /*candidate*/ ctx[0].blurb != null && create_if_block$6(ctx);
+    	let t3_value = /*candidate*/ ctx[0].party + "";
+    	let t3;
+    	let div0_class_value;
+    	let t4;
+    	let t5;
+    	let t6;
+    	let if_block0 = /*candidate*/ ctx[0]["incumbent"] && create_if_block_2$2(ctx);
+    	let if_block1 = /*candidate*/ ctx[0]["dropped-out"] && create_if_block_1$2(ctx);
+    	let if_block2 = /*candidate*/ ctx[0].blurb != null && create_if_block$6(ctx);
 
     	const block = {
     		c: function create() {
-    			article = element("article");
-    			header = element("header");
-    			if (if_block0) if_block0.c();
-    			t0 = space();
+    			div2 = element("div");
     			h3 = element("h3");
-    			t1 = text(t1_value);
+    			t0 = text(t0_value);
+    			t1 = space();
+    			div1 = element("div");
+    			div0 = element("div");
+    			i = element("i");
     			t2 = space();
+    			t3 = text(t3_value);
+    			t4 = space();
+    			if (if_block0) if_block0.c();
+    			t5 = space();
     			if (if_block1) if_block1.c();
-    			attr_dev(h3, "class", "a-entry-title");
-    			add_location(h3, file$c, 18, 2, 412);
-    			attr_dev(header, "class", "m-entry-header");
-    			add_location(header, file$c, 14, 1, 274);
-    			attr_dev(article, "class", "m-post candidate svelte-r234dw");
-    			add_location(article, file$c, 13, 0, 238);
+    			t6 = space();
+    			if (if_block2) if_block2.c();
+    			add_location(h3, file$c, 45, 1, 878);
+    			attr_dev(i, "class", i_class_value = "fas fa-" + (/*party_icons*/ ctx[1][/*candidate*/ ctx[0]["party-id"]] ?? "circle") + " svelte-1ewi44u");
+    			add_location(i, file$c, 47, 56, 990);
+    			attr_dev(div0, "class", div0_class_value = "party-name party-" + /*candidate*/ ctx[0]["party-id"] + " svelte-1ewi44u");
+    			add_location(div0, file$c, 47, 2, 936);
+    			attr_dev(div1, "class", "candidate-meta svelte-1ewi44u");
+    			add_location(div1, file$c, 46, 1, 905);
+    			attr_dev(div2, "class", "candidate svelte-1ewi44u");
+    			toggle_class(div2, "dropped-out", /*candidate*/ ctx[0]["dropped-out"]);
+    			add_location(div2, file$c, 44, 0, 808);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, article, anchor);
-    			append_dev(article, header);
-    			if (if_block0) if_block0.m(header, null);
-    			append_dev(header, t0);
-    			append_dev(header, h3);
-    			append_dev(h3, t1);
-    			append_dev(article, t2);
-    			if (if_block1) if_block1.m(article, null);
+    			insert_dev(target, div2, anchor);
+    			append_dev(div2, h3);
+    			append_dev(h3, t0);
+    			append_dev(div2, t1);
+    			append_dev(div2, div1);
+    			append_dev(div1, div0);
+    			append_dev(div0, i);
+    			append_dev(div0, t2);
+    			append_dev(div0, t3);
+    			append_dev(div1, t4);
+    			if (if_block0) if_block0.m(div1, null);
+    			append_dev(div1, t5);
+    			if (if_block1) if_block1.m(div1, null);
+    			append_dev(div2, t6);
+    			if (if_block2) if_block2.m(div2, null);
     		},
     		p: function update(ctx, [dirty]) {
-    			if (/*candidate*/ ctx[0]["dropped-out"]) {
-    				if (if_block0) {
-    					if_block0.p(ctx, dirty);
-    				} else {
-    					if_block0 = create_if_block_1$2(ctx);
+    			if (dirty & /*candidate*/ 1 && t0_value !== (t0_value = /*candidate*/ ctx[0].name + "")) set_data_dev(t0, t0_value);
+
+    			if (dirty & /*candidate*/ 1 && i_class_value !== (i_class_value = "fas fa-" + (/*party_icons*/ ctx[1][/*candidate*/ ctx[0]["party-id"]] ?? "circle") + " svelte-1ewi44u")) {
+    				attr_dev(i, "class", i_class_value);
+    			}
+
+    			if (dirty & /*candidate*/ 1 && t3_value !== (t3_value = /*candidate*/ ctx[0].party + "")) set_data_dev(t3, t3_value);
+
+    			if (dirty & /*candidate*/ 1 && div0_class_value !== (div0_class_value = "party-name party-" + /*candidate*/ ctx[0]["party-id"] + " svelte-1ewi44u")) {
+    				attr_dev(div0, "class", div0_class_value);
+    			}
+
+    			if (/*candidate*/ ctx[0]["incumbent"]) {
+    				if (if_block0) ; else {
+    					if_block0 = create_if_block_2$2(ctx);
     					if_block0.c();
-    					if_block0.m(header, t0);
+    					if_block0.m(div1, t5);
     				}
     			} else if (if_block0) {
     				if_block0.d(1);
     				if_block0 = null;
     			}
 
-    			if (dirty & /*candidate*/ 1 && t1_value !== (t1_value = /*candidate*/ ctx[0].name + "")) set_data_dev(t1, t1_value);
-
-    			if (/*candidate*/ ctx[0].blurb != null) {
+    			if (/*candidate*/ ctx[0]["dropped-out"]) {
     				if (if_block1) {
     					if_block1.p(ctx, dirty);
     				} else {
-    					if_block1 = create_if_block$6(ctx);
+    					if_block1 = create_if_block_1$2(ctx);
     					if_block1.c();
-    					if_block1.m(article, null);
+    					if_block1.m(div1, null);
     				}
     			} else if (if_block1) {
     				if_block1.d(1);
     				if_block1 = null;
     			}
+
+    			if (/*candidate*/ ctx[0].blurb != null) {
+    				if (if_block2) {
+    					if_block2.p(ctx, dirty);
+    				} else {
+    					if_block2 = create_if_block$6(ctx);
+    					if_block2.c();
+    					if_block2.m(div2, null);
+    				}
+    			} else if (if_block2) {
+    				if_block2.d(1);
+    				if_block2 = null;
+    			}
+
+    			if (dirty & /*candidate*/ 1) {
+    				toggle_class(div2, "dropped-out", /*candidate*/ ctx[0]["dropped-out"]);
+    			}
     		},
     		i: noop,
     		o: noop,
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(article);
+    			if (detaching) detach_dev(div2);
     			if (if_block0) if_block0.d();
     			if (if_block1) if_block1.d();
+    			if (if_block2) if_block2.d();
     		}
     	};
 
@@ -2262,6 +2358,14 @@ var app = (function () {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('Candidate', slots, []);
     	let { candidate } = $$props;
+
+    	const party_icons = {
+    		"republican": "republican",
+    		"dfl": "democrat",
+    		"legal-marijuana-now": "cannabis",
+    		"grassroots-legalize-cannabis": "cannabis"
+    	};
+
     	const writable_props = ['candidate'];
 
     	Object.keys($$props).forEach(key => {
@@ -2272,7 +2376,7 @@ var app = (function () {
     		if ('candidate' in $$props) $$invalidate(0, candidate = $$props.candidate);
     	};
 
-    	$$self.$capture_state = () => ({ candidate });
+    	$$self.$capture_state = () => ({ candidate, party_icons });
 
     	$$self.$inject_state = $$props => {
     		if ('candidate' in $$props) $$invalidate(0, candidate = $$props.candidate);
@@ -2282,7 +2386,7 @@ var app = (function () {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [candidate];
+    	return [candidate, party_icons];
     }
 
     class Candidate extends SvelteComponentDev {
