@@ -1,7 +1,10 @@
 <script>
 	// router
-	import router from "page"
-  	import routes from './routes'
+	import router from "page";
+  	import routes from "./routes";
+
+	// the nice Svelte select element
+	import Select from 'svelte-select';
 
 	// current result set
 	let results;
@@ -60,6 +63,15 @@
 		if ( typeof all_party_ids !== "undefined" ) {
 			data["all_party_ids"] = all_party_ids;
 		}
+		if ( typeof all_party_ids !== "undefined" && typeof all_parties !== "undefined" ) {
+			let party_select = [];
+			all_parties.forEach(function(party, index) {
+				let party_choice = {value: all_party_ids[index], label: party, group: ''};
+				party_select.push(party_choice);
+			});
+			data["party_select"] = party_select;
+			console.log(party_select);
+		}
 		if ( typeof races !== "undefined" ) {
 			data["races"] = races;
 		}
@@ -93,9 +105,9 @@
 	// Start the router
 	router.start();
 
-	function handleSelect(e) {
-		//console.log(e);
-		window.location = '/by-party/dfl';
+	function handlePartySelect(event) {
+		let party = event.detail.value;
+		router('/by-party/' + party);
 	}
 
 </script>
@@ -106,11 +118,7 @@
 	{#await filteredList}
 		Loading...
 	{:then items}
-		<select on:change={handleSelect}>
-			{#each items.all_party_ids as party, key}
-				<option value="/by-party/{party}">{items.all_parties[key]}</option>
-			{/each}
-		</select>
+		<Select items={items.party_select} on:select={handlePartySelect}></Select>
 		<ul>
 			{#each items.all_party_ids as party, key}
 				<li><a href="/by-party/{party}">{items.all_parties[key]}</a></li>
