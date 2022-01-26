@@ -7,8 +7,10 @@
 
 	.candidate-meta {
 		font-family: Helvetica, Arial, sans-serif;
-		font-size: .79em;
-		font-weight: 600;
+		font-size: .7em;
+		font-weight: 700;
+		margin-bottom:0.5em;
+		color: #404040;
 	}
 
 	.party-name {
@@ -47,17 +49,22 @@
 	<div class="candidate-meta">
 		<div class="party-name party-{candidate["party-id"]}"><i class="fas fa-{party_icons[candidate["party-id"]] ?? "circle"}"></i> {candidate.party}</div>
 
-		{#if candidate["incumbent"]}
+		{#if candidate.incumbent}
 		<div class="incumbent"><i class="fas fa-star"></i> Incumbent</div>
+		{/if}
+
+		{#if candidate.endorsed}
+		<div class="endorsed"><span class="party-{candidate["party-id"]}"><i class="fas fa-check-square"></i></span> 
+			Endorsed by <span class="party-{candidate["party-id"]}">{candidate.party} {#if candidate.party != "DFL"} Party{/if}</span></div>
 		{/if}
 
 		{#if candidate["dropped-out"]}
 		<span>dropped out on {candidate["date-dropped-out"]}</span>
 		{/if}
-</div>
-	{#if candidate.blurb != null}
-		<div class="blurb">
-			<p>{candidate.blurb}</p>
-		</div>
-	{/if}
 	</div>
+	{#if candidate.blurb != null}
+	<div class="blurb">
+		<p>{candidate.blurb}</p>
+	</div>
+	{/if}
+</div>
