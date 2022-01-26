@@ -2,7 +2,12 @@
 	.candidate {
 		border: 1px solid #d6d6da;
 		margin-top: 0.5em;
-		padding: 0.5em;
+		padding: 0.75em;
+		border-radius: .5em;
+	}
+
+	.former-candidate {
+		opacity: 0.6;
 	}
 
 	.candidate h3 {
@@ -36,6 +41,10 @@
 
 	.incumbent {color: #f74607;}
 	.dropped-out .icon {color: #C83D2D;}
+
+	.blurb {
+		font-size: .8em;
+	}
 	
 </style>
 
@@ -59,7 +68,7 @@
 
 </script>
 
-<div class="candidate" class:dropped-out={candidate["dropped-out"]}>
+<div class="candidate" class:former-candidate={candidate["dropped-out"]}>
 	<div class="candidate-photo">
 		{#if candidate["headshot-url"]}
 			<img src="{candidate['headshot-url']}" alt="photo of {candidate.name}" />
@@ -88,7 +97,7 @@
 		<div class="dropped-out"><span class="icon"><i class="fas fa-fw fa-times"></i></span> Dropped out of the race on {parseDropoutDate(candidate["date-dropped-out"])}</div>
 		{/if}
 	</div>
-	{#if candidate.blurb != null}
+	{#if candidate.blurb}
 	<div class="blurb">
 		<p>{candidate.blurb}</p>
 	</div>
