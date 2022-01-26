@@ -4,6 +4,9 @@
 		margin-top: 0.5em;
 		padding: 0.75em;
 		border-radius: .5em;
+		flex: 400px;
+		max-width: 400px;
+		margin-right:1em;
 	}
 
 	.former-candidate {

@@ -1,3 +1,10 @@
+<style>
+  .candidates-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+</style>
+
 <script>
 	// all data for candidates and races
     export let items;
@@ -32,13 +39,13 @@
 </script>
 
 {#each races as race, key}
-	<section class="candidates-list">
+	<section>
 		<h3>{race.office}</h3>
 		<p>{race.blurb}</p>
 		{#each parties as party}
 			{#if office_candidates(race["office-id"], party).length > 0}
+				<h4>{party}</h4>
 				<section class="candidates-list">
-					<h4>{party}</h4>
 					{#each office_candidates(race["office-id"], party) as candidate}
 						<Candidate candidate = {candidate} />
 					{/each}
