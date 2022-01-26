@@ -3,6 +3,7 @@
     display: flex;
     flex-wrap: wrap;
   }
+  .candidates-list h3, .candidates-list h4 { width: 100%;}
 </style>
 
 <script>
