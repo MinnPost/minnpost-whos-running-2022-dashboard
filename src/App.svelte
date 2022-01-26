@@ -1,3 +1,26 @@
+<style>
+	.m-filtering {
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		margin-bottom: 0.75em;
+	}
+	.a-filter-search {
+		width: 100%;
+	}
+	.a-filter-select {
+		width: 47.4576271186%;
+	}
+	.a-filter-switch {
+		display: flex;
+		justify-content: flex-end;
+		font-size: var(--scale-3);
+	}
+	.a-switch-toggle {
+		cursor: pointer;
+	}
+</style>
+
 <script>
 	// router
 	import router from "page";
@@ -79,6 +102,7 @@
 
 		// make the final data array of races and candidates, and parties and offices, for filteredList to use and return it
 		let data = [];
+		data["prefilteredRaces"] = items.races; // we need this for when there are no candidate results
 		if ( typeof all_parties !== "undefined" ) {
 			data["all_parties"] = all_parties;
 		}
@@ -118,14 +142,12 @@
 		if ( typeof candidates !== "undefined" ) {
 			data["candidates"] = candidates;
 		}
+		data["searchTerm"] = searchTerm;
 		return data;
 	});
 
 	// whether to show candidates who have dropped out
 	let showDroppedOutCandidates = false;
-
-	let start, start2
-    let end, end2
 
 	// template router
 	// Loop around all of the routes and create a new instance of
@@ -154,45 +176,18 @@
 	let selectedParty = undefined;
 	function handlePartySelect(event) {
 		selectOffice.handleClear();
-		selectedParty = event.detail.value;
-		router('/by-party/' + selectedParty);
+		selectedParty = event.detail;
+		router('/by-party/' + selectedParty.value);
 	}
 	
 	let selectedOffice = undefined;
 	function handleOfficeSelect(event) {
 		selectParty.handleClear();
-		selectedOffice = event.detail.value;
-		console.log(window.location);
-		router('/by-office/' + selectedOffice);
+		selectedOffice = event.detail;
+		router('/by-office/' + selectedOffice.value);
 	}
-
+	
 </script>
-
-<style>
-.m-filtering {
-	display: flex;
-	justify-content: space-between;
-	flex-wrap: wrap;
-	margin-bottom: 0.75em;
-}
-.a-filter-search {
-	width: 100%;
-}
-.a-filter-select {
-	width: 47.4576271186%;
-}
-/*.a-filter-select item {
-	font-size: var(--scale-3);
-}*/
-.a-filter-switch {
-	display: flex;
-	justify-content: flex-end;
-	font-size: var(--scale-3);
-}
-.a-switch-toggle {
-	cursor: pointer;
-}
-</style>
 
 <div class="m-filtering">
 	<input placeholder="Search for a candidate, party, or race" class="a-filter-search" bind:value={searchTerm} />
@@ -204,26 +199,16 @@
 	{:then items}
 		<div class="m-filtering">
 			<div class="a-filter-select">
-				<Select placeholder="Choose a party..." items={items.party_select} on:select={handlePartySelect} bind:this="{selectParty}"></Select>
+				<Select inputStyles="font-size: 1em; letter-spacing: inherit;" placeholder="Choose a party..." items={items.party_select} on:select={handlePartySelect} on:clear={clearSelect} bind:this="{selectParty}"></Select>
 			</div>
 			<div class="a-filter-select">
-				<Select placeholder="Choose a race..."  items={items.race_select} on:select={handleOfficeSelect} bind:this="{selectOffice}"></Select>
+				<Select inputStyles="font-size: 1em; letter-spacing: inherit;" placeholder="Choose a race..."  items={items.race_select} on:select={handleOfficeSelect} on:clear={clearSelect} bind:this="{selectOffice}"></Select>
 			</div>
 		</div>
 		<div class="a-filter-switch">
 			<Switch bind:checked={showDroppedOutCandidates} id="show-dropped-out-candidates"></Switch> <label class="a-switch-toggle show-dropped-out-candidates" for="show-dropped-out-candidates"><small class="a-form-caption">Show candidates who have dropped out</small></label>
 		</div>
-		
-		<!--<ul>
-			{#each items.all_party_ids as party, key}
-				<li><a href="/by-party/{party}">{items.all_parties[key]}</a></li>
-			{/each}
-		</ul>
-		<ul>
-			{#each items.races as race, key}
-				<li><a href="/by-office/{key}">{race.office}</a></li>
-			{/each}
-		</ul>-->
+
 		{#key params}
 			<svelte:component this={results} params="{params}" items="{items}" />
 		{/key}
