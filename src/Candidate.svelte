@@ -5,6 +5,10 @@
 		padding: 0.5em;
 	}
 
+	.candidate h3 {
+		margin-bottom: 0.25em;
+	}
+
 	.candidate-meta {
 		font-family: Helvetica, Arial, sans-serif;
 		font-size: .7em;
