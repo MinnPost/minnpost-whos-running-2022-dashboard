@@ -26,11 +26,7 @@
 	.party-grassroots-legalize-cannabis {color: #41AB07;}
 
 	.incumbent {color: #f74607;}
-
-	.dropped-out {
-		color: #ccc;
-		border-color: #ccc;
-	}
+	.dropped-out .icon {color: #C83D2D;}
 	
 </style>
 
@@ -45,6 +41,12 @@
 		"grassroots-legalize-cannabis": "cannabis"
 	};
 
+	function parseDropoutDate (dateString) {
+		let date = new Date(dateString);
+		let options = {year: 'numeric', month: 'long', day: 'numeric'};
+		return date.toLocaleString('en-US', options);
+	}
+
 
 </script>
 
@@ -58,12 +60,12 @@
 		{/if}
 
 		{#if candidate.endorsed}
-		<div class="endorsed"><span class="party-{candidate["party-id"]}"><i class="fas fa-fw fa-check-square"></i></span> 
+		<div class="endorsed"><span class="icon party-{candidate["party-id"]}"><i class="fas fa-fw fa-check-square"></i></span> 
 			Endorsed by <span class="party-{candidate["party-id"]}">{candidate.party} {#if candidate.party != "DFL"} Party{/if}</span></div>
 		{/if}
 
 		{#if candidate["dropped-out"]}
-		<span>dropped out on {candidate["date-dropped-out"]}</span>
+		<div class="dropped-out"><span class="icon"><i class="fas fa-fw fa-times"></i></span> Dropped out of the race on {parseDropoutDate(candidate["date-dropped-out"])}</div>
 		{/if}
 	</div>
 	{#if candidate.blurb != null}
