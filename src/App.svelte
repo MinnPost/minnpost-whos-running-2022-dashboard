@@ -173,6 +173,11 @@
 	let selectParty;
 	let selectOffice;
 
+	// when the x is clicked, return to the main list
+	function clearSelect(event) {
+		router('/');
+	}
+
 	let selectedParty = undefined;
 	function handlePartySelect(event) {
 		selectOffice.handleClear();
