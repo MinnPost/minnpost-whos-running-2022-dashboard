@@ -9,6 +9,15 @@
 		margin-bottom: 0.25em;
 	}
 
+	.candidate-photo {
+		float: right;
+	}
+
+	.candidate-photo img {
+		max-width: 100px;
+		border-radius: 200px;
+	}
+
 	.candidate-meta {
 		font-family: Helvetica, Arial, sans-serif;
 		font-size: .7em;
@@ -51,7 +60,14 @@
 </script>
 
 <div class="candidate" class:dropped-out={candidate["dropped-out"]}>
+	<div class="candidate-photo">
+		{#if candidate["headshot-url"]}
+			<img src="{candidate['headshot-url']}" alt="photo of {candidate.name}" />
+		{/if}
+	</div>
+	
 	<h3>{candidate.name}</h3>
+
 	<div class="candidate-meta">
 		<div class="party-name party-{candidate["party-id"]}"><i class="fas fa-fw fa-{party_icons[candidate["party-id"]] ?? "circle"}"></i> {candidate.party}</div>
 
