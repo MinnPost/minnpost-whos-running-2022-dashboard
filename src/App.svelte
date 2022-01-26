@@ -1,4 +1,7 @@
 <style>
+	:global(.candidates-list h3) {
+		width: 100%;
+	}
 	.m-filtering {
 		display: flex;
 		justify-content: space-between;
