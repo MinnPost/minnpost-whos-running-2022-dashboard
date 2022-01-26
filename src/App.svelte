@@ -160,15 +160,52 @@
 
 </script>
 
-<input bind:value={searchTerm} /> {searchTerm}
-<Switch bind:checked={showDroppedOutCandidates}></Switch> {showDroppedOutCandidates}
+<style>
+.m-filtering {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	margin-bottom: 0.75em;
+}
+.a-filter-search {
+	width: 100%;
+}
+.a-filter-select {
+	width: 47.4576271186%;
+}
+.a-filter-select item {
+	font-size: var(--scale-3);
+}
+.a-filter-switch {
+	display: flex;
+	justify-content: flex-end;
+	font-size: var(--scale-3);
+}
+.a-switch-toggle {
+	cursor: pointer;
+}
+</style>
+
+<div class="m-filtering">
+	<input placeholder="Search for a candidate, party, or race" class="a-filter-search" bind:value={searchTerm} />
+</div>
 
 <section class="container m-archive m-archive-excerpt m-archive-date">
 	{#await filteredList}
 		Loading...
 	{:then items}
-		<Select items={items.party_select} on:select={handlePartySelect} bind:this="{selectParty}"></Select>
-		<Select items={items.race_select} on:select={handleOfficeSelect} bind:this="{selectOffice}"></Select>
+		<div class="m-filtering">
+			<div class="a-filter-select">
+				<Select placeholder="Choose a party..." items={items.party_select} on:select={handlePartySelect} bind:this="{selectParty}"></Select>
+			</div>
+			<div class="a-filter-select">
+				<Select placeholder="Choose a race..."  items={items.race_select} on:select={handleOfficeSelect} bind:this="{selectOffice}"></Select>
+			</div>
+		</div>
+		<div class="a-filter-switch">
+			<Switch bind:checked={showDroppedOutCandidates} id="show-dropped-out-candidates"></Switch> <label class="a-switch-toggle show-dropped-out-candidates" for="show-dropped-out-candidates"><small class="a-form-caption">Show candidates who have dropped out</small></label>
+		</div>
+		
 		<!--<ul>
 			{#each items.all_party_ids as party, key}
 				<li><a href="/by-party/{party}">{items.all_parties[key]}</a></li>

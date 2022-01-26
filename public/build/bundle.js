@@ -9767,12 +9767,13 @@ var app = (function () {
     			t = space();
     			span = element("span");
     			attr_dev(input, "type", "checkbox");
-    			attr_dev(input, "class", "svelte-1609q2g");
-    			add_location(input, file$1, 61, 4, 1156);
-    			attr_dev(span, "class", "slider svelte-1609q2g");
-    			add_location(span, file$1, 62, 4, 1199);
-    			attr_dev(label, "class", "switch svelte-1609q2g");
-    			add_location(label, file$1, 60, 2, 1129);
+    			attr_dev(input, "id", /*id*/ ctx[1]);
+    			attr_dev(input, "class", "svelte-128cvzq");
+    			add_location(input, file$1, 28, 1, 420);
+    			attr_dev(span, "class", "slider round svelte-128cvzq");
+    			add_location(span, file$1, 29, 1, 470);
+    			attr_dev(label, "class", "a-switch svelte-128cvzq");
+    			add_location(label, file$1, 27, 0, 394);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -9790,6 +9791,10 @@ var app = (function () {
     			}
     		},
     		p: function update(ctx, [dirty]) {
+    			if (dirty & /*id*/ 2) {
+    				attr_dev(input, "id", /*id*/ ctx[1]);
+    			}
+
     			if (dirty & /*checked*/ 1) {
     				input.checked = /*checked*/ ctx[0];
     			}
@@ -9818,8 +9823,8 @@ var app = (function () {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('Switch', slots, []);
     	let { checked = false } = $$props;
-    	let { color = "#2196F3" } = $$props;
-    	const writable_props = ['checked', 'color'];
+    	let { id = "" } = $$props;
+    	const writable_props = ['checked', 'id'];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<Switch> was created with unknown prop '${key}'`);
@@ -9832,27 +9837,27 @@ var app = (function () {
 
     	$$self.$$set = $$props => {
     		if ('checked' in $$props) $$invalidate(0, checked = $$props.checked);
-    		if ('color' in $$props) $$invalidate(1, color = $$props.color);
+    		if ('id' in $$props) $$invalidate(1, id = $$props.id);
     	};
 
-    	$$self.$capture_state = () => ({ checked, color });
+    	$$self.$capture_state = () => ({ checked, id });
 
     	$$self.$inject_state = $$props => {
     		if ('checked' in $$props) $$invalidate(0, checked = $$props.checked);
-    		if ('color' in $$props) $$invalidate(1, color = $$props.color);
+    		if ('id' in $$props) $$invalidate(1, id = $$props.id);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [checked, color, input_change_handler];
+    	return [checked, id, input_change_handler];
     }
 
     class Switch extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$1, create_fragment$1, safe_not_equal, { checked: 0, color: 1 });
+    		init(this, options, instance$1, create_fragment$1, safe_not_equal, { checked: 0, id: 1 });
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -9870,11 +9875,11 @@ var app = (function () {
     		throw new Error("<Switch>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
-    	get color() {
+    	get id() {
     		throw new Error("<Switch>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
-    	set color(value) {
+    	set id(value) {
     		throw new Error("<Switch>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
     }
@@ -9907,39 +9912,104 @@ var app = (function () {
     	return block;
     }
 
-    // (169:1) {:then items}
+    // (196:1) {:then items}
     function create_then_block(ctx) {
+    	let div2;
+    	let div0;
     	let select0;
     	let t0;
+    	let div1;
     	let select1;
     	let t1;
+    	let div3;
+    	let switch_1;
+    	let updating_checked;
+    	let t2;
+    	let label;
+    	let small;
+    	let t4;
     	let previous_key = /*params*/ ctx[4];
     	let key_block_anchor;
     	let current;
-    	let select0_props = { items: /*items*/ ctx[2].party_select };
+
+    	let select0_props = {
+    		placeholder: "Choose a party...",
+    		items: /*items*/ ctx[2].party_select
+    	};
+
     	select0 = new Select({ props: select0_props, $$inline: true });
-    	/*select0_binding*/ ctx[12](select0);
+    	/*select0_binding*/ ctx[11](select0);
     	select0.$on("select", /*handlePartySelect*/ ctx[8]);
-    	let select1_props = { items: /*items*/ ctx[2].race_select };
+
+    	let select1_props = {
+    		placeholder: "Choose a race...",
+    		items: /*items*/ ctx[2].race_select
+    	};
+
     	select1 = new Select({ props: select1_props, $$inline: true });
-    	/*select1_binding*/ ctx[13](select1);
+    	/*select1_binding*/ ctx[12](select1);
     	select1.$on("select", /*handleOfficeSelect*/ ctx[9]);
+
+    	function switch_1_checked_binding(value) {
+    		/*switch_1_checked_binding*/ ctx[13](value);
+    	}
+
+    	let switch_1_props = { id: "show-dropped-out-candidates" };
+
+    	if (/*showDroppedOutCandidates*/ ctx[1] !== void 0) {
+    		switch_1_props.checked = /*showDroppedOutCandidates*/ ctx[1];
+    	}
+
+    	switch_1 = new Switch({ props: switch_1_props, $$inline: true });
+    	binding_callbacks.push(() => bind(switch_1, 'checked', switch_1_checked_binding));
     	let key_block = create_key_block(ctx);
 
     	const block = {
     		c: function create() {
+    			div2 = element("div");
+    			div0 = element("div");
     			create_component(select0.$$.fragment);
     			t0 = space();
+    			div1 = element("div");
     			create_component(select1.$$.fragment);
     			t1 = space();
+    			div3 = element("div");
+    			create_component(switch_1.$$.fragment);
+    			t2 = space();
+    			label = element("label");
+    			small = element("small");
+    			small.textContent = "Show candidates who have dropped out";
+    			t4 = space();
     			key_block.c();
     			key_block_anchor = empty();
+    			attr_dev(div0, "class", "a-filter-select svelte-1p4t7p9");
+    			add_location(div0, file, 197, 3, 5549);
+    			attr_dev(div1, "class", "a-filter-select svelte-1p4t7p9");
+    			add_location(div1, file, 200, 3, 5729);
+    			attr_dev(div2, "class", "m-filtering svelte-1p4t7p9");
+    			add_location(div2, file, 196, 2, 5520);
+    			attr_dev(small, "class", "a-form-caption");
+    			add_location(small, file, 205, 187, 6135);
+    			attr_dev(label, "class", "a-switch-toggle show-dropped-out-candidates svelte-1p4t7p9");
+    			attr_dev(label, "for", "show-dropped-out-candidates");
+    			add_location(label, file, 205, 94, 6042);
+    			attr_dev(div3, "class", "a-filter-switch svelte-1p4t7p9");
+    			add_location(div3, file, 204, 2, 5918);
     		},
     		m: function mount(target, anchor) {
-    			mount_component(select0, target, anchor);
-    			insert_dev(target, t0, anchor);
-    			mount_component(select1, target, anchor);
+    			insert_dev(target, div2, anchor);
+    			append_dev(div2, div0);
+    			mount_component(select0, div0, null);
+    			append_dev(div2, t0);
+    			append_dev(div2, div1);
+    			mount_component(select1, div1, null);
     			insert_dev(target, t1, anchor);
+    			insert_dev(target, div3, anchor);
+    			mount_component(switch_1, div3, null);
+    			append_dev(div3, t2);
+    			append_dev(div3, label);
+    			append_dev(label, small);
+    			insert_dev(target, t4, anchor);
     			key_block.m(target, anchor);
     			insert_dev(target, key_block_anchor, anchor);
     			current = true;
@@ -9951,6 +10021,15 @@ var app = (function () {
     			const select1_changes = {};
     			if (dirty & /*filteredList*/ 128) select1_changes.items = /*items*/ ctx[2].race_select;
     			select1.$set(select1_changes);
+    			const switch_1_changes = {};
+
+    			if (!updating_checked && dirty & /*showDroppedOutCandidates*/ 2) {
+    				updating_checked = true;
+    				switch_1_changes.checked = /*showDroppedOutCandidates*/ ctx[1];
+    				add_flush_callback(() => updating_checked = false);
+    			}
+
+    			switch_1.$set(switch_1_changes);
 
     			if (dirty & /*params*/ 16 && safe_not_equal(previous_key, previous_key = /*params*/ ctx[4])) {
     				group_outros();
@@ -9968,22 +10047,27 @@ var app = (function () {
     			if (current) return;
     			transition_in(select0.$$.fragment, local);
     			transition_in(select1.$$.fragment, local);
+    			transition_in(switch_1.$$.fragment, local);
     			transition_in(key_block);
     			current = true;
     		},
     		o: function outro(local) {
     			transition_out(select0.$$.fragment, local);
     			transition_out(select1.$$.fragment, local);
+    			transition_out(switch_1.$$.fragment, local);
     			transition_out(key_block);
     			current = false;
     		},
     		d: function destroy(detaching) {
-    			/*select0_binding*/ ctx[12](null);
-    			destroy_component(select0, detaching);
-    			if (detaching) detach_dev(t0);
-    			/*select1_binding*/ ctx[13](null);
-    			destroy_component(select1, detaching);
+    			if (detaching) detach_dev(div2);
+    			/*select0_binding*/ ctx[11](null);
+    			destroy_component(select0);
+    			/*select1_binding*/ ctx[12](null);
+    			destroy_component(select1);
     			if (detaching) detach_dev(t1);
+    			if (detaching) detach_dev(div3);
+    			destroy_component(switch_1);
+    			if (detaching) detach_dev(t4);
     			if (detaching) detach_dev(key_block_anchor);
     			key_block.d(detaching);
     		}
@@ -9993,14 +10077,14 @@ var app = (function () {
     		block,
     		id: create_then_block.name,
     		type: "then",
-    		source: "(169:1) {:then items}",
+    		source: "(196:1) {:then items}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (182:2) {#key params}
+    // (219:2) {#key params}
     function create_key_block(ctx) {
     	let switch_instance;
     	let switch_instance_anchor;
@@ -10082,14 +10166,14 @@ var app = (function () {
     		block,
     		id: create_key_block.name,
     		type: "key",
-    		source: "(182:2) {#key params}",
+    		source: "(219:2) {#key params}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (167:22)    Loading...  {:then items}
+    // (194:22)    Loading...  {:then items}
     function create_pending_block(ctx) {
     	let t;
 
@@ -10112,7 +10196,7 @@ var app = (function () {
     		block,
     		id: create_pending_block.name,
     		type: "pending",
-    		source: "(167:22)    Loading...  {:then items}",
+    		source: "(194:22)    Loading...  {:then items}",
     		ctx
     	});
 
@@ -10120,33 +10204,14 @@ var app = (function () {
     }
 
     function create_fragment(ctx) {
+    	let div;
     	let input;
-    	let t0;
-    	let t1;
-    	let t2;
-    	let switch_1;
-    	let updating_checked;
-    	let t3;
-    	let t4;
-    	let t5;
+    	let t;
     	let section;
     	let promise;
     	let current;
     	let mounted;
     	let dispose;
-
-    	function switch_1_checked_binding(value) {
-    		/*switch_1_checked_binding*/ ctx[11](value);
-    	}
-
-    	let switch_1_props = {};
-
-    	if (/*showDroppedOutCandidates*/ ctx[1] !== void 0) {
-    		switch_1_props.checked = /*showDroppedOutCandidates*/ ctx[1];
-    	}
-
-    	switch_1 = new Switch({ props: switch_1_props, $$inline: true });
-    	binding_callbacks.push(() => bind(switch_1, 'checked', switch_1_checked_binding));
 
     	let info = {
     		ctx,
@@ -10164,33 +10229,27 @@ var app = (function () {
 
     	const block = {
     		c: function create() {
+    			div = element("div");
     			input = element("input");
-    			t0 = space();
-    			t1 = text(/*searchTerm*/ ctx[0]);
-    			t2 = space();
-    			create_component(switch_1.$$.fragment);
-    			t3 = space();
-    			t4 = text(/*showDroppedOutCandidates*/ ctx[1]);
-    			t5 = space();
+    			t = space();
     			section = element("section");
     			info.block.c();
-    			add_location(input, file, 162, 0, 4858);
+    			attr_dev(input, "placeholder", "Search for a candidate, party, or race");
+    			attr_dev(input, "class", "a-filter-search svelte-1p4t7p9");
+    			add_location(input, file, 189, 1, 5277);
+    			attr_dev(div, "class", "m-filtering svelte-1p4t7p9");
+    			add_location(div, file, 188, 0, 5250);
     			attr_dev(section, "class", "container m-archive m-archive-excerpt m-archive-date");
-    			add_location(section, file, 165, 0, 4991);
+    			add_location(section, file, 192, 0, 5396);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, input, anchor);
+    			insert_dev(target, div, anchor);
+    			append_dev(div, input);
     			set_input_value(input, /*searchTerm*/ ctx[0]);
-    			insert_dev(target, t0, anchor);
-    			insert_dev(target, t1, anchor);
-    			insert_dev(target, t2, anchor);
-    			mount_component(switch_1, target, anchor);
-    			insert_dev(target, t3, anchor);
-    			insert_dev(target, t4, anchor);
-    			insert_dev(target, t5, anchor);
+    			insert_dev(target, t, anchor);
     			insert_dev(target, section, anchor);
     			info.block.m(section, info.anchor = null);
     			info.mount = () => section;
@@ -10209,17 +10268,6 @@ var app = (function () {
     				set_input_value(input, /*searchTerm*/ ctx[0]);
     			}
 
-    			if (!current || dirty & /*searchTerm*/ 1) set_data_dev(t1, /*searchTerm*/ ctx[0]);
-    			const switch_1_changes = {};
-
-    			if (!updating_checked && dirty & /*showDroppedOutCandidates*/ 2) {
-    				updating_checked = true;
-    				switch_1_changes.checked = /*showDroppedOutCandidates*/ ctx[1];
-    				add_flush_callback(() => updating_checked = false);
-    			}
-
-    			switch_1.$set(switch_1_changes);
-    			if (!current || dirty & /*showDroppedOutCandidates*/ 2) set_data_dev(t4, /*showDroppedOutCandidates*/ ctx[1]);
     			info.ctx = ctx;
 
     			if (dirty & /*filteredList*/ 128 && promise !== (promise = /*filteredList*/ ctx[7]) && handle_promise(promise, info)) ; else {
@@ -10228,13 +10276,10 @@ var app = (function () {
     		},
     		i: function intro(local) {
     			if (current) return;
-    			transition_in(switch_1.$$.fragment, local);
     			transition_in(info.block);
     			current = true;
     		},
     		o: function outro(local) {
-    			transition_out(switch_1.$$.fragment, local);
-
     			for (let i = 0; i < 3; i += 1) {
     				const block = info.blocks[i];
     				transition_out(block);
@@ -10243,14 +10288,8 @@ var app = (function () {
     			current = false;
     		},
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(input);
-    			if (detaching) detach_dev(t0);
-    			if (detaching) detach_dev(t1);
-    			if (detaching) detach_dev(t2);
-    			destroy_component(switch_1, detaching);
-    			if (detaching) detach_dev(t3);
-    			if (detaching) detach_dev(t4);
-    			if (detaching) detach_dev(t5);
+    			if (detaching) detach_dev(div);
+    			if (detaching) detach_dev(t);
     			if (detaching) detach_dev(section);
     			info.block.d();
     			info.token = null;
@@ -10369,11 +10408,6 @@ var app = (function () {
     		$$invalidate(0, searchTerm);
     	}
 
-    	function switch_1_checked_binding(value) {
-    		showDroppedOutCandidates = value;
-    		$$invalidate(1, showDroppedOutCandidates);
-    	}
-
     	function select0_binding($$value) {
     		binding_callbacks[$$value ? 'unshift' : 'push'](() => {
     			selectParty = $$value;
@@ -10386,6 +10420,11 @@ var app = (function () {
     			selectOffice = $$value;
     			$$invalidate(6, selectOffice);
     		});
+    	}
+
+    	function switch_1_checked_binding(value) {
+    		showDroppedOutCandidates = value;
+    		$$invalidate(1, showDroppedOutCandidates);
     	}
 
     	$$self.$capture_state = () => ({
@@ -10544,9 +10583,9 @@ var app = (function () {
     		handlePartySelect,
     		handleOfficeSelect,
     		input_input_handler,
-    		switch_1_checked_binding,
     		select0_binding,
-    		select1_binding
+    		select1_binding,
+    		switch_1_checked_binding
     	];
     }
 
