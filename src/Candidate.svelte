@@ -55,6 +55,10 @@
 	<div class="candidate-meta">
 		<div class="party-name party-{candidate["party-id"]}"><i class="fas fa-fw fa-{party_icons[candidate["party-id"]] ?? "circle"}"></i> {candidate.party}</div>
 
+		{#if candidate.hometown}
+		<div class="hometown"><i class="fas fa-fw fa-home"></i> From: {candidate.hometown}</div>
+		{/if}
+
 		{#if candidate.incumbent}
 		<div class="incumbent"><i class="fas fa-fw fa-star"></i> Incumbent</div>
 		{/if}
