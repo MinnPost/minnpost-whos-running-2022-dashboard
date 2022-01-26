@@ -47,14 +47,14 @@
 <div class="candidate" class:dropped-out={candidate["dropped-out"]}>
 	<h3>{candidate.name}</h3>
 	<div class="candidate-meta">
-		<div class="party-name party-{candidate["party-id"]}"><i class="fas fa-{party_icons[candidate["party-id"]] ?? "circle"}"></i> {candidate.party}</div>
+		<div class="party-name party-{candidate["party-id"]}"><i class="fas fa-fw fa-{party_icons[candidate["party-id"]] ?? "circle"}"></i> {candidate.party}</div>
 
 		{#if candidate.incumbent}
-		<div class="incumbent"><i class="fas fa-star"></i> Incumbent</div>
+		<div class="incumbent"><i class="fas fa-fw fa-star"></i> Incumbent</div>
 		{/if}
 
 		{#if candidate.endorsed}
-		<div class="endorsed"><span class="party-{candidate["party-id"]}"><i class="fas fa-check-square"></i></span> 
+		<div class="endorsed"><span class="party-{candidate["party-id"]}"><i class="fas fa-fw fa-check-square"></i></span> 
 			Endorsed by <span class="party-{candidate["party-id"]}">{candidate.party} {#if candidate.party != "DFL"} Party{/if}</span></div>
 		{/if}
 
