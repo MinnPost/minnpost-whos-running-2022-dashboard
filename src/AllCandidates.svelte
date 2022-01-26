@@ -20,6 +20,12 @@
     
 </script>
 
+{#if items["searchTerm"] != ""}
+    <aside class="m-search-result-info">
+        Showing {items.candidates.length} {#if items.candidates.length == 1}candidate{:else}candidates{/if} in {items.races.length} {#if items.races.length == 1}race{:else}races{/if} for <strong>{items["searchTerm"]}</strong>
+    </aside>
+{/if}
+
 {#each items.races as race}
     <section>
         <h2>{race.office}</h2>
