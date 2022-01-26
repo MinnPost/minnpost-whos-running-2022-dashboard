@@ -88,7 +88,11 @@
 		if ( typeof all_party_ids !== "undefined" && typeof all_parties !== "undefined" ) {
 			let party_select = [];
 			all_parties.forEach(function(party, index) {
-				let party_choice = {value: all_party_ids[index], label: party, group: ''};
+				let party_choice = {
+					value: all_party_ids[index],
+					label: party,
+					group: '' // if we want to group parties, populate this
+				};
 				party_select.push(party_choice);
 			});
 			data["party_select"] = party_select;
@@ -102,7 +106,11 @@
 		if ( typeof races !== "undefined" ) {
 			let race_select = [];
 			races.forEach(function(race, index) {
-				let race_choice = {value: race["office-id"], label: race.office, group: ''};
+				let race_choice = {
+					value: race["office-id"],
+					label: race.office,
+					group: '' // if we want to group races (ex all house races, all senate races), populate this
+				};
 				race_select.push(race_choice);
 			});
 			data["race_select"] = race_select;
@@ -173,9 +181,9 @@
 .a-filter-select {
 	width: 47.4576271186%;
 }
-.a-filter-select item {
+/*.a-filter-select item {
 	font-size: var(--scale-3);
-}
+}*/
 .a-filter-switch {
 	display: flex;
 	justify-content: flex-end;

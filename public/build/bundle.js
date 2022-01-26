@@ -9912,7 +9912,7 @@ var app = (function () {
     	return block;
     }
 
-    // (196:1) {:then items}
+    // (204:1) {:then items}
     function create_then_block(ctx) {
     	let div2;
     	let div0;
@@ -9982,19 +9982,19 @@ var app = (function () {
     			t4 = space();
     			key_block.c();
     			key_block_anchor = empty();
-    			attr_dev(div0, "class", "a-filter-select svelte-1p4t7p9");
-    			add_location(div0, file, 197, 3, 5549);
-    			attr_dev(div1, "class", "a-filter-select svelte-1p4t7p9");
-    			add_location(div1, file, 200, 3, 5729);
-    			attr_dev(div2, "class", "m-filtering svelte-1p4t7p9");
-    			add_location(div2, file, 196, 2, 5520);
+    			attr_dev(div0, "class", "a-filter-select svelte-1k6dtyd");
+    			add_location(div0, file, 205, 3, 5724);
+    			attr_dev(div1, "class", "a-filter-select svelte-1k6dtyd");
+    			add_location(div1, file, 208, 3, 5904);
+    			attr_dev(div2, "class", "m-filtering svelte-1k6dtyd");
+    			add_location(div2, file, 204, 2, 5695);
     			attr_dev(small, "class", "a-form-caption");
-    			add_location(small, file, 205, 187, 6135);
-    			attr_dev(label, "class", "a-switch-toggle show-dropped-out-candidates svelte-1p4t7p9");
+    			add_location(small, file, 213, 187, 6310);
+    			attr_dev(label, "class", "a-switch-toggle show-dropped-out-candidates svelte-1k6dtyd");
     			attr_dev(label, "for", "show-dropped-out-candidates");
-    			add_location(label, file, 205, 94, 6042);
-    			attr_dev(div3, "class", "a-filter-switch svelte-1p4t7p9");
-    			add_location(div3, file, 204, 2, 5918);
+    			add_location(label, file, 213, 94, 6217);
+    			attr_dev(div3, "class", "a-filter-switch svelte-1k6dtyd");
+    			add_location(div3, file, 212, 2, 6093);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div2, anchor);
@@ -10077,14 +10077,14 @@ var app = (function () {
     		block,
     		id: create_then_block.name,
     		type: "then",
-    		source: "(196:1) {:then items}",
+    		source: "(204:1) {:then items}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (219:2) {#key params}
+    // (227:2) {#key params}
     function create_key_block(ctx) {
     	let switch_instance;
     	let switch_instance_anchor;
@@ -10166,14 +10166,14 @@ var app = (function () {
     		block,
     		id: create_key_block.name,
     		type: "key",
-    		source: "(219:2) {#key params}",
+    		source: "(227:2) {#key params}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (194:22)    Loading...  {:then items}
+    // (202:22)    Loading...  {:then items}
     function create_pending_block(ctx) {
     	let t;
 
@@ -10196,7 +10196,7 @@ var app = (function () {
     		block,
     		id: create_pending_block.name,
     		type: "pending",
-    		source: "(194:22)    Loading...  {:then items}",
+    		source: "(202:22)    Loading...  {:then items}",
     		ctx
     	});
 
@@ -10235,12 +10235,12 @@ var app = (function () {
     			section = element("section");
     			info.block.c();
     			attr_dev(input, "placeholder", "Search for a candidate, party, or race");
-    			attr_dev(input, "class", "a-filter-search svelte-1p4t7p9");
-    			add_location(input, file, 189, 1, 5277);
-    			attr_dev(div, "class", "m-filtering svelte-1p4t7p9");
-    			add_location(div, file, 188, 0, 5250);
+    			attr_dev(input, "class", "a-filter-search svelte-1k6dtyd");
+    			add_location(input, file, 197, 1, 5452);
+    			attr_dev(div, "class", "m-filtering svelte-1k6dtyd");
+    			add_location(div, file, 196, 0, 5425);
     			attr_dev(section, "class", "container m-archive m-archive-excerpt m-archive-date");
-    			add_location(section, file, 192, 0, 5396);
+    			add_location(section, file, 200, 0, 5571);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -10529,7 +10529,8 @@ var app = (function () {
     						let party_choice = {
     							value: all_party_ids[index],
     							label: party,
-    							group: ''
+    							group: '', // if we want to group parties, populate this
+    							
     						};
 
     						party_select.push(party_choice);
@@ -10553,7 +10554,8 @@ var app = (function () {
     						let race_choice = {
     							value: race["office-id"],
     							label: race.office,
-    							group: ''
+    							group: '', // if we want to group races (ex all house races, all senate races), populate this
+    							
     						};
 
     						race_select.push(race_choice);
