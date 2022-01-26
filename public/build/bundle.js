@@ -10973,18 +10973,18 @@ var app = (function () {
     			key_block.c();
     			key_block_anchor = empty();
     			attr_dev(div0, "class", "a-filter-select svelte-1kjf4yw");
-    			add_location(div0, file, 205, 3, 5851);
+    			add_location(div0, file, 205, 3, 5849);
     			attr_dev(div1, "class", "a-filter-select svelte-1kjf4yw");
-    			add_location(div1, file, 208, 3, 6109);
+    			add_location(div1, file, 208, 3, 6107);
     			attr_dev(div2, "class", "m-filtering svelte-1kjf4yw");
-    			add_location(div2, file, 204, 2, 5822);
+    			add_location(div2, file, 204, 2, 5820);
     			attr_dev(small, "class", "a-form-caption");
-    			add_location(small, file, 213, 187, 6593);
+    			add_location(small, file, 213, 187, 6591);
     			attr_dev(label, "class", "a-switch-toggle show-dropped-out-candidates svelte-1kjf4yw");
     			attr_dev(label, "for", "show-dropped-out-candidates");
-    			add_location(label, file, 213, 94, 6500);
+    			add_location(label, file, 213, 94, 6498);
     			attr_dev(div3, "class", "a-filter-switch svelte-1kjf4yw");
-    			add_location(div3, file, 212, 2, 6376);
+    			add_location(div3, file, 212, 2, 6374);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div2, anchor);
@@ -11226,11 +11226,11 @@ var app = (function () {
     			info.block.c();
     			attr_dev(input, "placeholder", "Search for a candidate, party, or race");
     			attr_dev(input, "class", "a-filter-search svelte-1kjf4yw");
-    			add_location(input, file, 197, 1, 5579);
+    			add_location(input, file, 197, 1, 5577);
     			attr_dev(div, "class", "m-filtering svelte-1kjf4yw");
-    			add_location(div, file, 196, 0, 5552);
+    			add_location(div, file, 196, 0, 5550);
     			attr_dev(section, "class", "container m-archive m-archive-excerpt m-archive-date");
-    			add_location(section, file, 200, 0, 5698);
+    			add_location(section, file, 200, 0, 5696);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");

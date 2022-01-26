@@ -24,7 +24,7 @@
 <script>
 	// router
 	import router from "page";
-  	import routes from "./routes";
+	import routes from "./routes";
 
 	// the nice Svelte select element
 	import Select from 'svelte-select';
