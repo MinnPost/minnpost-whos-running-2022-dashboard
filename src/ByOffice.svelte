@@ -1,3 +1,10 @@
+<style>
+  .candidates-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+</style>
+
 <script>
 	// all data for candidates and races
     export let items;
