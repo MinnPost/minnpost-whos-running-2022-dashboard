@@ -33,6 +33,14 @@ var app = (function () {
     function safe_not_equal(a, b) {
         return a != a ? b == b : a !== b || ((a && typeof a === 'object') || typeof a === 'function');
     }
+    let src_url_equal_anchor;
+    function src_url_equal(element_src, url) {
+        if (!src_url_equal_anchor) {
+            src_url_equal_anchor = document.createElement('a');
+        }
+        src_url_equal_anchor.href = url;
+        return element_src === src_url_equal_anchor.href;
+    }
     function is_empty(obj) {
         return Object.keys(obj).length === 0;
     }
@@ -2090,30 +2098,273 @@ var app = (function () {
 
     const file$c = "src/Candidate.svelte";
 
-    // (16:2) {#if candidate["dropped-out"]}
-    function create_if_block_1$5(ctx) {
-    	let span;
+    // (76:2) {#if candidate["headshot-url"]}
+    function create_if_block_6$2(ctx) {
+    	let img;
+    	let img_src_value;
+    	let img_alt_value;
+
+    	const block = {
+    		c: function create() {
+    			img = element("img");
+    			if (!src_url_equal(img.src, img_src_value = /*candidate*/ ctx[0]['headshot-url'])) attr_dev(img, "src", img_src_value);
+    			attr_dev(img, "alt", img_alt_value = "photo of " + /*candidate*/ ctx[0].name);
+    			attr_dev(img, "class", "svelte-1szs5pl");
+    			add_location(img, file$c, 76, 3, 1472);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, img, anchor);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*candidate*/ 1 && !src_url_equal(img.src, img_src_value = /*candidate*/ ctx[0]['headshot-url'])) {
+    				attr_dev(img, "src", img_src_value);
+    			}
+
+    			if (dirty & /*candidate*/ 1 && img_alt_value !== (img_alt_value = "photo of " + /*candidate*/ ctx[0].name)) {
+    				attr_dev(img, "alt", img_alt_value);
+    			}
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(img);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_6$2.name,
+    		type: "if",
+    		source: "(76:2) {#if candidate[\\\"headshot-url\\\"]}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (86:2) {#if candidate.hometown}
+    function create_if_block_5$2(ctx) {
+    	let div;
+    	let i;
     	let t0;
-    	let t1_value = /*candidate*/ ctx[0]["date-dropped-out"] + "";
+    	let t1_value = /*candidate*/ ctx[0].hometown + "";
     	let t1;
 
     	const block = {
     		c: function create() {
-    			span = element("span");
-    			t0 = text("dropped out on ");
+    			div = element("div");
+    			i = element("i");
+    			t0 = text(" From: ");
     			t1 = text(t1_value);
-    			add_location(span, file$c, 16, 3, 342);
+    			attr_dev(i, "class", "fas fa-fw fa-home");
+    			add_location(i, file$c, 86, 24, 1832);
+    			attr_dev(div, "class", "hometown");
+    			add_location(div, file$c, 86, 2, 1810);
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, span, anchor);
-    			append_dev(span, t0);
-    			append_dev(span, t1);
+    			insert_dev(target, div, anchor);
+    			append_dev(div, i);
+    			append_dev(div, t0);
+    			append_dev(div, t1);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*candidate*/ 1 && t1_value !== (t1_value = /*candidate*/ ctx[0]["date-dropped-out"] + "")) set_data_dev(t1, t1_value);
+    			if (dirty & /*candidate*/ 1 && t1_value !== (t1_value = /*candidate*/ ctx[0].hometown + "")) set_data_dev(t1, t1_value);
     		},
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(span);
+    			if (detaching) detach_dev(div);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_5$2.name,
+    		type: "if",
+    		source: "(86:2) {#if candidate.hometown}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (90:2) {#if candidate.incumbent}
+    function create_if_block_4$3(ctx) {
+    	let div;
+    	let i;
+    	let t;
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			i = element("i");
+    			t = text(" Incumbent");
+    			attr_dev(i, "class", "fas fa-fw fa-star");
+    			add_location(i, file$c, 90, 25, 1961);
+    			attr_dev(div, "class", "incumbent svelte-1szs5pl");
+    			add_location(div, file$c, 90, 2, 1938);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			append_dev(div, i);
+    			append_dev(div, t);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_4$3.name,
+    		type: "if",
+    		source: "(90:2) {#if candidate.incumbent}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (94:2) {#if candidate.endorsed}
+    function create_if_block_2$5(ctx) {
+    	let div;
+    	let span0;
+    	let i;
+    	let span0_class_value;
+    	let t0;
+    	let span1;
+    	let t1_value = /*candidate*/ ctx[0].party + "";
+    	let t1;
+    	let t2;
+    	let span1_class_value;
+    	let if_block = /*candidate*/ ctx[0].party != "DFL" && create_if_block_3$4(ctx);
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			span0 = element("span");
+    			i = element("i");
+    			t0 = text(" \n\t\t\tEndorsed by ");
+    			span1 = element("span");
+    			t1 = text(t1_value);
+    			t2 = space();
+    			if (if_block) if_block.c();
+    			attr_dev(i, "class", "fas fa-fw fa-check-square");
+    			add_location(i, file$c, 94, 73, 2120);
+    			attr_dev(span0, "class", span0_class_value = "icon party-" + /*candidate*/ ctx[0]["party-id"] + " svelte-1szs5pl");
+    			add_location(span0, file$c, 94, 24, 2071);
+    			attr_dev(span1, "class", span1_class_value = "party-" + /*candidate*/ ctx[0]["party-id"] + " svelte-1szs5pl");
+    			add_location(span1, file$c, 95, 15, 2185);
+    			attr_dev(div, "class", "endorsed");
+    			add_location(div, file$c, 94, 2, 2049);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			append_dev(div, span0);
+    			append_dev(span0, i);
+    			append_dev(div, t0);
+    			append_dev(div, span1);
+    			append_dev(span1, t1);
+    			append_dev(span1, t2);
+    			if (if_block) if_block.m(span1, null);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*candidate*/ 1 && span0_class_value !== (span0_class_value = "icon party-" + /*candidate*/ ctx[0]["party-id"] + " svelte-1szs5pl")) {
+    				attr_dev(span0, "class", span0_class_value);
+    			}
+
+    			if (dirty & /*candidate*/ 1 && t1_value !== (t1_value = /*candidate*/ ctx[0].party + "")) set_data_dev(t1, t1_value);
+
+    			if (/*candidate*/ ctx[0].party != "DFL") {
+    				if (if_block) ; else {
+    					if_block = create_if_block_3$4(ctx);
+    					if_block.c();
+    					if_block.m(span1, null);
+    				}
+    			} else if (if_block) {
+    				if_block.d(1);
+    				if_block = null;
+    			}
+
+    			if (dirty & /*candidate*/ 1 && span1_class_value !== (span1_class_value = "party-" + /*candidate*/ ctx[0]["party-id"] + " svelte-1szs5pl")) {
+    				attr_dev(span1, "class", span1_class_value);
+    			}
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    			if (if_block) if_block.d();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_2$5.name,
+    		type: "if",
+    		source: "(94:2) {#if candidate.endorsed}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (96:77) {#if candidate.party != "DFL"}
+    function create_if_block_3$4(ctx) {
+    	let t;
+
+    	const block = {
+    		c: function create() {
+    			t = text("Party");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, t, anchor);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(t);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_3$4.name,
+    		type: "if",
+    		source: "(96:77) {#if candidate.party != \\\"DFL\\\"}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (99:2) {#if candidate["dropped-out"]}
+    function create_if_block_1$5(ctx) {
+    	let div;
+    	let span;
+    	let i;
+    	let t0;
+    	let t1_value = parseDropoutDate(/*candidate*/ ctx[0]["date-dropped-out"]) + "";
+    	let t1;
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			span = element("span");
+    			i = element("i");
+    			t0 = text(" Dropped out of the race on ");
+    			t1 = text(t1_value);
+    			attr_dev(i, "class", "fas fa-fw fa-times");
+    			add_location(i, file$c, 99, 46, 2390);
+    			attr_dev(span, "class", "icon svelte-1szs5pl");
+    			add_location(span, file$c, 99, 27, 2371);
+    			attr_dev(div, "class", "dropped-out svelte-1szs5pl");
+    			add_location(div, file$c, 99, 2, 2346);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			append_dev(div, span);
+    			append_dev(span, i);
+    			append_dev(div, t0);
+    			append_dev(div, t1);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*candidate*/ 1 && t1_value !== (t1_value = parseDropoutDate(/*candidate*/ ctx[0]["date-dropped-out"]) + "")) set_data_dev(t1, t1_value);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
     		}
     	};
 
@@ -2121,14 +2372,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1$5.name,
     		type: "if",
-    		source: "(16:2) {#if candidate[\\\"dropped-out\\\"]}",
+    		source: "(99:2) {#if candidate[\\\"dropped-out\\\"]}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (21:1) {#if candidate.blurb != null}
+    // (103:1) {#if candidate.blurb}
     function create_if_block$6(ctx) {
     	let div;
     	let p;
@@ -2140,9 +2391,9 @@ var app = (function () {
     			div = element("div");
     			p = element("p");
     			t = text(t_value);
-    			add_location(p, file$c, 22, 3, 537);
-    			attr_dev(div, "class", "m-entry-excerpt");
-    			add_location(div, file$c, 21, 2, 504);
+    			add_location(p, file$c, 104, 2, 2577);
+    			attr_dev(div, "class", "blurb svelte-1szs5pl");
+    			add_location(div, file$c, 103, 1, 2555);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -2161,7 +2412,7 @@ var app = (function () {
     		block,
     		id: create_if_block$6.name,
     		type: "if",
-    		source: "(21:1) {#if candidate.blurb != null}",
+    		source: "(103:1) {#if candidate.blurb}",
     		ctx
     	});
 
@@ -2169,54 +2420,106 @@ var app = (function () {
     }
 
     function create_fragment$c(ctx) {
-    	let article;
-    	let header;
+    	let div3;
+    	let div0;
     	let t0;
     	let h3;
     	let t1_value = /*candidate*/ ctx[0].name + "";
     	let t1;
     	let t2;
-    	let if_block0 = /*candidate*/ ctx[0]["dropped-out"] && create_if_block_1$5(ctx);
-    	let if_block1 = /*candidate*/ ctx[0].blurb != null && create_if_block$6(ctx);
+    	let div2;
+    	let div1;
+    	let i;
+    	let i_class_value;
+    	let t3;
+    	let t4_value = /*candidate*/ ctx[0].party + "";
+    	let t4;
+    	let div1_class_value;
+    	let t5;
+    	let t6;
+    	let t7;
+    	let t8;
+    	let t9;
+    	let if_block0 = /*candidate*/ ctx[0]["headshot-url"] && create_if_block_6$2(ctx);
+    	let if_block1 = /*candidate*/ ctx[0].hometown && create_if_block_5$2(ctx);
+    	let if_block2 = /*candidate*/ ctx[0].incumbent && create_if_block_4$3(ctx);
+    	let if_block3 = /*candidate*/ ctx[0].endorsed && create_if_block_2$5(ctx);
+    	let if_block4 = /*candidate*/ ctx[0]["dropped-out"] && create_if_block_1$5(ctx);
+    	let if_block5 = /*candidate*/ ctx[0].blurb && create_if_block$6(ctx);
 
     	const block = {
     		c: function create() {
-    			article = element("article");
-    			header = element("header");
+    			div3 = element("div");
+    			div0 = element("div");
     			if (if_block0) if_block0.c();
     			t0 = space();
     			h3 = element("h3");
     			t1 = text(t1_value);
     			t2 = space();
+    			div2 = element("div");
+    			div1 = element("div");
+    			i = element("i");
+    			t3 = space();
+    			t4 = text(t4_value);
+    			t5 = space();
     			if (if_block1) if_block1.c();
-    			attr_dev(h3, "class", "a-entry-title");
-    			add_location(h3, file$c, 18, 2, 412);
-    			attr_dev(header, "class", "m-entry-header");
-    			add_location(header, file$c, 14, 1, 274);
-    			attr_dev(article, "class", "m-post candidate svelte-r234dw");
-    			add_location(article, file$c, 13, 0, 238);
+    			t6 = space();
+    			if (if_block2) if_block2.c();
+    			t7 = space();
+    			if (if_block3) if_block3.c();
+    			t8 = space();
+    			if (if_block4) if_block4.c();
+    			t9 = space();
+    			if (if_block5) if_block5.c();
+    			attr_dev(div0, "class", "candidate-photo svelte-1szs5pl");
+    			add_location(div0, file$c, 74, 1, 1405);
+    			attr_dev(h3, "class", "svelte-1szs5pl");
+    			add_location(h3, file$c, 80, 1, 1565);
+    			attr_dev(i, "class", i_class_value = "fas fa-fw fa-" + (/*party_icons*/ ctx[1][/*candidate*/ ctx[0]["party-id"]] ?? "circle") + " svelte-1szs5pl");
+    			add_location(i, file$c, 83, 56, 1678);
+    			attr_dev(div1, "class", div1_class_value = "party-name party-" + /*candidate*/ ctx[0]["party-id"] + " svelte-1szs5pl");
+    			add_location(div1, file$c, 83, 2, 1624);
+    			attr_dev(div2, "class", "candidate-meta svelte-1szs5pl");
+    			add_location(div2, file$c, 82, 1, 1593);
+    			attr_dev(div3, "class", "candidate svelte-1szs5pl");
+    			toggle_class(div3, "former-candidate", /*candidate*/ ctx[0]["dropped-out"]);
+    			add_location(div3, file$c, 73, 0, 1330);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, article, anchor);
-    			append_dev(article, header);
-    			if (if_block0) if_block0.m(header, null);
-    			append_dev(header, t0);
-    			append_dev(header, h3);
+    			insert_dev(target, div3, anchor);
+    			append_dev(div3, div0);
+    			if (if_block0) if_block0.m(div0, null);
+    			append_dev(div3, t0);
+    			append_dev(div3, h3);
     			append_dev(h3, t1);
-    			append_dev(article, t2);
-    			if (if_block1) if_block1.m(article, null);
+    			append_dev(div3, t2);
+    			append_dev(div3, div2);
+    			append_dev(div2, div1);
+    			append_dev(div1, i);
+    			append_dev(div1, t3);
+    			append_dev(div1, t4);
+    			append_dev(div2, t5);
+    			if (if_block1) if_block1.m(div2, null);
+    			append_dev(div2, t6);
+    			if (if_block2) if_block2.m(div2, null);
+    			append_dev(div2, t7);
+    			if (if_block3) if_block3.m(div2, null);
+    			append_dev(div2, t8);
+    			if (if_block4) if_block4.m(div2, null);
+    			append_dev(div3, t9);
+    			if (if_block5) if_block5.m(div3, null);
     		},
     		p: function update(ctx, [dirty]) {
-    			if (/*candidate*/ ctx[0]["dropped-out"]) {
+    			if (/*candidate*/ ctx[0]["headshot-url"]) {
     				if (if_block0) {
     					if_block0.p(ctx, dirty);
     				} else {
-    					if_block0 = create_if_block_1$5(ctx);
+    					if_block0 = create_if_block_6$2(ctx);
     					if_block0.c();
-    					if_block0.m(header, t0);
+    					if_block0.m(div0, null);
     				}
     			} else if (if_block0) {
     				if_block0.d(1);
@@ -2225,25 +2528,93 @@ var app = (function () {
 
     			if (dirty & /*candidate*/ 1 && t1_value !== (t1_value = /*candidate*/ ctx[0].name + "")) set_data_dev(t1, t1_value);
 
-    			if (/*candidate*/ ctx[0].blurb != null) {
+    			if (dirty & /*candidate*/ 1 && i_class_value !== (i_class_value = "fas fa-fw fa-" + (/*party_icons*/ ctx[1][/*candidate*/ ctx[0]["party-id"]] ?? "circle") + " svelte-1szs5pl")) {
+    				attr_dev(i, "class", i_class_value);
+    			}
+
+    			if (dirty & /*candidate*/ 1 && t4_value !== (t4_value = /*candidate*/ ctx[0].party + "")) set_data_dev(t4, t4_value);
+
+    			if (dirty & /*candidate*/ 1 && div1_class_value !== (div1_class_value = "party-name party-" + /*candidate*/ ctx[0]["party-id"] + " svelte-1szs5pl")) {
+    				attr_dev(div1, "class", div1_class_value);
+    			}
+
+    			if (/*candidate*/ ctx[0].hometown) {
     				if (if_block1) {
     					if_block1.p(ctx, dirty);
     				} else {
-    					if_block1 = create_if_block$6(ctx);
+    					if_block1 = create_if_block_5$2(ctx);
     					if_block1.c();
-    					if_block1.m(article, null);
+    					if_block1.m(div2, t6);
     				}
     			} else if (if_block1) {
     				if_block1.d(1);
     				if_block1 = null;
     			}
+
+    			if (/*candidate*/ ctx[0].incumbent) {
+    				if (if_block2) ; else {
+    					if_block2 = create_if_block_4$3(ctx);
+    					if_block2.c();
+    					if_block2.m(div2, t7);
+    				}
+    			} else if (if_block2) {
+    				if_block2.d(1);
+    				if_block2 = null;
+    			}
+
+    			if (/*candidate*/ ctx[0].endorsed) {
+    				if (if_block3) {
+    					if_block3.p(ctx, dirty);
+    				} else {
+    					if_block3 = create_if_block_2$5(ctx);
+    					if_block3.c();
+    					if_block3.m(div2, t8);
+    				}
+    			} else if (if_block3) {
+    				if_block3.d(1);
+    				if_block3 = null;
+    			}
+
+    			if (/*candidate*/ ctx[0]["dropped-out"]) {
+    				if (if_block4) {
+    					if_block4.p(ctx, dirty);
+    				} else {
+    					if_block4 = create_if_block_1$5(ctx);
+    					if_block4.c();
+    					if_block4.m(div2, null);
+    				}
+    			} else if (if_block4) {
+    				if_block4.d(1);
+    				if_block4 = null;
+    			}
+
+    			if (/*candidate*/ ctx[0].blurb) {
+    				if (if_block5) {
+    					if_block5.p(ctx, dirty);
+    				} else {
+    					if_block5 = create_if_block$6(ctx);
+    					if_block5.c();
+    					if_block5.m(div3, null);
+    				}
+    			} else if (if_block5) {
+    				if_block5.d(1);
+    				if_block5 = null;
+    			}
+
+    			if (dirty & /*candidate*/ 1) {
+    				toggle_class(div3, "former-candidate", /*candidate*/ ctx[0]["dropped-out"]);
+    			}
     		},
     		i: noop,
     		o: noop,
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(article);
+    			if (detaching) detach_dev(div3);
     			if (if_block0) if_block0.d();
     			if (if_block1) if_block1.d();
+    			if (if_block2) if_block2.d();
+    			if (if_block3) if_block3.d();
+    			if (if_block4) if_block4.d();
+    			if (if_block5) if_block5.d();
     		}
     	};
 
@@ -2258,10 +2629,30 @@ var app = (function () {
     	return block;
     }
 
+    function parseDropoutDate(dateString) {
+    	let date = new Date(dateString);
+
+    	let options = {
+    		year: 'numeric',
+    		month: 'long',
+    		day: 'numeric'
+    	};
+
+    	return date.toLocaleString('en-US', options);
+    }
+
     function instance$c($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('Candidate', slots, []);
     	let { candidate } = $$props;
+
+    	const party_icons = {
+    		"republican": "republican",
+    		"dfl": "democrat",
+    		"legal-marijuana-now": "cannabis",
+    		"grassroots-legalize-cannabis": "cannabis"
+    	};
+
     	const writable_props = ['candidate'];
 
     	Object.keys($$props).forEach(key => {
@@ -2272,7 +2663,7 @@ var app = (function () {
     		if ('candidate' in $$props) $$invalidate(0, candidate = $$props.candidate);
     	};
 
-    	$$self.$capture_state = () => ({ candidate });
+    	$$self.$capture_state = () => ({ candidate, party_icons, parseDropoutDate });
 
     	$$self.$inject_state = $$props => {
     		if ('candidate' in $$props) $$invalidate(0, candidate = $$props.candidate);
@@ -2282,7 +2673,7 @@ var app = (function () {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [candidate];
+    	return [candidate, party_icons];
     }
 
     class Candidate extends SvelteComponentDev {
@@ -2336,7 +2727,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (23:0) {#if items["searchTerm"] != ""}
+    // (31:0) {#if items["searchTerm"] != ""}
     function create_if_block_1$4(ctx) {
     	let aside;
     	let t0;
@@ -2382,9 +2773,9 @@ var app = (function () {
     			t6 = text(" for ");
     			strong = element("strong");
     			t7 = text(t7_value);
-    			add_location(strong, file$b, 24, 187, 857);
+    			add_location(strong, file$b, 32, 187, 999);
     			attr_dev(aside, "class", "m-search-result-info");
-    			add_location(aside, file$b, 23, 4, 633);
+    			add_location(aside, file$b, 31, 4, 775);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, aside, anchor);
@@ -2438,14 +2829,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1$4.name,
     		type: "if",
-    		source: "(23:0) {#if items[\\\"searchTerm\\\"] != \\\"\\\"}",
+    		source: "(31:0) {#if items[\\\"searchTerm\\\"] != \\\"\\\"}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (25:85) {:else}
+    // (33:85) {:else}
     function create_else_block_1$3(ctx) {
     	let t;
 
@@ -2465,14 +2856,14 @@ var app = (function () {
     		block,
     		id: create_else_block_1$3.name,
     		type: "else",
-    		source: "(25:85) {:else}",
+    		source: "(33:85) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (25:42) {#if items.candidates.length == 1}
+    // (33:42) {#if items.candidates.length == 1}
     function create_if_block_3$3(ctx) {
     	let t;
 
@@ -2492,14 +2883,14 @@ var app = (function () {
     		block,
     		id: create_if_block_3$3.name,
     		type: "if",
-    		source: "(25:42) {#if items.candidates.length == 1}",
+    		source: "(33:42) {#if items.candidates.length == 1}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (25:165) {:else}
+    // (33:165) {:else}
     function create_else_block$4(ctx) {
     	let t;
 
@@ -2519,14 +2910,14 @@ var app = (function () {
     		block,
     		id: create_else_block$4.name,
     		type: "else",
-    		source: "(25:165) {:else}",
+    		source: "(33:165) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (25:132) {#if items.races.length == 1}
+    // (33:132) {#if items.races.length == 1}
     function create_if_block_2$4(ctx) {
     	let t;
 
@@ -2546,14 +2937,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2$4.name,
     		type: "if",
-    		source: "(25:132) {#if items.races.length == 1}",
+    		source: "(33:132) {#if items.races.length == 1}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (34:12) {#if party_candidates(party, race.office).length > 0}
+    // (42:12) {#if party_candidates(party, race.office).length > 0}
     function create_if_block$5(ctx) {
     	let section;
     	let h3;
@@ -2585,10 +2976,10 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			attr_dev(h3, "class", h3_class_value = "party-" + /*items*/ ctx[0].all_party_ids[/*key*/ ctx[9]]);
-    			add_location(h3, file$b, 35, 20, 1191);
-    			attr_dev(section, "class", "candidates-list");
-    			add_location(section, file$b, 34, 16, 1137);
+    			attr_dev(h3, "class", h3_class_value = "party-" + /*items*/ ctx[0].all_party_ids[/*key*/ ctx[9]] + " svelte-1a14bin");
+    			add_location(h3, file$b, 43, 20, 1333);
+    			attr_dev(section, "class", "candidates-list svelte-1a14bin");
+    			add_location(section, file$b, 42, 16, 1279);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, section, anchor);
@@ -2603,7 +2994,7 @@ var app = (function () {
     			current = true;
     		},
     		p: function update(ctx, dirty) {
-    			if (!current || dirty & /*items*/ 1 && h3_class_value !== (h3_class_value = "party-" + /*items*/ ctx[0].all_party_ids[/*key*/ ctx[9]])) {
+    			if (!current || dirty & /*items*/ 1 && h3_class_value !== (h3_class_value = "party-" + /*items*/ ctx[0].all_party_ids[/*key*/ ctx[9]] + " svelte-1a14bin")) {
     				attr_dev(h3, "class", h3_class_value);
     			}
 
@@ -2663,14 +3054,14 @@ var app = (function () {
     		block,
     		id: create_if_block$5.name,
     		type: "if",
-    		source: "(34:12) {#if party_candidates(party, race.office).length > 0}",
+    		source: "(42:12) {#if party_candidates(party, race.office).length > 0}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (37:20) {#each party_candidates(party, race.office) as candidate}
+    // (45:20) {#each party_candidates(party, race.office) as candidate}
     function create_each_block_2$2(ctx) {
     	let candidate;
     	let current;
@@ -2711,14 +3102,14 @@ var app = (function () {
     		block,
     		id: create_each_block_2$2.name,
     		type: "each",
-    		source: "(37:20) {#each party_candidates(party, race.office) as candidate}",
+    		source: "(45:20) {#each party_candidates(party, race.office) as candidate}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (33:8) {#each parties as party, key}
+    // (41:8) {#each parties as party, key}
     function create_each_block_1$2(ctx) {
     	let show_if = /*party_candidates*/ ctx[2](/*party*/ ctx[7], /*race*/ ctx[4].office).length > 0;
     	let if_block_anchor;
@@ -2780,14 +3171,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1$2.name,
     		type: "each",
-    		source: "(33:8) {#each parties as party, key}",
+    		source: "(41:8) {#each parties as party, key}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (29:0) {#each items.races as race}
+    // (37:0) {#each items.races as race}
     function create_each_block$6(ctx) {
     	let section;
     	let h2;
@@ -2827,9 +3218,9 @@ var app = (function () {
     			}
 
     			t4 = space();
-    			add_location(h2, file$b, 30, 8, 966);
-    			add_location(p, file$b, 31, 8, 997);
-    			add_location(section, file$b, 29, 4, 948);
+    			add_location(h2, file$b, 38, 8, 1108);
+    			add_location(p, file$b, 39, 8, 1139);
+    			add_location(section, file$b, 37, 4, 1090);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, section, anchor);
@@ -2907,7 +3298,7 @@ var app = (function () {
     		block,
     		id: create_each_block$6.name,
     		type: "each",
-    		source: "(29:0) {#each items.races as race}",
+    		source: "(37:0) {#each items.races as race}",
     		ctx
     	});
 
@@ -3135,7 +3526,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (47:0) {#if office}
+    // (55:0) {#if office}
     function create_if_block_4$2(ctx) {
     	let aside;
     	let t0;
@@ -3187,9 +3578,9 @@ var app = (function () {
     			t6 = text(" for ");
     			strong = element("strong");
     			t7 = text(t7_value);
-    			add_location(strong, file$a, 48, 334, 1554);
+    			add_location(strong, file$a, 56, 334, 1695);
     			attr_dev(aside, "class", "m-search-result-info");
-    			add_location(aside, file$a, 47, 1, 1183);
+    			add_location(aside, file$a, 55, 1, 1324);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, aside, anchor);
@@ -3243,14 +3634,14 @@ var app = (function () {
     		block,
     		id: create_if_block_4$2.name,
     		type: "if",
-    		source: "(47:0) {#if office}",
+    		source: "(55:0) {#if office}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (49:123) {:else}
+    // (57:123) {:else}
     function create_else_block_1$2(ctx) {
     	let t;
 
@@ -3270,14 +3661,14 @@ var app = (function () {
     		block,
     		id: create_else_block_1$2.name,
     		type: "else",
-    		source: "(49:123) {:else}",
+    		source: "(57:123) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (49:58) {#if office_candidates(office["office-id"]).length == 1}
+    // (57:58) {#if office_candidates(office["office-id"]).length == 1}
     function create_if_block_6$1(ctx) {
     	let t;
 
@@ -3297,14 +3688,14 @@ var app = (function () {
     		block,
     		id: create_if_block_6$1.name,
     		type: "if",
-    		source: "(49:58) {#if office_candidates(office[\\\"office-id\\\"]).length == 1}",
+    		source: "(57:58) {#if office_candidates(office[\\\"office-id\\\"]).length == 1}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (49:310) {:else}
+    // (57:310) {:else}
     function create_else_block$3(ctx) {
     	let t;
 
@@ -3324,14 +3715,14 @@ var app = (function () {
     		block,
     		id: create_else_block$3.name,
     		type: "else",
-    		source: "(49:310) {:else}",
+    		source: "(57:310) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (49:223) {#if office_candidate_parties(office_candidates(office["office-id"])).length == 1}
+    // (57:223) {#if office_candidate_parties(office_candidates(office["office-id"])).length == 1}
     function create_if_block_5$1(ctx) {
     	let t;
 
@@ -3351,14 +3742,14 @@ var app = (function () {
     		block,
     		id: create_if_block_5$1.name,
     		type: "if",
-    		source: "(49:223) {#if office_candidate_parties(office_candidates(office[\\\"office-id\\\"])).length == 1}",
+    		source: "(57:223) {#if office_candidate_parties(office_candidates(office[\\\"office-id\\\"])).length == 1}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (55:2) {#if race}
+    // (63:2) {#if race}
     function create_if_block$4(ctx) {
     	let t0;
     	let t1;
@@ -3491,14 +3882,14 @@ var app = (function () {
     		block,
     		id: create_if_block$4.name,
     		type: "if",
-    		source: "(55:2) {#if race}",
+    		source: "(63:2) {#if race}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (56:3) {#if races.length > 1}
+    // (64:3) {#if races.length > 1}
     function create_if_block_3$2(ctx) {
     	let h2;
     	let t_value = /*race*/ ctx[7].office + "";
@@ -3508,7 +3899,7 @@ var app = (function () {
     		c: function create() {
     			h2 = element("h2");
     			t = text(t_value);
-    			add_location(h2, file$a, 56, 4, 1712);
+    			add_location(h2, file$a, 64, 4, 1853);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h2, anchor);
@@ -3526,14 +3917,14 @@ var app = (function () {
     		block,
     		id: create_if_block_3$2.name,
     		type: "if",
-    		source: "(56:3) {#if races.length > 1}",
+    		source: "(64:3) {#if races.length > 1}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (59:3) {#if race.blurb}
+    // (67:3) {#if race.blurb}
     function create_if_block_2$3(ctx) {
     	let p;
     	let t_value = /*race*/ ctx[7].blurb + "";
@@ -3543,7 +3934,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			t = text(t_value);
-    			add_location(p, file$a, 59, 4, 1768);
+    			add_location(p, file$a, 67, 4, 1909);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -3561,14 +3952,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2$3.name,
     		type: "if",
-    		source: "(59:3) {#if race.blurb}",
+    		source: "(67:3) {#if race.blurb}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (63:4) {#if office_candidates(race["office-id"], party).length > 0}
+    // (71:4) {#if office_candidates(race["office-id"], party).length > 0}
     function create_if_block_1$3(ctx) {
     	let section;
     	let h3;
@@ -3602,10 +3993,10 @@ var app = (function () {
     			}
 
     			t2 = space();
-    			attr_dev(h3, "class", h3_class_value = "party-" + /*items*/ ctx[0].all_party_ids[/*key*/ ctx[9]]);
-    			add_location(h3, file$a, 64, 6, 1940);
-    			attr_dev(section, "class", "candidates-list");
-    			add_location(section, file$a, 63, 5, 1900);
+    			attr_dev(h3, "class", h3_class_value = "party-" + /*items*/ ctx[0].all_party_ids[/*key*/ ctx[9]] + " svelte-y94fo8");
+    			add_location(h3, file$a, 72, 6, 2081);
+    			attr_dev(section, "class", "candidates-list svelte-y94fo8");
+    			add_location(section, file$a, 71, 5, 2041);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, section, anchor);
@@ -3621,7 +4012,7 @@ var app = (function () {
     			current = true;
     		},
     		p: function update(ctx, dirty) {
-    			if (!current || dirty & /*items*/ 1 && h3_class_value !== (h3_class_value = "party-" + /*items*/ ctx[0].all_party_ids[/*key*/ ctx[9]])) {
+    			if (!current || dirty & /*items*/ 1 && h3_class_value !== (h3_class_value = "party-" + /*items*/ ctx[0].all_party_ids[/*key*/ ctx[9]] + " svelte-y94fo8")) {
     				attr_dev(h3, "class", h3_class_value);
     			}
 
@@ -3681,14 +4072,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1$3.name,
     		type: "if",
-    		source: "(63:4) {#if office_candidates(race[\\\"office-id\\\"], party).length > 0}",
+    		source: "(71:4) {#if office_candidates(race[\\\"office-id\\\"], party).length > 0}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (66:6) {#each office_candidates(race["office-id"], party) as candidate}
+    // (74:6) {#each office_candidates(race["office-id"], party) as candidate}
     function create_each_block_2$1(ctx) {
     	let candidate;
     	let current;
@@ -3729,14 +4120,14 @@ var app = (function () {
     		block,
     		id: create_each_block_2$1.name,
     		type: "each",
-    		source: "(66:6) {#each office_candidates(race[\\\"office-id\\\"], party) as candidate}",
+    		source: "(74:6) {#each office_candidates(race[\\\"office-id\\\"], party) as candidate}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (62:3) {#each parties as party, key}
+    // (70:3) {#each parties as party, key}
     function create_each_block_1$1(ctx) {
     	let show_if = /*office_candidates*/ ctx[4](/*race*/ ctx[7]["office-id"], /*party*/ ctx[10]).length > 0;
     	let if_block_anchor;
@@ -3798,14 +4189,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1$1.name,
     		type: "each",
-    		source: "(62:3) {#each parties as party, key}",
+    		source: "(70:3) {#each parties as party, key}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (53:0) {#each races as race, key}
+    // (61:0) {#each races as race, key}
     function create_each_block$5(ctx) {
     	let section;
     	let t;
@@ -3817,8 +4208,8 @@ var app = (function () {
     			section = element("section");
     			if (if_block) if_block.c();
     			t = space();
-    			attr_dev(section, "class", "candidates-list");
-    			add_location(section, file$a, 53, 1, 1635);
+    			attr_dev(section, "class", "candidates-list svelte-y94fo8");
+    			add_location(section, file$a, 61, 1, 1776);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, section, anchor);
@@ -3869,7 +4260,7 @@ var app = (function () {
     		block,
     		id: create_each_block$5.name,
     		type: "each",
-    		source: "(53:0) {#each races as race, key}",
+    		source: "(61:0) {#each races as race, key}",
     		ctx
     	});
 
@@ -4145,7 +4536,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (43:0) {#if parties.length == 1}
+    // (51:0) {#if parties.length == 1}
     function create_if_block_2$2(ctx) {
     	let aside;
     	let t0;
@@ -4197,9 +4588,9 @@ var app = (function () {
     			t6 = text(" for ");
     			strong = element("strong");
     			t7 = text(t7_value);
-    			add_location(strong, file$9, 44, 285, 1453);
+    			add_location(strong, file$9, 52, 285, 1594);
     			attr_dev(aside, "class", "m-search-result-info");
-    			add_location(aside, file$9, 43, 1, 1131);
+    			add_location(aside, file$9, 51, 1, 1272);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, aside, anchor);
@@ -4253,14 +4644,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2$2.name,
     		type: "if",
-    		source: "(43:0) {#if parties.length == 1}",
+    		source: "(51:0) {#if parties.length == 1}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (45:103) {:else}
+    // (53:103) {:else}
     function create_else_block_1$1(ctx) {
     	let t;
 
@@ -4280,14 +4671,14 @@ var app = (function () {
     		block,
     		id: create_else_block_1$1.name,
     		type: "else",
-    		source: "(45:103) {:else}",
+    		source: "(53:103) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (45:48) {#if party_candidates(parties[0]).length == 1}
+    // (53:48) {#if party_candidates(parties[0]).length == 1}
     function create_if_block_4$1(ctx) {
     	let t;
 
@@ -4307,14 +4698,14 @@ var app = (function () {
     		block,
     		id: create_if_block_4$1.name,
     		type: "if",
-    		source: "(45:48) {#if party_candidates(parties[0]).length == 1}",
+    		source: "(53:48) {#if party_candidates(parties[0]).length == 1}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (45:263) {:else}
+    // (53:263) {:else}
     function create_else_block$2(ctx) {
     	let t;
 
@@ -4334,14 +4725,14 @@ var app = (function () {
     		block,
     		id: create_else_block$2.name,
     		type: "else",
-    		source: "(45:263) {:else}",
+    		source: "(53:263) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (45:190) {#if party_candidate_races(party_candidates(parties[0])).length == 1}
+    // (53:190) {#if party_candidate_races(party_candidates(parties[0])).length == 1}
     function create_if_block_3$1(ctx) {
     	let t;
 
@@ -4361,14 +4752,14 @@ var app = (function () {
     		block,
     		id: create_if_block_3$1.name,
     		type: "if",
-    		source: "(45:190) {#if party_candidate_races(party_candidates(parties[0])).length == 1}",
+    		source: "(53:190) {#if party_candidate_races(party_candidates(parties[0])).length == 1}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (51:2) {#if parties.length > 1}
+    // (59:2) {#if parties.length > 1}
     function create_if_block_1$2(ctx) {
     	let h2;
     	let t_value = /*party*/ ctx[6] + "";
@@ -4379,8 +4770,8 @@ var app = (function () {
     		c: function create() {
     			h2 = element("h2");
     			t = text(t_value);
-    			attr_dev(h2, "class", h2_class_value = "party-" + /*items*/ ctx[0].all_party_ids[/*key*/ ctx[8]]);
-    			add_location(h2, file$9, 51, 3, 1595);
+    			attr_dev(h2, "class", h2_class_value = "party-" + /*items*/ ctx[0].all_party_ids[/*key*/ ctx[8]] + " svelte-y94fo8");
+    			add_location(h2, file$9, 59, 3, 1736);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h2, anchor);
@@ -4389,7 +4780,7 @@ var app = (function () {
     		p: function update(ctx, dirty) {
     			if (dirty & /*parties*/ 2 && t_value !== (t_value = /*party*/ ctx[6] + "")) set_data_dev(t, t_value);
 
-    			if (dirty & /*items*/ 1 && h2_class_value !== (h2_class_value = "party-" + /*items*/ ctx[0].all_party_ids[/*key*/ ctx[8]])) {
+    			if (dirty & /*items*/ 1 && h2_class_value !== (h2_class_value = "party-" + /*items*/ ctx[0].all_party_ids[/*key*/ ctx[8]] + " svelte-y94fo8")) {
     				attr_dev(h2, "class", h2_class_value);
     			}
     		},
@@ -4402,16 +4793,15 @@ var app = (function () {
     		block,
     		id: create_if_block_1$2.name,
     		type: "if",
-    		source: "(51:2) {#if parties.length > 1}",
+    		source: "(59:2) {#if parties.length > 1}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (55:3) {#if party_candidates(party, race.office).length > 0}
+    // (63:3) {#if party_candidates(party, race.office).length > 0}
     function create_if_block$3(ctx) {
-    	let section;
     	let h4;
     	let t0_value = /*race*/ ctx[9].office + "";
     	let t0;
@@ -4420,6 +4810,7 @@ var app = (function () {
     	let t2_value = /*race*/ ctx[9].blurb + "";
     	let t2;
     	let t3;
+    	let section;
     	let current;
     	let each_value_2 = /*party_candidates*/ ctx[3](/*party*/ ctx[6], /*race*/ ctx[9].office);
     	validate_each_argument(each_value_2);
@@ -4435,31 +4826,32 @@ var app = (function () {
 
     	const block = {
     		c: function create() {
-    			section = element("section");
     			h4 = element("h4");
     			t0 = text(t0_value);
     			t1 = space();
     			p = element("p");
     			t2 = text(t2_value);
     			t3 = space();
+    			section = element("section");
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].c();
     			}
 
-    			add_location(h4, file$9, 56, 5, 1790);
-    			add_location(p, file$9, 57, 5, 1818);
-    			attr_dev(section, "class", "candidates-list");
-    			add_location(section, file$9, 55, 4, 1751);
+    			attr_dev(h4, "class", "svelte-y94fo8");
+    			add_location(h4, file$9, 63, 3, 1891);
+    			add_location(p, file$9, 64, 3, 1917);
+    			attr_dev(section, "class", "candidates-list svelte-y94fo8");
+    			add_location(section, file$9, 65, 4, 1941);
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, section, anchor);
-    			append_dev(section, h4);
+    			insert_dev(target, h4, anchor);
     			append_dev(h4, t0);
-    			append_dev(section, t1);
-    			append_dev(section, p);
+    			insert_dev(target, t1, anchor);
+    			insert_dev(target, p, anchor);
     			append_dev(p, t2);
-    			append_dev(section, t3);
+    			insert_dev(target, t3, anchor);
+    			insert_dev(target, section, anchor);
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].m(section, null);
@@ -4515,6 +4907,10 @@ var app = (function () {
     			current = false;
     		},
     		d: function destroy(detaching) {
+    			if (detaching) detach_dev(h4);
+    			if (detaching) detach_dev(t1);
+    			if (detaching) detach_dev(p);
+    			if (detaching) detach_dev(t3);
     			if (detaching) detach_dev(section);
     			destroy_each(each_blocks, detaching);
     		}
@@ -4524,14 +4920,14 @@ var app = (function () {
     		block,
     		id: create_if_block$3.name,
     		type: "if",
-    		source: "(55:3) {#if party_candidates(party, race.office).length > 0}",
+    		source: "(63:3) {#if party_candidates(party, race.office).length > 0}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (59:5) {#each party_candidates(party, race.office) as candidate}
+    // (67:5) {#each party_candidates(party, race.office) as candidate}
     function create_each_block_2(ctx) {
     	let candidate;
     	let current;
@@ -4572,14 +4968,14 @@ var app = (function () {
     		block,
     		id: create_each_block_2.name,
     		type: "each",
-    		source: "(59:5) {#each party_candidates(party, race.office) as candidate}",
+    		source: "(67:5) {#each party_candidates(party, race.office) as candidate}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (54:2) {#each races as race, key}
+    // (62:2) {#each races as race, key}
     function create_each_block_1(ctx) {
     	let show_if = /*party_candidates*/ ctx[3](/*party*/ ctx[6], /*race*/ ctx[9].office).length > 0;
     	let if_block_anchor;
@@ -4641,14 +5037,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1.name,
     		type: "each",
-    		source: "(54:2) {#each races as race, key}",
+    		source: "(62:2) {#each races as race, key}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (49:0) {#each parties as party, key}
+    // (57:0) {#each parties as party, key}
     function create_each_block$4(ctx) {
     	let section;
     	let t0;
@@ -4678,8 +5074,8 @@ var app = (function () {
     			}
 
     			t1 = space();
-    			attr_dev(section, "class", "candidates-list");
-    			add_location(section, file$9, 49, 1, 1531);
+    			attr_dev(section, "class", "candidates-list svelte-y94fo8");
+    			add_location(section, file$9, 57, 1, 1672);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, section, anchor);
@@ -4764,7 +5160,7 @@ var app = (function () {
     		block,
     		id: create_each_block$4.name,
     		type: "each",
-    		source: "(49:0) {#each parties as party, key}",
+    		source: "(57:0) {#each parties as party, key}",
     		ctx
     	});
 
