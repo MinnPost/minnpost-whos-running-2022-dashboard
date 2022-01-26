@@ -59,10 +59,10 @@
 			{#if race.blurb}
 				<p>{race.blurb}</p>
 			{/if}
-			{#each parties as party}
+			{#each parties as party, key}
 				{#if office_candidates(race["office-id"], party).length > 0}
 					<section class="candidates-list">
-						<h3>{party}</h3>
+						<h3 class="party-{items.all_party_ids[key]}">{party}</h3>
 						{#each office_candidates(race["office-id"], party) as candidate}
 							<Candidate candidate = {candidate} />
 						{/each}

@@ -46,10 +46,10 @@
 	</aside>
 {/if}
 
-{#each parties as party}
+{#each parties as party, key}
 	<section class="candidates-list">
 		{#if parties.length > 1}
-			<h2>{party}</h2>
+			<h2 class="party-{items.all_party_ids[key]}">{party}</h2>
 		{/if}
 		{#each races as race, key}
 			{#if party_candidates(party, race.office).length > 0}
