@@ -19,7 +19,7 @@
 	.party-legal-marijuana-now {color: #286806;}
 	.party-grassroots-legalize-cannabis {color: #41AB07;}
 
-	.incumbent-icon {color: #FBD341;}
+	.incumbent {color: #f74607;}
 
 	.dropped-out {
 		color: #ccc;
@@ -46,9 +46,11 @@
 	<h3>{candidate.name}</h3>
 	<div class="candidate-meta">
 		<div class="party-name party-{candidate["party-id"]}"><i class="fas fa-{party_icons[candidate["party-id"]] ?? "circle"}"></i> {candidate.party}</div>
+
 		{#if candidate["incumbent"]}
-		<div class="incumbent"><span class="incumbent-icon"><i class="fas fa-star"></i></span> Incumbent</div>
+		<div class="incumbent"><i class="fas fa-star"></i> Incumbent</div>
 		{/if}
+
 		{#if candidate["dropped-out"]}
 		<span>dropped out on {candidate["date-dropped-out"]}</span>
 		{/if}
