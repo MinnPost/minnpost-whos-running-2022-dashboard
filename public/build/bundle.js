@@ -2152,7 +2152,7 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			i = element("i");
-    			t0 = text(" From: ");
+    			t0 = text(" Lives in: ");
     			t1 = text(t1_value);
     			attr_dev(i, "class", "fas fa-fw fa-home");
     			add_location(i, file$c, 78, 24, 1628);
@@ -2196,9 +2196,9 @@ var app = (function () {
     			i = element("i");
     			t = text(" Incumbent");
     			attr_dev(i, "class", "fas fa-fw fa-star");
-    			add_location(i, file$c, 82, 25, 1757);
+    			add_location(i, file$c, 82, 25, 1761);
     			attr_dev(div, "class", "incumbent svelte-1pdto0r");
-    			add_location(div, file$c, 82, 2, 1734);
+    			add_location(div, file$c, 82, 2, 1738);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -2246,13 +2246,13 @@ var app = (function () {
     			t2 = space();
     			if (if_block) if_block.c();
     			attr_dev(i, "class", "fas fa-fw fa-check-square");
-    			add_location(i, file$c, 86, 73, 1916);
+    			add_location(i, file$c, 86, 73, 1920);
     			attr_dev(span0, "class", span0_class_value = "icon party-" + /*candidate*/ ctx[0]["party-id"] + " svelte-1pdto0r");
-    			add_location(span0, file$c, 86, 24, 1867);
+    			add_location(span0, file$c, 86, 24, 1871);
     			attr_dev(span1, "class", span1_class_value = "party-" + /*candidate*/ ctx[0]["party-id"] + " svelte-1pdto0r");
-    			add_location(span1, file$c, 87, 15, 1981);
+    			add_location(span1, file$c, 87, 15, 1985);
     			attr_dev(div, "class", "endorsed");
-    			add_location(div, file$c, 86, 2, 1845);
+    			add_location(div, file$c, 86, 2, 1849);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -2347,11 +2347,11 @@ var app = (function () {
     			t0 = text(" Dropped out of the race on ");
     			t1 = text(t1_value);
     			attr_dev(i, "class", "fas fa-fw fa-times");
-    			add_location(i, file$c, 91, 46, 2186);
+    			add_location(i, file$c, 91, 46, 2190);
     			attr_dev(span, "class", "icon svelte-1pdto0r");
-    			add_location(span, file$c, 91, 27, 2167);
+    			add_location(span, file$c, 91, 27, 2171);
     			attr_dev(div, "class", "dropped-out svelte-1pdto0r");
-    			add_location(div, file$c, 91, 2, 2142);
+    			add_location(div, file$c, 91, 2, 2146);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -2391,9 +2391,9 @@ var app = (function () {
     			div = element("div");
     			p = element("p");
     			t = text(t_value);
-    			add_location(p, file$c, 96, 2, 2373);
+    			add_location(p, file$c, 96, 2, 2377);
     			attr_dev(div, "class", "blurb svelte-1pdto0r");
-    			add_location(div, file$c, 95, 1, 2351);
+    			add_location(div, file$c, 95, 1, 2355);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -2423,7 +2423,7 @@ var app = (function () {
     	let div3;
     	let div0;
     	let t0;
-    	let h3;
+    	let h4;
     	let t1_value = /*candidate*/ ctx[0].name + "";
     	let t1;
     	let t2;
@@ -2453,7 +2453,7 @@ var app = (function () {
     			div0 = element("div");
     			if (if_block0) if_block0.c();
     			t0 = space();
-    			h3 = element("h3");
+    			h4 = element("h4");
     			t1 = text(t1_value);
     			t2 = space();
     			div2 = element("div");
@@ -2473,8 +2473,7 @@ var app = (function () {
     			if (if_block5) if_block5.c();
     			attr_dev(div0, "class", "candidate-photo svelte-1pdto0r");
     			add_location(div0, file$c, 66, 1, 1201);
-    			attr_dev(h3, "class", "svelte-1pdto0r");
-    			add_location(h3, file$c, 72, 1, 1361);
+    			add_location(h4, file$c, 72, 1, 1361);
     			attr_dev(i, "class", i_class_value = "fas fa-fw fa-" + (/*party_icons*/ ctx[1][/*candidate*/ ctx[0]["party-id"]] ?? "circle") + " svelte-1pdto0r");
     			add_location(i, file$c, 75, 56, 1474);
     			attr_dev(div1, "class", div1_class_value = "party-name party-" + /*candidate*/ ctx[0]["party-id"] + " svelte-1pdto0r");
@@ -2493,8 +2492,8 @@ var app = (function () {
     			append_dev(div3, div0);
     			if (if_block0) if_block0.m(div0, null);
     			append_dev(div3, t0);
-    			append_dev(div3, h3);
-    			append_dev(h3, t1);
+    			append_dev(div3, h4);
+    			append_dev(h4, t1);
     			append_dev(div3, t2);
     			append_dev(div3, div2);
     			append_dev(div2, div1);
