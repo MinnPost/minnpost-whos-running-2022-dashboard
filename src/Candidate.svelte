@@ -70,7 +70,7 @@
 		{/if}
 	</div>
 	
-	<h3>{candidate.name}</h3>
+	<h4>{candidate.name}</h4>
 
 	<div class="candidate-meta">
 		<div class="party-name party-{candidate["party-id"]}"><i class="fas fa-fw fa-{party_icons[candidate["party-id"]] ?? "circle"}"></i> {candidate.party}</div>
