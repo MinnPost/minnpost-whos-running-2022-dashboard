@@ -2383,14 +2383,12 @@ var app = (function () {
     function create_if_block$6(ctx) {
     	let div;
     	let p;
-    	let t_value = /*candidate*/ ctx[0].blurb + "";
-    	let t;
+    	let raw_value = /*candidate*/ ctx[0].blurb + "";
 
     	const block = {
     		c: function create() {
     			div = element("div");
     			p = element("p");
-    			t = text(t_value);
     			add_location(p, file$c, 96, 2, 2377);
     			attr_dev(div, "class", "blurb svelte-1pdto0r");
     			add_location(div, file$c, 95, 1, 2355);
@@ -2398,11 +2396,10 @@ var app = (function () {
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
     			append_dev(div, p);
-    			append_dev(p, t);
+    			p.innerHTML = raw_value;
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*candidate*/ 1 && t_value !== (t_value = /*candidate*/ ctx[0].blurb + "")) set_data_dev(t, t_value);
-    		},
+    			if (dirty & /*candidate*/ 1 && raw_value !== (raw_value = /*candidate*/ ctx[0].blurb + "")) p.innerHTML = raw_value;		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(div);
     		}
@@ -2976,9 +2973,9 @@ var app = (function () {
     			}
 
     			attr_dev(h3, "class", h3_class_value = "party-" + /*items*/ ctx[0].all_party_ids[/*key*/ ctx[9]]);
-    			add_location(h3, file$b, 35, 20, 1212);
+    			add_location(h3, file$b, 35, 20, 1218);
     			attr_dev(section, "class", "candidates-list");
-    			add_location(section, file$b, 34, 16, 1158);
+    			add_location(section, file$b, 34, 16, 1164);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, section, anchor);
@@ -3185,10 +3182,9 @@ var app = (function () {
     	let t0;
     	let t1;
     	let p;
-    	let t2_value = /*race*/ ctx[4].blurb + "";
+    	let raw_value = /*race*/ ctx[4].blurb + "";
     	let t2;
     	let t3;
-    	let t4;
     	let current;
     	let each_value_1 = /*parties*/ ctx[1];
     	validate_each_argument(each_value_1);
@@ -3209,14 +3205,13 @@ var app = (function () {
     			t0 = text(t0_value);
     			t1 = space();
     			p = element("p");
-    			t2 = text(t2_value);
-    			t3 = space();
+    			t2 = space();
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].c();
     			}
 
-    			t4 = space();
+    			t3 = space();
     			add_location(h2, file$b, 30, 8, 987);
     			add_location(p, file$b, 31, 8, 1018);
     			attr_dev(section, "class", "race-listing");
@@ -3228,20 +3223,19 @@ var app = (function () {
     			append_dev(h2, t0);
     			append_dev(section, t1);
     			append_dev(section, p);
-    			append_dev(p, t2);
-    			append_dev(section, t3);
+    			p.innerHTML = raw_value;
+    			append_dev(section, t2);
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].m(section, null);
     			}
 
-    			append_dev(section, t4);
+    			append_dev(section, t3);
     			current = true;
     		},
     		p: function update(ctx, dirty) {
     			if ((!current || dirty & /*items*/ 1) && t0_value !== (t0_value = /*race*/ ctx[4].office + "")) set_data_dev(t0, t0_value);
-    			if ((!current || dirty & /*items*/ 1) && t2_value !== (t2_value = /*race*/ ctx[4].blurb + "")) set_data_dev(t2, t2_value);
-
+    			if ((!current || dirty & /*items*/ 1) && raw_value !== (raw_value = /*race*/ ctx[4].blurb + "")) p.innerHTML = raw_value;
     			if (dirty & /*party_candidates, parties, items*/ 7) {
     				each_value_1 = /*parties*/ ctx[1];
     				validate_each_argument(each_value_1);
@@ -3257,7 +3251,7 @@ var app = (function () {
     						each_blocks[i] = create_each_block_1$2(child_ctx);
     						each_blocks[i].c();
     						transition_in(each_blocks[i], 1);
-    						each_blocks[i].m(section, t4);
+    						each_blocks[i].m(section, t3);
     					}
     				}
 
@@ -3927,22 +3921,19 @@ var app = (function () {
     // (59:3) {#if race.blurb}
     function create_if_block_2$3(ctx) {
     	let p;
-    	let t_value = /*race*/ ctx[7].blurb + "";
-    	let t;
+    	let raw_value = /*race*/ ctx[7].blurb + "";
 
     	const block = {
     		c: function create() {
     			p = element("p");
-    			t = text(t_value);
     			add_location(p, file$a, 59, 4, 1779);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
-    			append_dev(p, t);
+    			p.innerHTML = raw_value;
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*races*/ 2 && t_value !== (t_value = /*race*/ ctx[7].blurb + "")) set_data_dev(t, t_value);
-    		},
+    			if (dirty & /*races*/ 2 && raw_value !== (raw_value = /*race*/ ctx[7].blurb + "")) p.innerHTML = raw_value;		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(p);
     		}
@@ -3994,9 +3985,9 @@ var app = (function () {
 
     			t2 = space();
     			attr_dev(h3, "class", h3_class_value = "party-" + /*items*/ ctx[0].all_party_ids[/*key*/ ctx[9]]);
-    			add_location(h3, file$a, 64, 6, 1951);
+    			add_location(h3, file$a, 64, 6, 1957);
     			attr_dev(section, "class", "candidates-list");
-    			add_location(section, file$a, 63, 5, 1911);
+    			add_location(section, file$a, 63, 5, 1917);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, section, anchor);
@@ -4807,9 +4798,8 @@ var app = (function () {
     	let t0;
     	let t1;
     	let p;
-    	let t2_value = /*race*/ ctx[9].blurb + "";
+    	let raw_value = /*race*/ ctx[9].blurb + "";
     	let t2;
-    	let t3;
     	let section;
     	let current;
     	let each_value_2 = /*party_candidates*/ ctx[3](/*party*/ ctx[6], /*race*/ ctx[9].office);
@@ -4830,8 +4820,7 @@ var app = (function () {
     			t0 = text(t0_value);
     			t1 = space();
     			p = element("p");
-    			t2 = text(t2_value);
-    			t3 = space();
+    			t2 = space();
     			section = element("section");
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -4841,15 +4830,15 @@ var app = (function () {
     			add_location(h4, file$9, 55, 3, 1761);
     			add_location(p, file$9, 56, 3, 1787);
     			attr_dev(section, "class", "candidates-list");
-    			add_location(section, file$9, 57, 4, 1811);
+    			add_location(section, file$9, 57, 4, 1817);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h4, anchor);
     			append_dev(h4, t0);
     			insert_dev(target, t1, anchor);
     			insert_dev(target, p, anchor);
-    			append_dev(p, t2);
-    			insert_dev(target, t3, anchor);
+    			p.innerHTML = raw_value;
+    			insert_dev(target, t2, anchor);
     			insert_dev(target, section, anchor);
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -4909,7 +4898,7 @@ var app = (function () {
     			if (detaching) detach_dev(h4);
     			if (detaching) detach_dev(t1);
     			if (detaching) detach_dev(p);
-    			if (detaching) detach_dev(t3);
+    			if (detaching) detach_dev(t2);
     			if (detaching) detach_dev(section);
     			destroy_each(each_blocks, detaching);
     		}
