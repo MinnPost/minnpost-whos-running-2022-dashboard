@@ -1,6 +1,13 @@
 <style>
-	:global(.candidates-list h3) {
+
+	:global(.candidates-list) {
+    display: flex;
+    flex-wrap: wrap;
+		margin-bottom: 1em;
+  }
+	:global(.candidates-list h3, .candidates-list h4) {
 		width: 100%;
+		margin-bottom: 0.25em;
 	}
 	.m-filtering {
 		display: flex;
