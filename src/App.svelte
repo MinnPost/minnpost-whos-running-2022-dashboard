@@ -174,7 +174,7 @@
 	router.start();
 
 	// router base
-	router.base(window.location.href.substring(window.location.origin.length));
+	router.base('?p=2079676&preview=true');
 
 	let selectParty;
 	let selectOffice;

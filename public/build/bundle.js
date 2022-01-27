@@ -11370,18 +11370,18 @@ var app = (function () {
     			key_block.c();
     			key_block_anchor = empty();
     			attr_dev(div0, "class", "a-filter-select svelte-1e3bkkf");
-    			add_location(div0, file, 211, 3, 5993);
+    			add_location(div0, file, 211, 3, 5957);
     			attr_dev(div1, "class", "a-filter-select svelte-1e3bkkf");
-    			add_location(div1, file, 214, 3, 6251);
+    			add_location(div1, file, 214, 3, 6215);
     			attr_dev(div2, "class", "m-filtering svelte-1e3bkkf");
-    			add_location(div2, file, 210, 2, 5964);
+    			add_location(div2, file, 210, 2, 5928);
     			attr_dev(small, "class", "a-form-caption");
-    			add_location(small, file, 219, 187, 6735);
+    			add_location(small, file, 219, 187, 6699);
     			attr_dev(label, "class", "a-switch-toggle show-dropped-out-candidates svelte-1e3bkkf");
     			attr_dev(label, "for", "show-dropped-out-candidates");
-    			add_location(label, file, 219, 94, 6642);
+    			add_location(label, file, 219, 94, 6606);
     			attr_dev(div3, "class", "a-filter-switch svelte-1e3bkkf");
-    			add_location(div3, file, 218, 2, 6518);
+    			add_location(div3, file, 218, 2, 6482);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div2, anchor);
@@ -11623,11 +11623,11 @@ var app = (function () {
     			info.block.c();
     			attr_dev(input, "placeholder", "Search for a candidate, party, or race");
     			attr_dev(input, "class", "a-filter-search svelte-1e3bkkf");
-    			add_location(input, file, 203, 1, 5721);
+    			add_location(input, file, 203, 1, 5685);
     			attr_dev(div, "class", "m-filtering svelte-1e3bkkf");
-    			add_location(div, file, 202, 0, 5694);
+    			add_location(div, file, 202, 0, 5658);
     			attr_dev(section, "class", "container m-archive m-archive-excerpt m-archive-date");
-    			add_location(section, file, 206, 0, 5840);
+    			add_location(section, file, 206, 0, 5804);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -11763,7 +11763,7 @@ var app = (function () {
     	router.start();
 
     	// router base
-    	router.base(window.location.href.substring(window.location.origin.length));
+    	router.base('?p=2079676&preview=true');
 
     	let selectParty;
     	let selectOffice;
