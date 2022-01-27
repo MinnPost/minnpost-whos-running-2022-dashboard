@@ -94,7 +94,7 @@
 	</div>
 	{#if candidate.blurb}
 	<div class="blurb">
-		<p>{candidate.blurb}</p>
+		<p>{@html candidate.blurb}</p>
 	</div>
 	{/if}
 </div>

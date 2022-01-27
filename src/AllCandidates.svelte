@@ -29,7 +29,7 @@
 {#each items.races as race}
     <section class="race-listing">
         <h2>{race.office}</h2>
-        <p>{race.blurb}</p>
+        <p>{@html race.blurb}</p>
         {#each parties as party, key}
             {#if party_candidates(party, race.office).length > 0}
                 <section class="candidates-list">

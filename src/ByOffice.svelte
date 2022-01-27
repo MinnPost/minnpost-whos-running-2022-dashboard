@@ -57,7 +57,7 @@
 				<h2>{race.office}</h2>
 			{/if}
 			{#if race.blurb}
-				<p>{race.blurb}</p>
+				<p>{@html race.blurb}</p>
 			{/if}
 			{#each parties as party, key}
 				{#if office_candidates(race["office-id"], party).length > 0}

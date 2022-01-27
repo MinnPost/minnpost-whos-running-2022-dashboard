@@ -54,7 +54,7 @@
 		{#each races as race, key}
 			{#if party_candidates(party, race.office).length > 0}
 			<h4>{race.office}</h4>
-			<p>{race.blurb}</p>
+			<p>{@html race.blurb}</p>
 				<section class="candidates-list">
 					{#each party_candidates(party, race.office) as candidate}
 						<Candidate candidate = {candidate} />
