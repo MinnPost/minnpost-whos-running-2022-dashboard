@@ -1,5 +1,10 @@
 <style>
-
+	:global(.race-listing) {
+		border-bottom: 1px solid #d6d6da;
+		margin-bottom: 1.5em;
+		padding-bottom: .75em;
+	}
+	
 	:global(.candidates-list) {
     display: flex;
     flex-wrap: wrap;

@@ -51,7 +51,7 @@
 {/if}
 
 {#each races as race, key}
-	<section class="candidates-list">
+	<section class="race-listing">
 		{#if race}
 			{#if races.length > 1}
 				<h2>{race.office}</h2>

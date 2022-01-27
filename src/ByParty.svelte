@@ -47,7 +47,7 @@
 {/if}
 
 {#each parties as party, key}
-	<section class="candidates-list">
+	<section class="race-listing">
 		{#if parties.length > 1}
 			<h2 class="party-{items.all_party_ids[key]}">{party}</h2>
 		{/if}

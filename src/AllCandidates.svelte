@@ -27,7 +27,7 @@
 {/if}
 
 {#each items.races as race}
-    <section class="candidates-list">
+    <section class="race-listing">
         <h2>{race.office}</h2>
         <p>{race.blurb}</p>
         {#each parties as party, key}
