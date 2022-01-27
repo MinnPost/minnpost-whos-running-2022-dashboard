@@ -9,6 +9,12 @@
 		width: 100%;
 		margin-bottom: 0.25em;
 	}
+
+	:global(.party-dfl) {color: #0793AB;}
+	:global(.party-republican) {color: #A1000F}
+	:global(.party-legal-marijuana-now) {color: #286806;}
+	:global(.party-grassroots-legalize-cannabis) {color: #41AB07;}
+
 	.m-filtering {
 		display: flex;
 		justify-content: space-between;

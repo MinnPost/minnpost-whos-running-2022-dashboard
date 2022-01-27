@@ -34,14 +34,6 @@
 		color: #404040;
 	}
 
-	.party-name {
-		color: #666666;
-	}
-	.party-dfl {color: #0793AB;}
-	.party-republican {color: #A1000F}
-	.party-legal-marijuana-now {color: #286806;}
-	.party-grassroots-legalize-cannabis {color: #41AB07;}
-
 	.incumbent {color: #f74607;}
 	.dropped-out .icon {color: #C83D2D;}
 
