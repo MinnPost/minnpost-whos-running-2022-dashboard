@@ -173,6 +173,9 @@
 	// Start the router
 	router.start();
 
+	// router base
+	router.base(window.location.href.substring(window.location.origin.length));
+
 	let selectParty;
 	let selectOffice;
 

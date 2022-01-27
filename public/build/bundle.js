@@ -11295,7 +11295,7 @@ var app = (function () {
     	return block;
     }
 
-    // (207:1) {:then items}
+    // (210:1) {:then items}
     function create_then_block(ctx) {
     	let div2;
     	let div0;
@@ -11370,18 +11370,18 @@ var app = (function () {
     			key_block.c();
     			key_block_anchor = empty();
     			attr_dev(div0, "class", "a-filter-select svelte-1e3bkkf");
-    			add_location(div0, file, 208, 3, 5899);
+    			add_location(div0, file, 211, 3, 5993);
     			attr_dev(div1, "class", "a-filter-select svelte-1e3bkkf");
-    			add_location(div1, file, 211, 3, 6157);
+    			add_location(div1, file, 214, 3, 6251);
     			attr_dev(div2, "class", "m-filtering svelte-1e3bkkf");
-    			add_location(div2, file, 207, 2, 5870);
+    			add_location(div2, file, 210, 2, 5964);
     			attr_dev(small, "class", "a-form-caption");
-    			add_location(small, file, 216, 187, 6641);
+    			add_location(small, file, 219, 187, 6735);
     			attr_dev(label, "class", "a-switch-toggle show-dropped-out-candidates svelte-1e3bkkf");
     			attr_dev(label, "for", "show-dropped-out-candidates");
-    			add_location(label, file, 216, 94, 6548);
+    			add_location(label, file, 219, 94, 6642);
     			attr_dev(div3, "class", "a-filter-switch svelte-1e3bkkf");
-    			add_location(div3, file, 215, 2, 6424);
+    			add_location(div3, file, 218, 2, 6518);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div2, anchor);
@@ -11464,14 +11464,14 @@ var app = (function () {
     		block,
     		id: create_then_block.name,
     		type: "then",
-    		source: "(207:1) {:then items}",
+    		source: "(210:1) {:then items}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (220:2) {#key params}
+    // (223:2) {#key params}
     function create_key_block(ctx) {
     	let switch_instance;
     	let switch_instance_anchor;
@@ -11553,14 +11553,14 @@ var app = (function () {
     		block,
     		id: create_key_block.name,
     		type: "key",
-    		source: "(220:2) {#key params}",
+    		source: "(223:2) {#key params}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (205:22)    Loading...  {:then items}
+    // (208:22)    Loading...  {:then items}
     function create_pending_block(ctx) {
     	let t;
 
@@ -11583,7 +11583,7 @@ var app = (function () {
     		block,
     		id: create_pending_block.name,
     		type: "pending",
-    		source: "(205:22)    Loading...  {:then items}",
+    		source: "(208:22)    Loading...  {:then items}",
     		ctx
     	});
 
@@ -11623,11 +11623,11 @@ var app = (function () {
     			info.block.c();
     			attr_dev(input, "placeholder", "Search for a candidate, party, or race");
     			attr_dev(input, "class", "a-filter-search svelte-1e3bkkf");
-    			add_location(input, file, 200, 1, 5627);
+    			add_location(input, file, 203, 1, 5721);
     			attr_dev(div, "class", "m-filtering svelte-1e3bkkf");
-    			add_location(div, file, 199, 0, 5600);
+    			add_location(div, file, 202, 0, 5694);
     			attr_dev(section, "class", "container m-archive m-archive-excerpt m-archive-date");
-    			add_location(section, file, 203, 0, 5746);
+    			add_location(section, file, 206, 0, 5840);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -11761,6 +11761,9 @@ var app = (function () {
 
     	// Start the router
     	router.start();
+
+    	// router base
+    	router.base(window.location.href.substring(window.location.origin.length));
 
     	let selectParty;
     	let selectOffice;
