@@ -44,7 +44,7 @@
 
 	// the distinct parties from this list of candidates
 	let office_candidate_parties = function(candidates) {
-		return candidates.map(value => value["party"]);
+		return [...new Set(candidates.map(value => value["party"]))];
 	}
 
 	// single candidate template

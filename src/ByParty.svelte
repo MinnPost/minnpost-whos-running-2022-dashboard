@@ -41,7 +41,7 @@
 
 	// the distinct races from this list of candidates
 	let party_candidate_races = function(candidates) {
-		return candidates.map(value => value["office-sought"]);
+		return [...new Set(candidates.map(value => value["office-sought"]))];
 	}
 
 	// single candidate template

@@ -3579,9 +3579,9 @@ var app = (function () {
     			t6 = text(" for ");
     			strong = element("strong");
     			t7 = text(t7_value);
-    			add_location(strong, file$a, 56, 334, 1695);
+    			add_location(strong, file$a, 56, 334, 1709);
     			attr_dev(aside, "class", "m-search-result-info");
-    			add_location(aside, file$a, 55, 1, 1324);
+    			add_location(aside, file$a, 55, 1, 1338);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, aside, anchor);
@@ -3900,7 +3900,7 @@ var app = (function () {
     		c: function create() {
     			h2 = element("h2");
     			t = text(t_value);
-    			add_location(h2, file$a, 64, 4, 1853);
+    			add_location(h2, file$a, 64, 4, 1867);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h2, anchor);
@@ -3935,7 +3935,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			t = text(t_value);
-    			add_location(p, file$a, 67, 4, 1909);
+    			add_location(p, file$a, 67, 4, 1923);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -3995,9 +3995,9 @@ var app = (function () {
 
     			t2 = space();
     			attr_dev(h3, "class", h3_class_value = "party-" + /*items*/ ctx[0].all_party_ids[/*key*/ ctx[9]] + " svelte-y94fo8");
-    			add_location(h3, file$a, 72, 6, 2081);
+    			add_location(h3, file$a, 72, 6, 2095);
     			attr_dev(section, "class", "candidates-list svelte-y94fo8");
-    			add_location(section, file$a, 71, 5, 2041);
+    			add_location(section, file$a, 71, 5, 2055);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, section, anchor);
@@ -4210,7 +4210,7 @@ var app = (function () {
     			if (if_block) if_block.c();
     			t = space();
     			attr_dev(section, "class", "candidates-list svelte-y94fo8");
-    			add_location(section, file$a, 61, 1, 1776);
+    			add_location(section, file$a, 61, 1, 1790);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, section, anchor);
@@ -4423,7 +4423,7 @@ var app = (function () {
 
     	// the distinct parties from this list of candidates
     	let office_candidate_parties = function (candidates) {
-    		return candidates.map(value => value["party"]);
+    		return [...new Set(candidates.map(value => value["party"]))];
     	};
 
     	const writable_props = ['items', 'params'];
@@ -4589,9 +4589,9 @@ var app = (function () {
     			t6 = text(" for ");
     			strong = element("strong");
     			t7 = text(t7_value);
-    			add_location(strong, file$9, 52, 285, 1594);
+    			add_location(strong, file$9, 52, 285, 1608);
     			attr_dev(aside, "class", "m-search-result-info");
-    			add_location(aside, file$9, 51, 1, 1272);
+    			add_location(aside, file$9, 51, 1, 1286);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, aside, anchor);
@@ -4772,7 +4772,7 @@ var app = (function () {
     			h2 = element("h2");
     			t = text(t_value);
     			attr_dev(h2, "class", h2_class_value = "party-" + /*items*/ ctx[0].all_party_ids[/*key*/ ctx[8]] + " svelte-y94fo8");
-    			add_location(h2, file$9, 59, 3, 1736);
+    			add_location(h2, file$9, 59, 3, 1750);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h2, anchor);
@@ -4840,10 +4840,10 @@ var app = (function () {
     			}
 
     			attr_dev(h4, "class", "svelte-y94fo8");
-    			add_location(h4, file$9, 63, 3, 1891);
-    			add_location(p, file$9, 64, 3, 1917);
+    			add_location(h4, file$9, 63, 3, 1905);
+    			add_location(p, file$9, 64, 3, 1931);
     			attr_dev(section, "class", "candidates-list svelte-y94fo8");
-    			add_location(section, file$9, 65, 4, 1941);
+    			add_location(section, file$9, 65, 4, 1955);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h4, anchor);
@@ -5076,7 +5076,7 @@ var app = (function () {
 
     			t1 = space();
     			attr_dev(section, "class", "candidates-list svelte-y94fo8");
-    			add_location(section, file$9, 57, 1, 1672);
+    			add_location(section, file$9, 57, 1, 1686);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, section, anchor);
@@ -5320,7 +5320,7 @@ var app = (function () {
 
     	// the distinct races from this list of candidates
     	let party_candidate_races = function (candidates) {
-    		return candidates.map(value => value["office-sought"]);
+    		return [...new Set(candidates.map(value => value["office-sought"]))];
     	};
 
     	const writable_props = ['items', 'params'];
