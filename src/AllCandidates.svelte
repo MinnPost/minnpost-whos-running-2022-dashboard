@@ -28,12 +28,14 @@
 
 {#each items.races as race}
     <section class="race-listing">
-        <h2>{race.office}</h2>
-        <p>{@html race.blurb}</p>
+        <h2 class="m-archive-header">{race.office}</h2>
+        {#if race.blurb}
+            <p>{@html race.blurb}</p>
+        {/if}
         {#each parties as party, key}
             {#if party_candidates(party, race.office).length > 0}
-                <section class="candidates-list">
-                    <h3 class="party-{items.all_party_ids[key]}">{party}</h3>
+                <section class="m-archive m-archive-homepage m-zone m-zone-homepage-more-top candidates-list">
+                    <h3 class="m-archive-header party-{items.all_party_ids[key]}">{party}</h3>
                     {#each party_candidates(party, race.office) as candidate}
                         <Candidate candidate = {candidate} />
                     {/each}

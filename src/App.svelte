@@ -4,17 +4,25 @@
 		margin-bottom: 1.5em;
 		padding-bottom: .75em;
 	}
-	
 	:global(.candidates-list) {
-    display: flex;
-    flex-wrap: wrap;
-		margin-bottom: 1em;
-  }
+    	display: flex;
+    	flex-wrap: wrap;
+		margin-bottom: 1.5em;
+		justify-content: space-between;
+  	}
 	:global(.candidates-list h3, .candidates-list h4) {
 		width: 100%;
-		margin-bottom: 0.25em;
+		/*margin-bottom: 0.25em;*/
 	}
 
+	:global(.m-homepage-zones .m-zone) {
+		max-width: none;
+		width: 100%;
+	}
+
+	:global(.party-name) {
+		color: #869298;
+	}
 	:global(.party-dfl) {color: #0793AB;}
 	:global(.party-republican) {color: #A1000F}
 	:global(.party-legal-marijuana-now) {color: #286806;}
@@ -222,7 +230,7 @@
 	<input placeholder="Search for a candidate, party, or race" class="a-filter-search" bind:value={searchTerm} />
 </div>
 
-<section class="container m-archive m-archive-excerpt m-archive-date">
+<section class="container m-zones m-homepage-zones">
 	{#await filteredList}
 		Loading...
 	{:then items}
