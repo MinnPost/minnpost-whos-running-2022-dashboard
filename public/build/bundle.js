@@ -2098,22 +2098,27 @@ var app = (function () {
 
     const file$c = "src/Candidate.svelte";
 
-    // (68:2) {#if candidate["headshot-url"]}
+    // (82:1) {#if candidate["headshot-url"]}
     function create_if_block_7$1(ctx) {
+    	let div;
     	let img;
     	let img_src_value;
     	let img_alt_value;
 
     	const block = {
     		c: function create() {
+    			div = element("div");
     			img = element("img");
     			if (!src_url_equal(img.src, img_src_value = /*candidate*/ ctx[0]['headshot-url'])) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", img_alt_value = "photo of " + /*candidate*/ ctx[0].name);
-    			attr_dev(img, "class", "svelte-1pdto0r");
-    			add_location(img, file$c, 68, 3, 1268);
+    			attr_dev(img, "class", "svelte-155rfy9");
+    			add_location(img, file$c, 83, 3, 1570);
+    			attr_dev(div, "class", "candidate-photo svelte-155rfy9");
+    			add_location(div, file$c, 82, 2, 1537);
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, img, anchor);
+    			insert_dev(target, div, anchor);
+    			append_dev(div, img);
     		},
     		p: function update(ctx, dirty) {
     			if (dirty & /*candidate*/ 1 && !src_url_equal(img.src, img_src_value = /*candidate*/ ctx[0]['headshot-url'])) {
@@ -2125,7 +2130,7 @@ var app = (function () {
     			}
     		},
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(img);
+    			if (detaching) detach_dev(div);
     		}
     	};
 
@@ -2133,14 +2138,14 @@ var app = (function () {
     		block,
     		id: create_if_block_7$1.name,
     		type: "if",
-    		source: "(68:2) {#if candidate[\\\"headshot-url\\\"]}",
+    		source: "(82:1) {#if candidate[\\\"headshot-url\\\"]}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (78:2) {#if candidate.hometown}
+    // (93:2) {#if candidate.hometown}
     function create_if_block_6$2(ctx) {
     	let div;
     	let i;
@@ -2155,9 +2160,9 @@ var app = (function () {
     			t0 = text(" Lives in: ");
     			t1 = text(t1_value);
     			attr_dev(i, "class", "fas fa-fw fa-home");
-    			add_location(i, file$c, 78, 24, 1628);
-    			attr_dev(div, "class", "hometown");
-    			add_location(div, file$c, 78, 2, 1606);
+    			add_location(i, file$c, 93, 24, 1965);
+    			attr_dev(div, "class", "hometown svelte-155rfy9");
+    			add_location(div, file$c, 93, 2, 1943);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -2177,15 +2182,15 @@ var app = (function () {
     		block,
     		id: create_if_block_6$2.name,
     		type: "if",
-    		source: "(78:2) {#if candidate.hometown}",
+    		source: "(93:2) {#if candidate.hometown}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (82:2) {#if candidate.incumbent}
-    function create_if_block_5$2(ctx) {
+    // (97:2) {#if candidate.incumbent}
+    function create_if_block_5$3(ctx) {
     	let div;
     	let i;
     	let t;
@@ -2196,9 +2201,9 @@ var app = (function () {
     			i = element("i");
     			t = text(" Incumbent");
     			attr_dev(i, "class", "fas fa-fw fa-star");
-    			add_location(i, file$c, 82, 25, 1761);
-    			attr_dev(div, "class", "incumbent svelte-1pdto0r");
-    			add_location(div, file$c, 82, 2, 1738);
+    			add_location(i, file$c, 97, 25, 2098);
+    			attr_dev(div, "class", "incumbent svelte-155rfy9");
+    			add_location(div, file$c, 97, 2, 2075);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -2212,16 +2217,16 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_5$2.name,
+    		id: create_if_block_5$3.name,
     		type: "if",
-    		source: "(82:2) {#if candidate.incumbent}",
+    		source: "(97:2) {#if candidate.incumbent}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (86:2) {#if candidate.endorsed}
+    // (101:2) {#if candidate.endorsed}
     function create_if_block_3$4(ctx) {
     	let div;
     	let span0;
@@ -2233,7 +2238,7 @@ var app = (function () {
     	let t1;
     	let t2;
     	let span1_class_value;
-    	let if_block = /*candidate*/ ctx[0].party != "DFL" && create_if_block_4$3(ctx);
+    	let if_block = /*candidate*/ ctx[0].party != "DFL" && create_if_block_4$4(ctx);
 
     	const block = {
     		c: function create() {
@@ -2246,13 +2251,13 @@ var app = (function () {
     			t2 = space();
     			if (if_block) if_block.c();
     			attr_dev(i, "class", "fas fa-fw fa-check-square");
-    			add_location(i, file$c, 86, 73, 1920);
-    			attr_dev(span0, "class", span0_class_value = "icon party-" + /*candidate*/ ctx[0]["party-id"] + " svelte-1pdto0r");
-    			add_location(span0, file$c, 86, 24, 1871);
-    			attr_dev(span1, "class", span1_class_value = "party-" + /*candidate*/ ctx[0]["party-id"] + " svelte-1pdto0r");
-    			add_location(span1, file$c, 87, 15, 1985);
-    			attr_dev(div, "class", "endorsed");
-    			add_location(div, file$c, 86, 2, 1849);
+    			add_location(i, file$c, 101, 73, 2257);
+    			attr_dev(span0, "class", span0_class_value = "icon party-" + /*candidate*/ ctx[0]["party-id"] + " svelte-155rfy9");
+    			add_location(span0, file$c, 101, 24, 2208);
+    			attr_dev(span1, "class", span1_class_value = "party-" + /*candidate*/ ctx[0]["party-id"] + " svelte-155rfy9");
+    			add_location(span1, file$c, 102, 15, 2322);
+    			attr_dev(div, "class", "endorsed svelte-155rfy9");
+    			add_location(div, file$c, 101, 2, 2186);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -2265,7 +2270,7 @@ var app = (function () {
     			if (if_block) if_block.m(span1, null);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*candidate*/ 1 && span0_class_value !== (span0_class_value = "icon party-" + /*candidate*/ ctx[0]["party-id"] + " svelte-1pdto0r")) {
+    			if (dirty & /*candidate*/ 1 && span0_class_value !== (span0_class_value = "icon party-" + /*candidate*/ ctx[0]["party-id"] + " svelte-155rfy9")) {
     				attr_dev(span0, "class", span0_class_value);
     			}
 
@@ -2273,7 +2278,7 @@ var app = (function () {
 
     			if (/*candidate*/ ctx[0].party != "DFL") {
     				if (if_block) ; else {
-    					if_block = create_if_block_4$3(ctx);
+    					if_block = create_if_block_4$4(ctx);
     					if_block.c();
     					if_block.m(span1, null);
     				}
@@ -2282,7 +2287,7 @@ var app = (function () {
     				if_block = null;
     			}
 
-    			if (dirty & /*candidate*/ 1 && span1_class_value !== (span1_class_value = "party-" + /*candidate*/ ctx[0]["party-id"] + " svelte-1pdto0r")) {
+    			if (dirty & /*candidate*/ 1 && span1_class_value !== (span1_class_value = "party-" + /*candidate*/ ctx[0]["party-id"] + " svelte-155rfy9")) {
     				attr_dev(span1, "class", span1_class_value);
     			}
     		},
@@ -2296,15 +2301,15 @@ var app = (function () {
     		block,
     		id: create_if_block_3$4.name,
     		type: "if",
-    		source: "(86:2) {#if candidate.endorsed}",
+    		source: "(101:2) {#if candidate.endorsed}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (88:77) {#if candidate.party != "DFL"}
-    function create_if_block_4$3(ctx) {
+    // (103:77) {#if candidate.party != "DFL"}
+    function create_if_block_4$4(ctx) {
     	let t;
 
     	const block = {
@@ -2321,16 +2326,16 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_4$3.name,
+    		id: create_if_block_4$4.name,
     		type: "if",
-    		source: "(88:77) {#if candidate.party != \\\"DFL\\\"}",
+    		source: "(103:77) {#if candidate.party != \\\"DFL\\\"}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (91:2) {#if candidate["dropped-out"]}
+    // (106:2) {#if candidate["dropped-out"]}
     function create_if_block_2$5(ctx) {
     	let div;
     	let span;
@@ -2347,11 +2352,11 @@ var app = (function () {
     			t0 = text(" Dropped out of the race on ");
     			t1 = text(t1_value);
     			attr_dev(i, "class", "fas fa-fw fa-times");
-    			add_location(i, file$c, 91, 46, 2190);
-    			attr_dev(span, "class", "icon svelte-1pdto0r");
-    			add_location(span, file$c, 91, 27, 2171);
-    			attr_dev(div, "class", "dropped-out svelte-1pdto0r");
-    			add_location(div, file$c, 91, 2, 2146);
+    			add_location(i, file$c, 106, 46, 2527);
+    			attr_dev(span, "class", "icon svelte-155rfy9");
+    			add_location(span, file$c, 106, 27, 2508);
+    			attr_dev(div, "class", "dropped-out svelte-155rfy9");
+    			add_location(div, file$c, 106, 2, 2483);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -2372,14 +2377,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2$5.name,
     		type: "if",
-    		source: "(91:2) {#if candidate[\\\"dropped-out\\\"]}",
+    		source: "(106:2) {#if candidate[\\\"dropped-out\\\"]}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (95:1) {#if candidate.blurb}
+    // (111:1) {#if candidate.blurb}
     function create_if_block$6(ctx) {
     	let div;
     	let p;
@@ -2393,9 +2398,10 @@ var app = (function () {
     			p = element("p");
     			t = space();
     			if (if_block) if_block.c();
-    			add_location(p, file$c, 96, 2, 2377);
-    			attr_dev(div, "class", "blurb svelte-1pdto0r");
-    			add_location(div, file$c, 95, 1, 2355);
+    			attr_dev(p, "class", "svelte-155rfy9");
+    			add_location(p, file$c, 112, 2, 2732);
+    			attr_dev(div, "class", "m-entry-excerpt blurb");
+    			add_location(div, file$c, 111, 1, 2694);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -2429,14 +2435,14 @@ var app = (function () {
     		block,
     		id: create_if_block$6.name,
     		type: "if",
-    		source: "(95:1) {#if candidate.blurb}",
+    		source: "(111:1) {#if candidate.blurb}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (98:2) {#if candidate.website}
+    // (114:2) {#if candidate.website}
     function create_if_block_1$5(ctx) {
     	let p;
     	let a;
@@ -2451,11 +2457,12 @@ var app = (function () {
     			i = element("i");
     			t = text(" Campaign website");
     			attr_dev(i, "class", "fas fa-fw fa-globe");
-    			add_location(i, file$c, 98, 51, 2485);
+    			add_location(i, file$c, 114, 52, 2841);
     			attr_dev(a, "href", a_href_value = /*candidate*/ ctx[0].website);
     			attr_dev(a, "target", "_blank");
-    			add_location(a, file$c, 98, 5, 2439);
-    			add_location(p, file$c, 98, 2, 2436);
+    			add_location(a, file$c, 114, 6, 2795);
+    			attr_dev(p, "class", "svelte-155rfy9");
+    			add_location(p, file$c, 114, 3, 2792);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -2477,7 +2484,7 @@ var app = (function () {
     		block,
     		id: create_if_block_1$5.name,
     		type: "if",
-    		source: "(98:2) {#if candidate.website}",
+    		source: "(114:2) {#if candidate.website}",
     		ctx
     	});
 
@@ -2485,21 +2492,20 @@ var app = (function () {
     }
 
     function create_fragment$c(ctx) {
-    	let div3;
-    	let div0;
+    	let article;
     	let t0;
     	let h4;
     	let t1_value = /*candidate*/ ctx[0].name + "";
     	let t1;
     	let t2;
-    	let div2;
     	let div1;
+    	let div0;
     	let i;
     	let i_class_value;
     	let t3;
     	let t4_value = /*candidate*/ ctx[0].party + "";
     	let t4;
-    	let div1_class_value;
+    	let div0_class_value;
     	let t5;
     	let t6;
     	let t7;
@@ -2507,22 +2513,21 @@ var app = (function () {
     	let t9;
     	let if_block0 = /*candidate*/ ctx[0]["headshot-url"] && create_if_block_7$1(ctx);
     	let if_block1 = /*candidate*/ ctx[0].hometown && create_if_block_6$2(ctx);
-    	let if_block2 = /*candidate*/ ctx[0].incumbent && create_if_block_5$2(ctx);
+    	let if_block2 = /*candidate*/ ctx[0].incumbent && create_if_block_5$3(ctx);
     	let if_block3 = /*candidate*/ ctx[0].endorsed && create_if_block_3$4(ctx);
     	let if_block4 = /*candidate*/ ctx[0]["dropped-out"] && create_if_block_2$5(ctx);
     	let if_block5 = /*candidate*/ ctx[0].blurb && create_if_block$6(ctx);
 
     	const block = {
     		c: function create() {
-    			div3 = element("div");
-    			div0 = element("div");
+    			article = element("article");
     			if (if_block0) if_block0.c();
     			t0 = space();
     			h4 = element("h4");
     			t1 = text(t1_value);
     			t2 = space();
-    			div2 = element("div");
     			div1 = element("div");
+    			div0 = element("div");
     			i = element("i");
     			t3 = space();
     			t4 = text(t4_value);
@@ -2536,45 +2541,43 @@ var app = (function () {
     			if (if_block4) if_block4.c();
     			t9 = space();
     			if (if_block5) if_block5.c();
-    			attr_dev(div0, "class", "candidate-photo svelte-1pdto0r");
-    			add_location(div0, file$c, 66, 1, 1201);
-    			add_location(h4, file$c, 72, 1, 1361);
-    			attr_dev(i, "class", i_class_value = "fas fa-fw fa-" + (/*party_icons*/ ctx[1][/*candidate*/ ctx[0]["party-id"]] ?? "circle") + " svelte-1pdto0r");
-    			add_location(i, file$c, 75, 56, 1474);
-    			attr_dev(div1, "class", div1_class_value = "party-name party-" + /*candidate*/ ctx[0]["party-id"] + " svelte-1pdto0r");
-    			add_location(div1, file$c, 75, 2, 1420);
-    			attr_dev(div2, "class", "candidate-meta svelte-1pdto0r");
-    			add_location(div2, file$c, 74, 1, 1389);
-    			attr_dev(div3, "class", "candidate svelte-1pdto0r");
-    			toggle_class(div3, "former-candidate", /*candidate*/ ctx[0]["dropped-out"]);
-    			add_location(div3, file$c, 65, 0, 1126);
+    			attr_dev(h4, "class", "a-entry-title svelte-155rfy9");
+    			add_location(h4, file$c, 87, 1, 1663);
+    			attr_dev(i, "class", i_class_value = "fas fa-fw fa-" + (/*party_icons*/ ctx[1][/*candidate*/ ctx[0]["party-id"]] ?? "circle") + " svelte-155rfy9");
+    			add_location(i, file$c, 90, 56, 1811);
+    			attr_dev(div0, "class", div0_class_value = "party-name party-" + /*candidate*/ ctx[0]["party-id"] + " svelte-155rfy9");
+    			add_location(div0, file$c, 90, 2, 1757);
+    			attr_dev(div1, "class", "m-entry-meta candidate-meta svelte-155rfy9");
+    			add_location(div1, file$c, 89, 1, 1713);
+    			attr_dev(article, "class", "m-post candidate svelte-155rfy9");
+    			toggle_class(article, "former-candidate", /*candidate*/ ctx[0]["dropped-out"]);
+    			add_location(article, file$c, 79, 0, 1415);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, div3, anchor);
-    			append_dev(div3, div0);
-    			if (if_block0) if_block0.m(div0, null);
-    			append_dev(div3, t0);
-    			append_dev(div3, h4);
+    			insert_dev(target, article, anchor);
+    			if (if_block0) if_block0.m(article, null);
+    			append_dev(article, t0);
+    			append_dev(article, h4);
     			append_dev(h4, t1);
-    			append_dev(div3, t2);
-    			append_dev(div3, div2);
-    			append_dev(div2, div1);
-    			append_dev(div1, i);
-    			append_dev(div1, t3);
-    			append_dev(div1, t4);
-    			append_dev(div2, t5);
-    			if (if_block1) if_block1.m(div2, null);
-    			append_dev(div2, t6);
-    			if (if_block2) if_block2.m(div2, null);
-    			append_dev(div2, t7);
-    			if (if_block3) if_block3.m(div2, null);
-    			append_dev(div2, t8);
-    			if (if_block4) if_block4.m(div2, null);
-    			append_dev(div3, t9);
-    			if (if_block5) if_block5.m(div3, null);
+    			append_dev(article, t2);
+    			append_dev(article, div1);
+    			append_dev(div1, div0);
+    			append_dev(div0, i);
+    			append_dev(div0, t3);
+    			append_dev(div0, t4);
+    			append_dev(div1, t5);
+    			if (if_block1) if_block1.m(div1, null);
+    			append_dev(div1, t6);
+    			if (if_block2) if_block2.m(div1, null);
+    			append_dev(div1, t7);
+    			if (if_block3) if_block3.m(div1, null);
+    			append_dev(div1, t8);
+    			if (if_block4) if_block4.m(div1, null);
+    			append_dev(article, t9);
+    			if (if_block5) if_block5.m(article, null);
     		},
     		p: function update(ctx, [dirty]) {
     			if (/*candidate*/ ctx[0]["headshot-url"]) {
@@ -2583,7 +2586,7 @@ var app = (function () {
     				} else {
     					if_block0 = create_if_block_7$1(ctx);
     					if_block0.c();
-    					if_block0.m(div0, null);
+    					if_block0.m(article, t0);
     				}
     			} else if (if_block0) {
     				if_block0.d(1);
@@ -2592,14 +2595,14 @@ var app = (function () {
 
     			if (dirty & /*candidate*/ 1 && t1_value !== (t1_value = /*candidate*/ ctx[0].name + "")) set_data_dev(t1, t1_value);
 
-    			if (dirty & /*candidate*/ 1 && i_class_value !== (i_class_value = "fas fa-fw fa-" + (/*party_icons*/ ctx[1][/*candidate*/ ctx[0]["party-id"]] ?? "circle") + " svelte-1pdto0r")) {
+    			if (dirty & /*candidate*/ 1 && i_class_value !== (i_class_value = "fas fa-fw fa-" + (/*party_icons*/ ctx[1][/*candidate*/ ctx[0]["party-id"]] ?? "circle") + " svelte-155rfy9")) {
     				attr_dev(i, "class", i_class_value);
     			}
 
     			if (dirty & /*candidate*/ 1 && t4_value !== (t4_value = /*candidate*/ ctx[0].party + "")) set_data_dev(t4, t4_value);
 
-    			if (dirty & /*candidate*/ 1 && div1_class_value !== (div1_class_value = "party-name party-" + /*candidate*/ ctx[0]["party-id"] + " svelte-1pdto0r")) {
-    				attr_dev(div1, "class", div1_class_value);
+    			if (dirty & /*candidate*/ 1 && div0_class_value !== (div0_class_value = "party-name party-" + /*candidate*/ ctx[0]["party-id"] + " svelte-155rfy9")) {
+    				attr_dev(div0, "class", div0_class_value);
     			}
 
     			if (/*candidate*/ ctx[0].hometown) {
@@ -2608,7 +2611,7 @@ var app = (function () {
     				} else {
     					if_block1 = create_if_block_6$2(ctx);
     					if_block1.c();
-    					if_block1.m(div2, t6);
+    					if_block1.m(div1, t6);
     				}
     			} else if (if_block1) {
     				if_block1.d(1);
@@ -2617,9 +2620,9 @@ var app = (function () {
 
     			if (/*candidate*/ ctx[0].incumbent) {
     				if (if_block2) ; else {
-    					if_block2 = create_if_block_5$2(ctx);
+    					if_block2 = create_if_block_5$3(ctx);
     					if_block2.c();
-    					if_block2.m(div2, t7);
+    					if_block2.m(div1, t7);
     				}
     			} else if (if_block2) {
     				if_block2.d(1);
@@ -2632,7 +2635,7 @@ var app = (function () {
     				} else {
     					if_block3 = create_if_block_3$4(ctx);
     					if_block3.c();
-    					if_block3.m(div2, t8);
+    					if_block3.m(div1, t8);
     				}
     			} else if (if_block3) {
     				if_block3.d(1);
@@ -2645,7 +2648,7 @@ var app = (function () {
     				} else {
     					if_block4 = create_if_block_2$5(ctx);
     					if_block4.c();
-    					if_block4.m(div2, null);
+    					if_block4.m(div1, null);
     				}
     			} else if (if_block4) {
     				if_block4.d(1);
@@ -2658,7 +2661,7 @@ var app = (function () {
     				} else {
     					if_block5 = create_if_block$6(ctx);
     					if_block5.c();
-    					if_block5.m(div3, null);
+    					if_block5.m(article, null);
     				}
     			} else if (if_block5) {
     				if_block5.d(1);
@@ -2666,13 +2669,13 @@ var app = (function () {
     			}
 
     			if (dirty & /*candidate*/ 1) {
-    				toggle_class(div3, "former-candidate", /*candidate*/ ctx[0]["dropped-out"]);
+    				toggle_class(article, "former-candidate", /*candidate*/ ctx[0]["dropped-out"]);
     			}
     		},
     		i: noop,
     		o: noop,
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div3);
+    			if (detaching) detach_dev(article);
     			if (if_block0) if_block0.d();
     			if (if_block1) if_block1.d();
     			if (if_block2) if_block2.d();
@@ -2792,7 +2795,7 @@ var app = (function () {
     }
 
     // (23:0) {#if items["searchTerm"] != ""}
-    function create_if_block_1$4(ctx) {
+    function create_if_block_2$4(ctx) {
     	let aside;
     	let t0;
     	let t1_value = /*items*/ ctx[0].candidates.length + "";
@@ -2808,7 +2811,7 @@ var app = (function () {
     	let t7;
 
     	function select_block_type(ctx, dirty) {
-    		if (/*items*/ ctx[0].candidates.length == 1) return create_if_block_3$3;
+    		if (/*items*/ ctx[0].candidates.length == 1) return create_if_block_4$3;
     		return create_else_block_1$3;
     	}
 
@@ -2816,7 +2819,7 @@ var app = (function () {
     	let if_block0 = current_block_type(ctx);
 
     	function select_block_type_1(ctx, dirty) {
-    		if (/*items*/ ctx[0].races.length == 1) return create_if_block_2$4;
+    		if (/*items*/ ctx[0].races.length == 1) return create_if_block_3$3;
     		return create_else_block$4;
     	}
 
@@ -2891,7 +2894,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_1$4.name,
+    		id: create_if_block_2$4.name,
     		type: "if",
     		source: "(23:0) {#if items[\\\"searchTerm\\\"] != \\\"\\\"}",
     		ctx
@@ -2928,7 +2931,7 @@ var app = (function () {
     }
 
     // (25:42) {#if items.candidates.length == 1}
-    function create_if_block_3$3(ctx) {
+    function create_if_block_4$3(ctx) {
     	let t;
 
     	const block = {
@@ -2945,7 +2948,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_3$3.name,
+    		id: create_if_block_4$3.name,
     		type: "if",
     		source: "(25:42) {#if items.candidates.length == 1}",
     		ctx
@@ -2982,7 +2985,7 @@ var app = (function () {
     }
 
     // (25:132) {#if items.races.length == 1}
-    function create_if_block_2$4(ctx) {
+    function create_if_block_3$3(ctx) {
     	let t;
 
     	const block = {
@@ -2999,7 +3002,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_2$4.name,
+    		id: create_if_block_3$3.name,
     		type: "if",
     		source: "(25:132) {#if items.races.length == 1}",
     		ctx
@@ -3008,7 +3011,39 @@ var app = (function () {
     	return block;
     }
 
-    // (34:12) {#if party_candidates(party, race.office).length > 0}
+    // (32:8) {#if race.blurb}
+    function create_if_block_1$4(ctx) {
+    	let p;
+    	let raw_value = /*race*/ ctx[4].blurb + "";
+
+    	const block = {
+    		c: function create() {
+    			p = element("p");
+    			add_location(p, file$b, 32, 12, 1072);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, p, anchor);
+    			p.innerHTML = raw_value;
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*items*/ 1 && raw_value !== (raw_value = /*race*/ ctx[4].blurb + "")) p.innerHTML = raw_value;		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(p);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_1$4.name,
+    		type: "if",
+    		source: "(32:8) {#if race.blurb}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (36:12) {#if party_candidates(party, race.office).length > 0}
     function create_if_block$5(ctx) {
     	let section;
     	let h3;
@@ -3040,10 +3075,10 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			attr_dev(h3, "class", h3_class_value = "party-" + /*items*/ ctx[0].all_party_ids[/*key*/ ctx[9]]);
-    			add_location(h3, file$b, 35, 20, 1218);
-    			attr_dev(section, "class", "candidates-list");
-    			add_location(section, file$b, 34, 16, 1164);
+    			attr_dev(h3, "class", h3_class_value = "m-archive-header party-" + /*items*/ ctx[0].all_party_ids[/*key*/ ctx[9]]);
+    			add_location(h3, file$b, 37, 20, 1347);
+    			attr_dev(section, "class", "m-archive m-archive-homepage m-zone m-zone-homepage-more-top candidates-list");
+    			add_location(section, file$b, 36, 16, 1232);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, section, anchor);
@@ -3058,7 +3093,7 @@ var app = (function () {
     			current = true;
     		},
     		p: function update(ctx, dirty) {
-    			if (!current || dirty & /*items*/ 1 && h3_class_value !== (h3_class_value = "party-" + /*items*/ ctx[0].all_party_ids[/*key*/ ctx[9]])) {
+    			if (!current || dirty & /*items*/ 1 && h3_class_value !== (h3_class_value = "m-archive-header party-" + /*items*/ ctx[0].all_party_ids[/*key*/ ctx[9]])) {
     				attr_dev(h3, "class", h3_class_value);
     			}
 
@@ -3118,14 +3153,14 @@ var app = (function () {
     		block,
     		id: create_if_block$5.name,
     		type: "if",
-    		source: "(34:12) {#if party_candidates(party, race.office).length > 0}",
+    		source: "(36:12) {#if party_candidates(party, race.office).length > 0}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (37:20) {#each party_candidates(party, race.office) as candidate}
+    // (39:20) {#each party_candidates(party, race.office) as candidate}
     function create_each_block_2$2(ctx) {
     	let candidate;
     	let current;
@@ -3166,14 +3201,14 @@ var app = (function () {
     		block,
     		id: create_each_block_2$2.name,
     		type: "each",
-    		source: "(37:20) {#each party_candidates(party, race.office) as candidate}",
+    		source: "(39:20) {#each party_candidates(party, race.office) as candidate}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (33:8) {#each parties as party, key}
+    // (35:8) {#each parties as party, key}
     function create_each_block_1$2(ctx) {
     	let show_if = /*party_candidates*/ ctx[2](/*party*/ ctx[7], /*race*/ ctx[4].office).length > 0;
     	let if_block_anchor;
@@ -3235,7 +3270,7 @@ var app = (function () {
     		block,
     		id: create_each_block_1$2.name,
     		type: "each",
-    		source: "(33:8) {#each parties as party, key}",
+    		source: "(35:8) {#each parties as party, key}",
     		ctx
     	});
 
@@ -3249,11 +3284,10 @@ var app = (function () {
     	let t0_value = /*race*/ ctx[4].office + "";
     	let t0;
     	let t1;
-    	let p;
-    	let raw_value = /*race*/ ctx[4].blurb + "";
     	let t2;
     	let t3;
     	let current;
+    	let if_block = /*race*/ ctx[4].blurb && create_if_block_1$4(ctx);
     	let each_value_1 = /*parties*/ ctx[1];
     	validate_each_argument(each_value_1);
     	let each_blocks = [];
@@ -3272,7 +3306,7 @@ var app = (function () {
     			h2 = element("h2");
     			t0 = text(t0_value);
     			t1 = space();
-    			p = element("p");
+    			if (if_block) if_block.c();
     			t2 = space();
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -3280,8 +3314,8 @@ var app = (function () {
     			}
 
     			t3 = space();
+    			attr_dev(h2, "class", "m-archive-header");
     			add_location(h2, file$b, 30, 8, 987);
-    			add_location(p, file$b, 31, 8, 1018);
     			attr_dev(section, "class", "race-listing");
     			add_location(section, file$b, 29, 4, 948);
     		},
@@ -3290,8 +3324,7 @@ var app = (function () {
     			append_dev(section, h2);
     			append_dev(h2, t0);
     			append_dev(section, t1);
-    			append_dev(section, p);
-    			p.innerHTML = raw_value;
+    			if (if_block) if_block.m(section, null);
     			append_dev(section, t2);
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -3303,7 +3336,20 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			if ((!current || dirty & /*items*/ 1) && t0_value !== (t0_value = /*race*/ ctx[4].office + "")) set_data_dev(t0, t0_value);
-    			if ((!current || dirty & /*items*/ 1) && raw_value !== (raw_value = /*race*/ ctx[4].blurb + "")) p.innerHTML = raw_value;
+
+    			if (/*race*/ ctx[4].blurb) {
+    				if (if_block) {
+    					if_block.p(ctx, dirty);
+    				} else {
+    					if_block = create_if_block_1$4(ctx);
+    					if_block.c();
+    					if_block.m(section, t2);
+    				}
+    			} else if (if_block) {
+    				if_block.d(1);
+    				if_block = null;
+    			}
+
     			if (dirty & /*party_candidates, parties, items*/ 7) {
     				each_value_1 = /*parties*/ ctx[1];
     				validate_each_argument(each_value_1);
@@ -3352,6 +3398,7 @@ var app = (function () {
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(section);
+    			if (if_block) if_block.d();
     			destroy_each(each_blocks, detaching);
     		}
     	};
@@ -3371,7 +3418,7 @@ var app = (function () {
     	let t;
     	let each_1_anchor;
     	let current;
-    	let if_block = /*items*/ ctx[0]["searchTerm"] != "" && create_if_block_1$4(ctx);
+    	let if_block = /*items*/ ctx[0]["searchTerm"] != "" && create_if_block_2$4(ctx);
     	let each_value = /*items*/ ctx[0].races;
     	validate_each_argument(each_value);
     	let each_blocks = [];
@@ -3414,7 +3461,7 @@ var app = (function () {
     				if (if_block) {
     					if_block.p(ctx, dirty);
     				} else {
-    					if_block = create_if_block_1$4(ctx);
+    					if_block = create_if_block_2$4(ctx);
     					if_block.c();
     					if_block.m(t.parentNode, t);
     				}
@@ -3619,7 +3666,7 @@ var app = (function () {
     	function select_block_type_1(ctx, dirty) {
     		if (dirty & /*office*/ 4) show_if = null;
     		if (show_if == null) show_if = !!(/*office_candidate_parties*/ ctx[5](/*office_candidates*/ ctx[4](/*office*/ ctx[2]["office-id"])).length == 1);
-    		if (show_if) return create_if_block_5$1;
+    		if (show_if) return create_if_block_5$2;
     		return create_else_block$3;
     	}
 
@@ -3785,7 +3832,7 @@ var app = (function () {
     }
 
     // (49:223) {#if office_candidate_parties(office_candidates(office["office-id"])).length == 1}
-    function create_if_block_5$1(ctx) {
+    function create_if_block_5$2(ctx) {
     	let t;
 
     	const block = {
@@ -3802,7 +3849,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_5$1.name,
+    		id: create_if_block_5$2.name,
     		type: "if",
     		source: "(49:223) {#if office_candidate_parties(office_candidates(office[\\\"office-id\\\"])).length == 1}",
     		ctx
@@ -3961,6 +4008,7 @@ var app = (function () {
     		c: function create() {
     			h2 = element("h2");
     			t = text(t_value);
+    			attr_dev(h2, "class", "m-archive-header");
     			add_location(h2, file$a, 56, 4, 1723);
     		},
     		m: function mount(target, anchor) {
@@ -3994,7 +4042,7 @@ var app = (function () {
     	const block = {
     		c: function create() {
     			p = element("p");
-    			add_location(p, file$a, 59, 4, 1779);
+    			add_location(p, file$a, 59, 4, 1804);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -4052,10 +4100,10 @@ var app = (function () {
     			}
 
     			t2 = space();
-    			attr_dev(h3, "class", h3_class_value = "party-" + /*items*/ ctx[0].all_party_ids[/*key*/ ctx[9]]);
-    			add_location(h3, file$a, 64, 6, 1957);
-    			attr_dev(section, "class", "candidates-list");
-    			add_location(section, file$a, 63, 5, 1917);
+    			attr_dev(h3, "class", h3_class_value = "m-archive-header party-" + /*items*/ ctx[0].all_party_ids[/*key*/ ctx[9]]);
+    			add_location(h3, file$a, 64, 6, 2043);
+    			attr_dev(section, "class", "m-archive m-archive-homepage m-zone m-zone-homepage-more-top candidates-list");
+    			add_location(section, file$a, 63, 5, 1942);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, section, anchor);
@@ -4071,7 +4119,7 @@ var app = (function () {
     			current = true;
     		},
     		p: function update(ctx, dirty) {
-    			if (!current || dirty & /*items*/ 1 && h3_class_value !== (h3_class_value = "party-" + /*items*/ ctx[0].all_party_ids[/*key*/ ctx[9]])) {
+    			if (!current || dirty & /*items*/ 1 && h3_class_value !== (h3_class_value = "m-archive-header party-" + /*items*/ ctx[0].all_party_ids[/*key*/ ctx[9]])) {
     				attr_dev(h3, "class", h3_class_value);
     			}
 
@@ -4596,7 +4644,7 @@ var app = (function () {
     }
 
     // (43:0) {#if parties.length == 1}
-    function create_if_block_2$2(ctx) {
+    function create_if_block_3$1(ctx) {
     	let aside;
     	let t0;
     	let t1_value = /*party_candidates*/ ctx[3](/*parties*/ ctx[1][0]).length + "";
@@ -4616,7 +4664,7 @@ var app = (function () {
     	function select_block_type(ctx, dirty) {
     		if (dirty & /*parties*/ 2) show_if_1 = null;
     		if (show_if_1 == null) show_if_1 = !!(/*party_candidates*/ ctx[3](/*parties*/ ctx[1][0]).length == 1);
-    		if (show_if_1) return create_if_block_4$1;
+    		if (show_if_1) return create_if_block_5$1;
     		return create_else_block_1$1;
     	}
 
@@ -4626,7 +4674,7 @@ var app = (function () {
     	function select_block_type_1(ctx, dirty) {
     		if (dirty & /*parties*/ 2) show_if = null;
     		if (show_if == null) show_if = !!(/*party_candidate_races*/ ctx[4](/*party_candidates*/ ctx[3](/*parties*/ ctx[1][0])).length == 1);
-    		if (show_if) return create_if_block_3$1;
+    		if (show_if) return create_if_block_4$1;
     		return create_else_block$2;
     	}
 
@@ -4701,7 +4749,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_2$2.name,
+    		id: create_if_block_3$1.name,
     		type: "if",
     		source: "(43:0) {#if parties.length == 1}",
     		ctx
@@ -4738,7 +4786,7 @@ var app = (function () {
     }
 
     // (45:48) {#if party_candidates(parties[0]).length == 1}
-    function create_if_block_4$1(ctx) {
+    function create_if_block_5$1(ctx) {
     	let t;
 
     	const block = {
@@ -4755,7 +4803,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_4$1.name,
+    		id: create_if_block_5$1.name,
     		type: "if",
     		source: "(45:48) {#if party_candidates(parties[0]).length == 1}",
     		ctx
@@ -4792,7 +4840,7 @@ var app = (function () {
     }
 
     // (45:190) {#if party_candidate_races(party_candidates(parties[0])).length == 1}
-    function create_if_block_3$1(ctx) {
+    function create_if_block_4$1(ctx) {
     	let t;
 
     	const block = {
@@ -4809,7 +4857,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_3$1.name,
+    		id: create_if_block_4$1.name,
     		type: "if",
     		source: "(45:190) {#if party_candidate_races(party_candidates(parties[0])).length == 1}",
     		ctx
@@ -4819,7 +4867,7 @@ var app = (function () {
     }
 
     // (51:2) {#if parties.length > 1}
-    function create_if_block_1$2(ctx) {
+    function create_if_block_2$2(ctx) {
     	let h2;
     	let t_value = /*party*/ ctx[6] + "";
     	let t;
@@ -4829,7 +4877,7 @@ var app = (function () {
     		c: function create() {
     			h2 = element("h2");
     			t = text(t_value);
-    			attr_dev(h2, "class", h2_class_value = "party-" + /*items*/ ctx[0].all_party_ids[/*key*/ ctx[8]]);
+    			attr_dev(h2, "class", h2_class_value = "m-archive-header party-" + /*items*/ ctx[0].all_party_ids[/*key*/ ctx[8]]);
     			add_location(h2, file$9, 51, 3, 1606);
     		},
     		m: function mount(target, anchor) {
@@ -4839,7 +4887,7 @@ var app = (function () {
     		p: function update(ctx, dirty) {
     			if (dirty & /*parties*/ 2 && t_value !== (t_value = /*party*/ ctx[6] + "")) set_data_dev(t, t_value);
 
-    			if (dirty & /*items*/ 1 && h2_class_value !== (h2_class_value = "party-" + /*items*/ ctx[0].all_party_ids[/*key*/ ctx[8]])) {
+    			if (dirty & /*items*/ 1 && h2_class_value !== (h2_class_value = "m-archive-header party-" + /*items*/ ctx[0].all_party_ids[/*key*/ ctx[8]])) {
     				attr_dev(h2, "class", h2_class_value);
     			}
     		},
@@ -4850,7 +4898,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_1$2.name,
+    		id: create_if_block_2$2.name,
     		type: "if",
     		source: "(51:2) {#if parties.length > 1}",
     		ctx
@@ -4861,15 +4909,14 @@ var app = (function () {
 
     // (55:3) {#if party_candidates(party, race.office).length > 0}
     function create_if_block$3(ctx) {
-    	let h4;
+    	let h3;
     	let t0_value = /*race*/ ctx[9].office + "";
     	let t0;
     	let t1;
-    	let p;
-    	let raw_value = /*race*/ ctx[9].blurb + "";
     	let t2;
     	let section;
     	let current;
+    	let if_block = /*race*/ ctx[9].blurb && create_if_block_1$2(ctx);
     	let each_value_2 = /*party_candidates*/ ctx[3](/*party*/ ctx[6], /*race*/ ctx[9].office);
     	validate_each_argument(each_value_2);
     	let each_blocks = [];
@@ -4884,10 +4931,10 @@ var app = (function () {
 
     	const block = {
     		c: function create() {
-    			h4 = element("h4");
+    			h3 = element("h3");
     			t0 = text(t0_value);
     			t1 = space();
-    			p = element("p");
+    			if (if_block) if_block.c();
     			t2 = space();
     			section = element("section");
 
@@ -4895,17 +4942,16 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			add_location(h4, file$9, 55, 3, 1761);
-    			add_location(p, file$9, 56, 3, 1787);
-    			attr_dev(section, "class", "candidates-list");
-    			add_location(section, file$9, 57, 4, 1817);
+    			attr_dev(h3, "class", "m-archive-header");
+    			add_location(h3, file$9, 55, 3, 1778);
+    			attr_dev(section, "class", "m-archive m-archive-homepage m-zone m-zone-homepage-more-top candidates-list");
+    			add_location(section, file$9, 59, 4, 1889);
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, h4, anchor);
-    			append_dev(h4, t0);
+    			insert_dev(target, h3, anchor);
+    			append_dev(h3, t0);
     			insert_dev(target, t1, anchor);
-    			insert_dev(target, p, anchor);
-    			p.innerHTML = raw_value;
+    			if (if_block) if_block.m(target, anchor);
     			insert_dev(target, t2, anchor);
     			insert_dev(target, section, anchor);
 
@@ -4916,6 +4962,8 @@ var app = (function () {
     			current = true;
     		},
     		p: function update(ctx, dirty) {
+    			if (/*race*/ ctx[9].blurb) if_block.p(ctx, dirty);
+
     			if (dirty & /*party_candidates, parties, races*/ 14) {
     				each_value_2 = /*party_candidates*/ ctx[3](/*party*/ ctx[6], /*race*/ ctx[9].office);
     				validate_each_argument(each_value_2);
@@ -4963,9 +5011,9 @@ var app = (function () {
     			current = false;
     		},
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(h4);
+    			if (detaching) detach_dev(h3);
     			if (detaching) detach_dev(t1);
-    			if (detaching) detach_dev(p);
+    			if (if_block) if_block.d(detaching);
     			if (detaching) detach_dev(t2);
     			if (detaching) detach_dev(section);
     			destroy_each(each_blocks, detaching);
@@ -4983,7 +5031,38 @@ var app = (function () {
     	return block;
     }
 
-    // (59:5) {#each party_candidates(party, race.office) as candidate}
+    // (57:3) {#if race.blurb}
+    function create_if_block_1$2(ctx) {
+    	let p;
+    	let raw_value = /*race*/ ctx[9].blurb + "";
+
+    	const block = {
+    		c: function create() {
+    			p = element("p");
+    			add_location(p, file$9, 57, 4, 1850);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, p, anchor);
+    			p.innerHTML = raw_value;
+    		},
+    		p: noop,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(p);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_1$2.name,
+    		type: "if",
+    		source: "(57:3) {#if race.blurb}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (61:5) {#each party_candidates(party, race.office) as candidate}
     function create_each_block_2(ctx) {
     	let candidate;
     	let current;
@@ -5024,7 +5103,7 @@ var app = (function () {
     		block,
     		id: create_each_block_2.name,
     		type: "each",
-    		source: "(59:5) {#each party_candidates(party, race.office) as candidate}",
+    		source: "(61:5) {#each party_candidates(party, race.office) as candidate}",
     		ctx
     	});
 
@@ -5106,7 +5185,7 @@ var app = (function () {
     	let t0;
     	let t1;
     	let current;
-    	let if_block = /*parties*/ ctx[1].length > 1 && create_if_block_1$2(ctx);
+    	let if_block = /*parties*/ ctx[1].length > 1 && create_if_block_2$2(ctx);
     	let each_value_1 = /*races*/ ctx[2];
     	validate_each_argument(each_value_1);
     	let each_blocks = [];
@@ -5150,7 +5229,7 @@ var app = (function () {
     				if (if_block) {
     					if_block.p(ctx, dirty);
     				} else {
-    					if_block = create_if_block_1$2(ctx);
+    					if_block = create_if_block_2$2(ctx);
     					if_block.c();
     					if_block.m(section, t0);
     				}
@@ -5227,7 +5306,7 @@ var app = (function () {
     	let t;
     	let each_1_anchor;
     	let current;
-    	let if_block = /*parties*/ ctx[1].length == 1 && create_if_block_2$2(ctx);
+    	let if_block = /*parties*/ ctx[1].length == 1 && create_if_block_3$1(ctx);
     	let each_value = /*parties*/ ctx[1];
     	validate_each_argument(each_value);
     	let each_blocks = [];
@@ -5270,7 +5349,7 @@ var app = (function () {
     				if (if_block) {
     					if_block.p(ctx, dirty);
     				} else {
-    					if_block = create_if_block_2$2(ctx);
+    					if_block = create_if_block_3$1(ctx);
     					if_block.c();
     					if_block.m(t.parentNode, t);
     				}
@@ -11350,7 +11429,7 @@ var app = (function () {
     	return block;
     }
 
-    // (228:1) {:then items}
+    // (236:1) {:then items}
     function create_then_block(ctx) {
     	let div2;
     	let div0;
@@ -11424,19 +11503,19 @@ var app = (function () {
     			t4 = space();
     			key_block.c();
     			key_block_anchor = empty();
-    			attr_dev(div0, "class", "a-filter-select svelte-qir5b7");
-    			add_location(div0, file, 229, 3, 6419);
-    			attr_dev(div1, "class", "a-filter-select svelte-qir5b7");
-    			add_location(div1, file, 232, 3, 6677);
-    			attr_dev(div2, "class", "m-filtering svelte-qir5b7");
-    			add_location(div2, file, 228, 2, 6390);
+    			attr_dev(div0, "class", "a-filter-select svelte-1jgw4ey");
+    			add_location(div0, file, 237, 3, 6563);
+    			attr_dev(div1, "class", "a-filter-select svelte-1jgw4ey");
+    			add_location(div1, file, 240, 3, 6821);
+    			attr_dev(div2, "class", "m-filtering svelte-1jgw4ey");
+    			add_location(div2, file, 236, 2, 6534);
     			attr_dev(small, "class", "a-form-caption");
-    			add_location(small, file, 237, 187, 7161);
-    			attr_dev(label, "class", "a-switch-toggle show-dropped-out-candidates svelte-qir5b7");
+    			add_location(small, file, 245, 187, 7305);
+    			attr_dev(label, "class", "a-switch-toggle show-dropped-out-candidates svelte-1jgw4ey");
     			attr_dev(label, "for", "show-dropped-out-candidates");
-    			add_location(label, file, 237, 94, 7068);
-    			attr_dev(div3, "class", "a-filter-switch svelte-qir5b7");
-    			add_location(div3, file, 236, 2, 6944);
+    			add_location(label, file, 245, 94, 7212);
+    			attr_dev(div3, "class", "a-filter-switch svelte-1jgw4ey");
+    			add_location(div3, file, 244, 2, 7088);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div2, anchor);
@@ -11519,14 +11598,14 @@ var app = (function () {
     		block,
     		id: create_then_block.name,
     		type: "then",
-    		source: "(228:1) {:then items}",
+    		source: "(236:1) {:then items}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (241:2) {#key params}
+    // (249:2) {#key params}
     function create_key_block(ctx) {
     	let switch_instance;
     	let switch_instance_anchor;
@@ -11608,14 +11687,14 @@ var app = (function () {
     		block,
     		id: create_key_block.name,
     		type: "key",
-    		source: "(241:2) {#key params}",
+    		source: "(249:2) {#key params}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (226:22)    Loading...  {:then items}
+    // (234:22)    Loading...  {:then items}
     function create_pending_block(ctx) {
     	let t;
 
@@ -11638,7 +11717,7 @@ var app = (function () {
     		block,
     		id: create_pending_block.name,
     		type: "pending",
-    		source: "(226:22)    Loading...  {:then items}",
+    		source: "(234:22)    Loading...  {:then items}",
     		ctx
     	});
 
@@ -11677,12 +11756,12 @@ var app = (function () {
     			section = element("section");
     			info.block.c();
     			attr_dev(input, "placeholder", "Search for a candidate, party, or race");
-    			attr_dev(input, "class", "a-filter-search svelte-qir5b7");
-    			add_location(input, file, 221, 1, 6147);
-    			attr_dev(div, "class", "m-filtering svelte-qir5b7");
-    			add_location(div, file, 220, 0, 6120);
-    			attr_dev(section, "class", "container m-archive m-archive-excerpt m-archive-date");
-    			add_location(section, file, 224, 0, 6266);
+    			attr_dev(input, "class", "a-filter-search svelte-1jgw4ey");
+    			add_location(input, file, 229, 1, 6309);
+    			attr_dev(div, "class", "m-filtering svelte-1jgw4ey");
+    			add_location(div, file, 228, 0, 6282);
+    			attr_dev(section, "class", "container m-zones m-homepage-zones");
+    			add_location(section, file, 232, 0, 6428);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
