@@ -1,16 +1,14 @@
 <style>
 	.candidate {
 		border: 1px solid #d6d6da;
-		/*margin-top: 0.5em;*/
 		padding: 0.5em;
 		border-radius: 4px;
-		/*flex: 400px;
-		max-width: 400px;
-		margin-right:1em;*/
-		/*width: 47.4576271186%;
-		align-content: flex-start;*/
 		display: block;
 		width: 100%;
+	}
+
+	.m-entry-excerpt {
+		font-family: "ff-meta-serif-web-pro", georgia, cambria, "Times New Roman", times, serif;
 	}
 
 	.former-candidate {
@@ -34,23 +32,16 @@
 	}
 
 	.candidate-meta {
-		/*font-family: Helvetica, Arial, sans-serif;*/
-		/*font-size: .8em;
-		font-weight: 700;*/
-		font-weight: bold;
+		font-weight: 700;
 		margin-bottom: 0.25em;
 		font-size: var(--scale-2);
+		font-family: "ff-meta-web-pro", helvetica, arial, sans-serif;
 		color: #5E6E76;
-		/*display: flex;*/
 	}
 
 	.candidate-meta div {
 		margin-bottom: 0.25em;
-		/*margin-right: 0.25em;
-		display: inline-block;*/
 	}
-
-	
 
 	.incumbent {color: #f74607;}
 	.dropped-out .icon {color: #C83D2D;}
