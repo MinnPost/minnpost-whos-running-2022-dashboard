@@ -22,7 +22,7 @@
 
 {#if items["searchTerm"] != ""}
     <aside class="m-search-result-info">
-        Showing {items.candidates.length} {#if items.candidates.length == 1}candidate{:else}candidates{/if} in {items.races.length} {#if items.races.length == 1}race{:else}races{/if} for <strong>{items["searchTerm"]}</strong>
+        Showing {items.candidates.length} {#if items.candidates.length == 1}candidate{:else}candidates{/if} in {items.races.length} {#if items.races.length == 1}race{:else}races{/if} for <strong>{items["searchTerm"]}</strong>. <a href="/">See the full candidate&nbsp;list</a>.
     </aside>
 {/if}
 

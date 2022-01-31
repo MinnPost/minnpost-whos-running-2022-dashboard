@@ -171,6 +171,9 @@
 		if ( typeof candidates !== "undefined" ) {
 			data["candidates"] = candidates;
 		}
+		if ( typeof dropped_out_candidates !== "undefined" ) {
+			data["dropped_out_candidates"] = dropped_out_candidates;
+		}
 		data["searchTerm"] = searchTerm;
 		return data;
 	});

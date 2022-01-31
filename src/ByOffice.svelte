@@ -46,7 +46,11 @@
 
 {#if office}
 	<aside class="m-search-result-info">
-		Showing {office_candidates(office["office-id"]).length} {#if office_candidates(office["office-id"]).length == 1}candidate{:else}candidates{/if} in {office_candidate_parties(office_candidates(office["office-id"])).length} {#if office_candidate_parties(office_candidates(office["office-id"])).length == 1}party{:else}parties{/if} for <strong>{office["office"]}</strong>
+		{#if items["searchTerm"] != ""}
+			Showing {office_candidates(office["office-id"]).length} {#if office_candidates(office["office-id"]).length == 1}search result{:else}search results{/if} for <strong>{items.searchTerm}</strong> within all {office["office"]} candidates.
+		{:else}
+			Showing {office_candidates(office["office-id"]).length} {#if office_candidates(office["office-id"]).length == 1}candidate{:else}candidates{/if} in {office_candidate_parties(office_candidates(office["office-id"])).length} {#if office_candidate_parties(office_candidates(office["office-id"])).length == 1}party{:else}parties{/if} for <strong>{office["office"]}</strong>.
+		{/if} <a href="/">See the full candidate&nbsp;list</a>.
 	</aside>
 {/if}
 
