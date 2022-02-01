@@ -11950,18 +11950,18 @@ var app = (function () {
     			key_block.c();
     			key_block_anchor = empty();
     			attr_dev(div0, "class", "a-filter-select svelte-1jgw4ey");
-    			add_location(div0, file, 240, 3, 6684);
+    			add_location(div0, file, 240, 3, 6672);
     			attr_dev(div1, "class", "a-filter-select svelte-1jgw4ey");
-    			add_location(div1, file, 243, 3, 6942);
+    			add_location(div1, file, 243, 3, 6930);
     			attr_dev(div2, "class", "m-filtering svelte-1jgw4ey");
-    			add_location(div2, file, 239, 2, 6655);
+    			add_location(div2, file, 239, 2, 6643);
     			attr_dev(small, "class", "a-form-caption");
-    			add_location(small, file, 248, 187, 7426);
+    			add_location(small, file, 248, 187, 7414);
     			attr_dev(label, "class", "a-switch-toggle show-dropped-out-candidates svelte-1jgw4ey");
     			attr_dev(label, "for", "show-dropped-out-candidates");
-    			add_location(label, file, 248, 94, 7333);
+    			add_location(label, file, 248, 94, 7321);
     			attr_dev(div3, "class", "a-filter-switch svelte-1jgw4ey");
-    			add_location(div3, file, 247, 2, 7209);
+    			add_location(div3, file, 247, 2, 7197);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div2, anchor);
@@ -12203,11 +12203,11 @@ var app = (function () {
     			info.block.c();
     			attr_dev(input, "placeholder", "Search for a candidate, party, or race");
     			attr_dev(input, "class", "a-filter-search svelte-1jgw4ey");
-    			add_location(input, file, 232, 1, 6430);
+    			add_location(input, file, 232, 1, 6418);
     			attr_dev(div, "class", "m-filtering svelte-1jgw4ey");
-    			add_location(div, file, 231, 0, 6403);
+    			add_location(div, file, 231, 0, 6391);
     			attr_dev(section, "class", "container m-zones m-homepage-zones");
-    			add_location(section, file, 235, 0, 6549);
+    			add_location(section, file, 235, 0, 6537);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -12307,7 +12307,7 @@ var app = (function () {
     	let items = [];
 
     	async function getData() {
-    		let res = await fetch(`https://s3.amazonaws.com/data.minnpost/projects/minnpost-whos-running-2022/candidate-tracker-sample-data.json`);
+    		let res = await fetch(`https://s3.amazonaws.com/data.minnpost/projects/minnpost-whos-running-2022/candidate-tracker.json`);
     		let data = await res.json();
     		$$invalidate(2, items = data);
     		return items;
