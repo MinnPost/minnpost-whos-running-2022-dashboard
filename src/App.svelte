@@ -70,7 +70,7 @@
 	// remote data
 	let items = []
 	async function getData() {
-		let res = await fetch(`https://s3.amazonaws.com/data.minnpost/projects/minnpost-whos-running-2022/candidate-tracker-sample-data.json`);
+		let res = await fetch(`https://s3.amazonaws.com/data.minnpost/projects/minnpost-whos-running-2022/candidate-tracker.json`);
 		let data = await res.json();
 		items = data
 		return items;
