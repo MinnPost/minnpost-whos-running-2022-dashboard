@@ -4535,7 +4535,7 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			attr_dev(h3, "class", h3_class_value = "m-archive-header party-" + /*items*/ ctx[0].all_party_ids[/*key*/ ctx[11]]);
+    			attr_dev(h3, "class", h3_class_value = "m-archive-header party-" + /*office_candidate_parties*/ ctx[3](/*office_candidates*/ ctx[2](/*race*/ ctx[6]["office-id"]))[/*key*/ ctx[11]].toLowerCase());
     			add_location(h3, file$b, 58, 20, 2081);
     			attr_dev(section, "class", "m-archive m-archive-homepage m-zone m-zone-homepage-more-top candidates-list");
     			add_location(section, file$b, 57, 16, 1966);
@@ -4555,7 +4555,7 @@ var app = (function () {
     		p: function update(ctx, dirty) {
     			if ((!current || dirty & /*items*/ 1) && t0_value !== (t0_value = /*party*/ ctx[9] + "")) set_data_dev(t0, t0_value);
 
-    			if (!current || dirty & /*items*/ 1 && h3_class_value !== (h3_class_value = "m-archive-header party-" + /*items*/ ctx[0].all_party_ids[/*key*/ ctx[11]])) {
+    			if (!current || dirty & /*items*/ 1 && h3_class_value !== (h3_class_value = "m-archive-header party-" + /*office_candidate_parties*/ ctx[3](/*office_candidates*/ ctx[2](/*race*/ ctx[6]["office-id"]))[/*key*/ ctx[11]].toLowerCase())) {
     				attr_dev(h3, "class", h3_class_value);
     			}
 
@@ -5637,7 +5637,7 @@ var app = (function () {
     				if_block1 = null;
     			}
 
-    			if (dirty & /*office_candidates, races, office_candidate_parties, items*/ 27) {
+    			if (dirty & /*office_candidates, races, office_candidate_parties*/ 26) {
     				each_value_1 = /*office_candidate_parties*/ ctx[4](/*office_candidates*/ ctx[3](/*race*/ ctx[6]["office-id"]));
     				validate_each_argument(each_value_1);
     				let i;
@@ -5806,7 +5806,7 @@ var app = (function () {
     			}
 
     			t2 = space();
-    			attr_dev(h3, "class", h3_class_value = "m-archive-header party-" + /*items*/ ctx[0].all_party_ids[/*key*/ ctx[8]]);
+    			attr_dev(h3, "class", h3_class_value = "m-archive-header party-" + /*office_candidate_parties*/ ctx[4](/*office_candidates*/ ctx[3](/*race*/ ctx[6]["office-id"]))[/*key*/ ctx[8]].toLowerCase());
     			add_location(h3, file$a, 68, 6, 2478);
     			attr_dev(section, "class", "m-archive m-archive-homepage m-zone m-zone-homepage-more-top candidates-list");
     			add_location(section, file$a, 67, 5, 2377);
@@ -5827,7 +5827,7 @@ var app = (function () {
     		p: function update(ctx, dirty) {
     			if ((!current || dirty & /*races*/ 2) && t0_value !== (t0_value = /*party*/ ctx[9] + "")) set_data_dev(t0, t0_value);
 
-    			if (!current || dirty & /*items*/ 1 && h3_class_value !== (h3_class_value = "m-archive-header party-" + /*items*/ ctx[0].all_party_ids[/*key*/ ctx[8]])) {
+    			if (!current || dirty & /*races*/ 2 && h3_class_value !== (h3_class_value = "m-archive-header party-" + /*office_candidate_parties*/ ctx[4](/*office_candidates*/ ctx[3](/*race*/ ctx[6]["office-id"]))[/*key*/ ctx[8]].toLowerCase())) {
     				attr_dev(h3, "class", h3_class_value);
     			}
 
@@ -6148,7 +6148,7 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (dirty & /*office_candidate_parties, office_candidates, races, items*/ 27) {
+    			if (dirty & /*office_candidate_parties, office_candidates, races*/ 26) {
     				each_value = /*races*/ ctx[1];
     				validate_each_argument(each_value);
     				let i;

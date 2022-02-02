@@ -66,7 +66,7 @@
 			{#each office_candidate_parties(office_candidates(race["office-id"])) as party, key}
 				{#if office_candidates(race["office-id"], party).length > 0}
 					<section class="m-archive m-archive-homepage m-zone m-zone-homepage-more-top candidates-list">
-						<h3 class="m-archive-header party-{items.all_party_ids[key]}">{party}</h3>
+						<h3 class="m-archive-header party-{office_candidate_parties(office_candidates(race["office-id"]))[key].toLowerCase()}">{party}</h3>
 						{#each office_candidates(race["office-id"], party) as candidate}
 							<Candidate candidate = {candidate} />
 						{/each}
