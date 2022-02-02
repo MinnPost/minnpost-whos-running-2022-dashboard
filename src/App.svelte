@@ -4,6 +4,11 @@
 		margin-bottom: 1.5em;
 		padding-bottom: .75em;
 	}
+	:global(.race-listing:last-of-type) {
+		border-bottom: none;
+		margin-bottom: 0;
+		padding-bottom: 0;
+	}
 	:global(.candidates-list) {
     	display: flex;
     	flex-wrap: wrap;

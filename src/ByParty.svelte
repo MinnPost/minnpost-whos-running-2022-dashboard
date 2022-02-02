@@ -39,6 +39,9 @@
 	// single candidate template
 	import Candidate from "./Candidate.svelte";
 
+	// link to go back to unfiltered list
+    import LinkToFullCandidateList from "./components/LinkToFullCandidateList.svelte";
+
 </script>
 
 {#if parties.length == 1}
@@ -47,7 +50,7 @@
 			Showing {party_candidates(parties[0]).length} {#if party_candidates(parties[0]).length == 1}search result{:else}search results{/if} for <strong>{items.searchTerm}</strong> within all {parties[0]} candidates.
 		{:else}
 			Showing {party_candidates(parties[0]).length} {#if party_candidates(parties[0]).length == 1}candidate{:else}candidates{/if} in {party_candidate_races(party_candidates(parties[0])).length} {#if party_candidate_races(party_candidates(parties[0])).length == 1}race{:else}races{/if} for <strong>{parties[0]}</strong>.
-		{/if} <a href="/">See the full candidate&nbsp;list</a>.
+		{/if}  <LinkToFullCandidateList/>
 	</aside>
 {/if}
 

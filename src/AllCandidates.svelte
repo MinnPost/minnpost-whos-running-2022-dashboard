@@ -15,14 +15,35 @@
 		)
 	}
 
+    // create a list of candidates for an office
+	let office_candidates = function(office, party = '') {
+		if ( party !== '') {
+			return items.candidates.filter(
+				item => item["race-id"].indexOf(office) !== -1 && item["party"].indexOf(party) !== -1
+			)
+		} else {
+			return items.candidates.filter(
+				item => item["race-id"].indexOf(office) !== -1
+			)
+		}
+	}
+
+    // the distinct parties from this list of candidates
+	let office_candidate_parties = function(candidates) {
+		return [...new Set(candidates.map(value => value["party"]))];
+	}
+
     // single candidate template
 	import Candidate from "./Candidate.svelte";
+
+    // link to go back to unfiltered list
+    import LinkToFullCandidateList from "./components/LinkToFullCandidateList.svelte";
     
 </script>
 
 {#if items["searchTerm"] != ""}
     <aside class="m-search-result-info">
-        Showing {items.candidates.length} {#if items.candidates.length == 1}candidate{:else}candidates{/if} in {items.races.length} {#if items.races.length == 1}race{:else}races{/if} for <strong>{items["searchTerm"]}</strong>. <a href="/">See the full candidate&nbsp;list</a>.
+        Showing {items.candidates.length} {#if items.candidates.length == 1}candidate{:else}candidates{/if} in {items.races.length} {#if items.races.length == 1}race{:else}races{/if} for <strong>{items["searchTerm"]}</strong>.
     </aside>
 {/if}
 
@@ -32,7 +53,7 @@
         {#if race.blurb}
             <p>{@html race.blurb}</p>
         {/if}
-        {#each parties as party, key}
+        {#each office_candidate_parties(office_candidates(race["office-id"])) as party, key}
             {#if party_candidates(party, race.office).length > 0}
                 <section class="m-archive m-archive-homepage m-zone m-zone-homepage-more-top candidates-list">
                     <h3 class="m-archive-header party-{items.all_party_ids[key]}">{party}</h3>
