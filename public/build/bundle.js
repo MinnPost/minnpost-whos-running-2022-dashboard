@@ -2111,6 +2111,8 @@ var app = (function () {
     			img = element("img");
     			if (!src_url_equal(img.src, img_src_value = /*candidate*/ ctx[0]['headshot-url'])) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", img_alt_value = "photo of " + /*candidate*/ ctx[0].name);
+    			attr_dev(img, "width", "130");
+    			attr_dev(img, "height", "130");
     			attr_dev(img, "class", "svelte-nk99zb");
     			add_location(img, file$c, 74, 3, 1435);
     			attr_dev(div, "class", "candidate-photo svelte-nk99zb");
@@ -2160,9 +2162,9 @@ var app = (function () {
     			t0 = text(" Lives in: ");
     			t1 = text(t1_value);
     			attr_dev(i, "class", "fas fa-fw fa-home");
-    			add_location(i, file$c, 84, 24, 1830);
+    			add_location(i, file$c, 84, 24, 1851);
     			attr_dev(div, "class", "hometown svelte-nk99zb");
-    			add_location(div, file$c, 84, 2, 1808);
+    			add_location(div, file$c, 84, 2, 1829);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -2201,9 +2203,9 @@ var app = (function () {
     			i = element("i");
     			t = text(" Incumbent");
     			attr_dev(i, "class", "fas fa-fw fa-star");
-    			add_location(i, file$c, 88, 25, 1963);
+    			add_location(i, file$c, 88, 25, 1984);
     			attr_dev(div, "class", "incumbent svelte-nk99zb");
-    			add_location(div, file$c, 88, 2, 1940);
+    			add_location(div, file$c, 88, 2, 1961);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -2251,13 +2253,13 @@ var app = (function () {
     			t2 = space();
     			if (if_block) if_block.c();
     			attr_dev(i, "class", "fas fa-fw fa-check-square");
-    			add_location(i, file$c, 92, 73, 2122);
+    			add_location(i, file$c, 92, 73, 2143);
     			attr_dev(span0, "class", span0_class_value = "icon party-" + /*candidate*/ ctx[0]["party-id"] + " svelte-nk99zb");
-    			add_location(span0, file$c, 92, 24, 2073);
+    			add_location(span0, file$c, 92, 24, 2094);
     			attr_dev(span1, "class", span1_class_value = "party-" + /*candidate*/ ctx[0]["party-id"] + " svelte-nk99zb");
-    			add_location(span1, file$c, 93, 15, 2187);
+    			add_location(span1, file$c, 93, 15, 2208);
     			attr_dev(div, "class", "endorsed svelte-nk99zb");
-    			add_location(div, file$c, 92, 2, 2051);
+    			add_location(div, file$c, 92, 2, 2072);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -2352,11 +2354,11 @@ var app = (function () {
     			t0 = text(" Dropped out of the race on ");
     			t1 = text(t1_value);
     			attr_dev(i, "class", "fas fa-fw fa-times");
-    			add_location(i, file$c, 97, 46, 2392);
+    			add_location(i, file$c, 97, 46, 2413);
     			attr_dev(span, "class", "icon svelte-nk99zb");
-    			add_location(span, file$c, 97, 27, 2373);
+    			add_location(span, file$c, 97, 27, 2394);
     			attr_dev(div, "class", "dropped-out svelte-nk99zb");
-    			add_location(div, file$c, 97, 2, 2348);
+    			add_location(div, file$c, 97, 2, 2369);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -2399,9 +2401,9 @@ var app = (function () {
     			t = space();
     			if (if_block) if_block.c();
     			attr_dev(p, "class", "svelte-nk99zb");
-    			add_location(p, file$c, 103, 2, 2597);
+    			add_location(p, file$c, 103, 2, 2618);
     			attr_dev(div, "class", "m-entry-excerpt blurb svelte-nk99zb");
-    			add_location(div, file$c, 102, 1, 2559);
+    			add_location(div, file$c, 102, 1, 2580);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -2457,12 +2459,12 @@ var app = (function () {
     			i = element("i");
     			t = text(" Campaign website");
     			attr_dev(i, "class", "fas fa-fw fa-globe");
-    			add_location(i, file$c, 105, 52, 2706);
+    			add_location(i, file$c, 105, 52, 2727);
     			attr_dev(a, "href", a_href_value = /*candidate*/ ctx[0].website);
     			attr_dev(a, "target", "_blank");
-    			add_location(a, file$c, 105, 6, 2660);
+    			add_location(a, file$c, 105, 6, 2681);
     			attr_dev(p, "class", "svelte-nk99zb");
-    			add_location(p, file$c, 105, 3, 2657);
+    			add_location(p, file$c, 105, 3, 2678);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -2542,13 +2544,13 @@ var app = (function () {
     			t9 = space();
     			if (if_block5) if_block5.c();
     			attr_dev(h4, "class", "a-entry-title svelte-nk99zb");
-    			add_location(h4, file$c, 78, 1, 1528);
+    			add_location(h4, file$c, 78, 1, 1549);
     			attr_dev(i, "class", i_class_value = "fas fa-fw fa-" + (/*party_icons*/ ctx[1][/*candidate*/ ctx[0]["party-id"]] ?? "circle") + " svelte-nk99zb");
-    			add_location(i, file$c, 81, 56, 1676);
+    			add_location(i, file$c, 81, 56, 1697);
     			attr_dev(div0, "class", div0_class_value = "party-name party-" + /*candidate*/ ctx[0]["party-id"] + " svelte-nk99zb");
-    			add_location(div0, file$c, 81, 2, 1622);
+    			add_location(div0, file$c, 81, 2, 1643);
     			attr_dev(div1, "class", "m-entry-meta candidate-meta svelte-nk99zb");
-    			add_location(div1, file$c, 80, 1, 1578);
+    			add_location(div1, file$c, 80, 1, 1599);
     			attr_dev(article, "class", "m-post candidate svelte-nk99zb");
     			toggle_class(article, "former-candidate", /*candidate*/ ctx[0]["dropped-out"]);
     			add_location(article, file$c, 70, 0, 1280);

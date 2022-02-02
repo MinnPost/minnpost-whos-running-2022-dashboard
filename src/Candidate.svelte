@@ -72,7 +72,7 @@
 	
 	{#if candidate["headshot-url"]}
 		<div class="candidate-photo">
-			<img src="{candidate['headshot-url']}" alt="photo of {candidate.name}" />
+			<img src="{candidate['headshot-url']}" alt="photo of {candidate.name}" width=130 height=130 />
 		</div>
 	{/if}
 	
