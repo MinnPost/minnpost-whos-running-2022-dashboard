@@ -8,9 +8,6 @@
 	// the races from App.svelte
 	let races = items.races;
 
-	// the parties from App.svelte
-	let parties = items.all_parties;
-
 	// what office do we want?
 	let office = {};
     if (params && params.office) {
@@ -21,7 +18,7 @@
 	    races = items.races;
     }
 
-	// create a list of candidates for a office
+	// create a list of candidates for an office
 	let office_candidates = function(office, party = '') {
 		if ( party !== '') {
 			return items.candidates.filter(
@@ -42,6 +39,9 @@
 	// single candidate template
     import Candidate from "./Candidate.svelte";
 
+	// link to go back to unfiltered list
+    import LinkToFullCandidateList from "./components/LinkToFullCandidateList.svelte";
+
 </script>
 
 {#if office}
@@ -50,7 +50,7 @@
 			Showing {office_candidates(office["office-id"]).length} {#if office_candidates(office["office-id"]).length == 1}search result{:else}search results{/if} for <strong>{items.searchTerm}</strong> within all {office["office"]} candidates.
 		{:else}
 			Showing {office_candidates(office["office-id"]).length} {#if office_candidates(office["office-id"]).length == 1}candidate{:else}candidates{/if} in {office_candidate_parties(office_candidates(office["office-id"])).length} {#if office_candidate_parties(office_candidates(office["office-id"])).length == 1}party{:else}parties{/if} for <strong>{office["office"]}</strong>.
-		{/if} <a href="/">See the full candidate&nbsp;list</a>.
+		{/if}  <LinkToFullCandidateList/>
 	</aside>
 {/if}
 
@@ -63,7 +63,7 @@
 			{#if race.blurb}
 				<p>{@html race.blurb}</p>
 			{/if}
-			{#each parties as party, key}
+			{#each office_candidate_parties(office_candidates(race["office-id"])) as party, key}
 				{#if office_candidates(race["office-id"], party).length > 0}
 					<section class="m-archive m-archive-homepage m-zone m-zone-homepage-more-top candidates-list">
 						<h3 class="m-archive-header party-{items.all_party_ids[key]}">{party}</h3>

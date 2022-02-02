@@ -1,0 +1,1 @@
+<a href="/" class="a-full-list-link">See the full candidate&nbsp;list</a>.
