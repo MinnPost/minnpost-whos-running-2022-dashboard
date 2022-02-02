@@ -27,8 +27,8 @@
 	}
 
 	.candidate-photo img {
-		max-width: 100px;
-		border-radius: 200px;
+		max-width: 130px;
+		border-radius: 50%;
 	}
 
 	.candidate-meta {
