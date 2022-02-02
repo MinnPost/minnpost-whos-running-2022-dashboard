@@ -70,6 +70,12 @@
 	// remote data
 	let items = []
 	async function getData() {
+		/*
+		for actual 2022 data:
+		https://s3.amazonaws.com/data.minnpost/projects/minnpost-whos-running-2022/candidate-tracker.json
+		for sample (changed based on 2020) data:
+		https://s3.amazonaws.com/data.minnpost/projects/minnpost-whos-running-2022/candidate-tracker-2020-sample-data.json
+		*/
 		let res = await fetch(`https://s3.amazonaws.com/data.minnpost/projects/minnpost-whos-running-2022/candidate-tracker.json`);
 		let data = await res.json();
 		items = data
@@ -104,9 +110,8 @@
 		let candidates = searchResults(searchTerm, items.candidates);
 
 		let active_candidates = matchResults("dropped-out", false, candidates);
-
+		let dropped_out_candidates = matchResults("dropped-out", true, candidates);
 		if (showDroppedOutCandidates == true) {
-			let dropped_out_candidates = matchResults("dropped-out", true, candidates);
 			candidates = active_candidates.concat(dropped_out_candidates);
 		} else {
 			candidates = active_candidates;
@@ -203,6 +208,11 @@
 	router.start();
 
 	// router base
+	/*
+	if testing locally you can comment out the active router.base line.
+	the actual WP post we need to use is:
+	router.base('?p=2079676&preview=true');
+	*/
 	router.base('?p=2079676&preview=true');
 
 	let selectParty;
@@ -245,9 +255,11 @@
 				<Select inputStyles="font-size: 1em; letter-spacing: inherit;" placeholder="Choose a race..."  items={items.race_select} on:select={handleOfficeSelect} on:clear={clearSelect} bind:this="{selectOffice}"></Select>
 			</div>
 		</div>
-		<div class="a-filter-switch">
-			<Switch bind:checked={showDroppedOutCandidates} id="show-dropped-out-candidates"></Switch> <label class="a-switch-toggle show-dropped-out-candidates" for="show-dropped-out-candidates"><small class="a-form-caption">Show candidates who have dropped out</small></label>
-		</div>
+		{#if items.dropped_out_candidates.length > 0}
+			<div class="a-filter-switch">
+				<Switch bind:checked={showDroppedOutCandidates} id="show-dropped-out-candidates"></Switch> <label class="a-switch-toggle show-dropped-out-candidates" for="show-dropped-out-candidates"><small class="a-form-caption">Show candidates who have dropped out</small></label>
+			</div>
+		{/if}
 
 		{#key params}
 			<svelte:component this={results} params="{params}" items="{items}" />

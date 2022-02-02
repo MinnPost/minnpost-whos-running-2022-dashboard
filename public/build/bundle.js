@@ -2385,7 +2385,7 @@ var app = (function () {
     }
 
     // (102:1) {#if candidate.blurb}
-    function create_if_block$6(ctx) {
+    function create_if_block$7(ctx) {
     	let div;
     	let p;
     	let raw_value = /*candidate*/ ctx[0].blurb + "";
@@ -2433,7 +2433,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block$6.name,
+    		id: create_if_block$7.name,
     		type: "if",
     		source: "(102:1) {#if candidate.blurb}",
     		ctx
@@ -2516,7 +2516,7 @@ var app = (function () {
     	let if_block2 = /*candidate*/ ctx[0].incumbent && create_if_block_5$3(ctx);
     	let if_block3 = /*candidate*/ ctx[0].endorsed && create_if_block_3$4(ctx);
     	let if_block4 = /*candidate*/ ctx[0]["dropped-out"] && create_if_block_2$5(ctx);
-    	let if_block5 = /*candidate*/ ctx[0].blurb && create_if_block$6(ctx);
+    	let if_block5 = /*candidate*/ ctx[0].blurb && create_if_block$7(ctx);
 
     	const block = {
     		c: function create() {
@@ -2659,7 +2659,7 @@ var app = (function () {
     				if (if_block5) {
     					if_block5.p(ctx, dirty);
     				} else {
-    					if_block5 = create_if_block$6(ctx);
+    					if_block5 = create_if_block$7(ctx);
     					if_block5.c();
     					if_block5.m(article, null);
     				}
@@ -3056,7 +3056,7 @@ var app = (function () {
     }
 
     // (36:12) {#if party_candidates(party, race.office).length > 0}
-    function create_if_block$5(ctx) {
+    function create_if_block$6(ctx) {
     	let section;
     	let h3;
     	let t0_value = /*party*/ ctx[7] + "";
@@ -3163,7 +3163,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block$5.name,
+    		id: create_if_block$6.name,
     		type: "if",
     		source: "(36:12) {#if party_candidates(party, race.office).length > 0}",
     		ctx
@@ -3225,7 +3225,7 @@ var app = (function () {
     	let show_if = /*party_candidates*/ ctx[2](/*party*/ ctx[7], /*race*/ ctx[4].office).length > 0;
     	let if_block_anchor;
     	let current;
-    	let if_block = show_if && create_if_block$5(ctx);
+    	let if_block = show_if && create_if_block$6(ctx);
 
     	const block = {
     		c: function create() {
@@ -3248,7 +3248,7 @@ var app = (function () {
     						transition_in(if_block, 1);
     					}
     				} else {
-    					if_block = create_if_block$5(ctx);
+    					if_block = create_if_block$6(ctx);
     					if_block.c();
     					transition_in(if_block, 1);
     					if_block.m(if_block_anchor.parentNode, if_block_anchor);
@@ -4088,7 +4088,7 @@ var app = (function () {
     }
 
     // (59:2) {#if race}
-    function create_if_block$4(ctx) {
+    function create_if_block$5(ctx) {
     	let t0;
     	let t1;
     	let each_1_anchor;
@@ -4218,7 +4218,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block$4.name,
+    		id: create_if_block$5.name,
     		type: "if",
     		source: "(59:2) {#if race}",
     		ctx
@@ -4537,7 +4537,7 @@ var app = (function () {
     	let section;
     	let t;
     	let current;
-    	let if_block = /*race*/ ctx[7] && create_if_block$4(ctx);
+    	let if_block = /*race*/ ctx[7] && create_if_block$5(ctx);
 
     	const block = {
     		c: function create() {
@@ -4562,7 +4562,7 @@ var app = (function () {
     						transition_in(if_block, 1);
     					}
     				} else {
-    					if_block = create_if_block$4(ctx);
+    					if_block = create_if_block$5(ctx);
     					if_block.c();
     					transition_in(if_block, 1);
     					if_block.m(section, t);
@@ -5354,7 +5354,7 @@ var app = (function () {
     }
 
     // (60:3) {#if party_candidates(party, race.office).length > 0}
-    function create_if_block$3(ctx) {
+    function create_if_block$4(ctx) {
     	let h3;
     	let t0_value = /*race*/ ctx[9].office + "";
     	let t0;
@@ -5468,7 +5468,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block$3.name,
+    		id: create_if_block$4.name,
     		type: "if",
     		source: "(60:3) {#if party_candidates(party, race.office).length > 0}",
     		ctx
@@ -5561,7 +5561,7 @@ var app = (function () {
     	let show_if = /*party_candidates*/ ctx[3](/*party*/ ctx[6], /*race*/ ctx[9].office).length > 0;
     	let if_block_anchor;
     	let current;
-    	let if_block = show_if && create_if_block$3(ctx);
+    	let if_block = show_if && create_if_block$4(ctx);
 
     	const block = {
     		c: function create() {
@@ -5584,7 +5584,7 @@ var app = (function () {
     						transition_in(if_block, 1);
     					}
     				} else {
-    					if_block = create_if_block$3(ctx);
+    					if_block = create_if_block$4(ctx);
     					if_block.c();
     					transition_in(if_block, 1);
     					if_block.m(if_block_anchor.parentNode, if_block_anchor);
@@ -6392,7 +6392,7 @@ var app = (function () {
     }
 
     // (286:4) {#if isVirtualList}
-    function create_if_block$2(ctx) {
+    function create_if_block$3(ctx) {
     	let switch_instance;
     	let switch_instance_anchor;
     	let current;
@@ -6483,7 +6483,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block$2.name,
+    		id: create_if_block$3.name,
     		type: "if",
     		source: "(286:4) {#if isVirtualList}",
     		ctx
@@ -6958,7 +6958,7 @@ var app = (function () {
     	let current;
     	let mounted;
     	let dispose;
-    	const if_block_creators = [create_if_block$2, create_else_block$1];
+    	const if_block_creators = [create_if_block$3, create_else_block$1];
     	const if_blocks = [];
 
     	function select_block_type(ctx, dirty) {
@@ -7779,7 +7779,7 @@ var app = (function () {
     }
 
     // (87:8) {#if !isDisabled && !multiFullItemClearable}
-    function create_if_block$1(ctx) {
+    function create_if_block$2(ctx) {
     	let div;
     	let svg;
     	let path;
@@ -7830,7 +7830,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block$1.name,
+    		id: create_if_block$2.name,
     		type: "if",
     		source: "(87:8) {#if !isDisabled && !multiFullItemClearable}",
     		ctx
@@ -7849,7 +7849,7 @@ var app = (function () {
     	let div1_class_value;
     	let mounted;
     	let dispose;
-    	let if_block = !/*isDisabled*/ ctx[2] && !/*multiFullItemClearable*/ ctx[3] && create_if_block$1(ctx);
+    	let if_block = !/*isDisabled*/ ctx[2] && !/*multiFullItemClearable*/ ctx[3] && create_if_block$2(ctx);
 
     	function click_handler_1(...args) {
     		return /*click_handler_1*/ ctx[7](/*i*/ ctx[11], ...args);
@@ -7887,7 +7887,7 @@ var app = (function () {
     				if (if_block) {
     					if_block.p(ctx, dirty);
     				} else {
-    					if_block = create_if_block$1(ctx);
+    					if_block = create_if_block$2(ctx);
     					if_block.c();
     					if_block.m(div1, t1);
     				}
@@ -9545,7 +9545,7 @@ var app = (function () {
     }
 
     // (983:4) {#if isMulti && showMultiSelect}
-    function create_if_block(ctx) {
+    function create_if_block$1(ctx) {
     	let each_1_anchor;
     	let each_value = /*value*/ ctx[2];
     	validate_each_argument(each_value);
@@ -9603,7 +9603,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block.name,
+    		id: create_if_block$1.name,
     		type: "if",
     		source: "(983:4) {#if isMulti && showMultiSelect}",
     		ctx
@@ -9706,7 +9706,7 @@ var app = (function () {
     	let if_block6 = /*isWaiting*/ ctx[4] && create_if_block_3(ctx);
     	let if_block7 = /*listOpen*/ ctx[5] && create_if_block_2(ctx);
     	let if_block8 = (!/*isMulti*/ ctx[7] || /*isMulti*/ ctx[7] && !/*showMultiSelect*/ ctx[35]) && create_if_block_1(ctx);
-    	let if_block9 = /*isMulti*/ ctx[7] && /*showMultiSelect*/ ctx[35] && create_if_block(ctx);
+    	let if_block9 = /*isMulti*/ ctx[7] && /*showMultiSelect*/ ctx[35] && create_if_block$1(ctx);
 
     	const block = {
     		c: function create() {
@@ -9979,7 +9979,7 @@ var app = (function () {
     				if (if_block9) {
     					if_block9.p(ctx, dirty);
     				} else {
-    					if_block9 = create_if_block(ctx);
+    					if_block9 = create_if_block$1(ctx);
     					if_block9.c();
     					if_block9.m(div, null);
     				}
@@ -11875,7 +11875,7 @@ var app = (function () {
     	return block;
     }
 
-    // (239:1) {:then items}
+    // (249:1) {:then items}
     function create_then_block(ctx) {
     	let div2;
     	let div0;
@@ -11884,13 +11884,7 @@ var app = (function () {
     	let div1;
     	let select1;
     	let t1;
-    	let div3;
-    	let switch_1;
-    	let updating_checked;
     	let t2;
-    	let label;
-    	let small;
-    	let t4;
     	let previous_key = /*params*/ ctx[4];
     	let key_block_anchor;
     	let current;
@@ -11916,19 +11910,7 @@ var app = (function () {
     	/*select1_binding*/ ctx[13](select1);
     	select1.$on("select", /*handleOfficeSelect*/ ctx[10]);
     	select1.$on("clear", /*clearSelect*/ ctx[8]);
-
-    	function switch_1_checked_binding(value) {
-    		/*switch_1_checked_binding*/ ctx[14](value);
-    	}
-
-    	let switch_1_props = { id: "show-dropped-out-candidates" };
-
-    	if (/*showDroppedOutCandidates*/ ctx[1] !== void 0) {
-    		switch_1_props.checked = /*showDroppedOutCandidates*/ ctx[1];
-    	}
-
-    	switch_1 = new Switch({ props: switch_1_props, $$inline: true });
-    	binding_callbacks.push(() => bind(switch_1, 'checked', switch_1_checked_binding));
+    	let if_block = /*items*/ ctx[2].dropped_out_candidates.length > 0 && create_if_block(ctx);
     	let key_block = create_key_block(ctx);
 
     	const block = {
@@ -11940,28 +11922,16 @@ var app = (function () {
     			div1 = element("div");
     			create_component(select1.$$.fragment);
     			t1 = space();
-    			div3 = element("div");
-    			create_component(switch_1.$$.fragment);
+    			if (if_block) if_block.c();
     			t2 = space();
-    			label = element("label");
-    			small = element("small");
-    			small.textContent = "Show candidates who have dropped out";
-    			t4 = space();
     			key_block.c();
     			key_block_anchor = empty();
     			attr_dev(div0, "class", "a-filter-select svelte-1jgw4ey");
-    			add_location(div0, file, 240, 3, 6672);
+    			add_location(div0, file, 250, 3, 7121);
     			attr_dev(div1, "class", "a-filter-select svelte-1jgw4ey");
-    			add_location(div1, file, 243, 3, 6930);
+    			add_location(div1, file, 253, 3, 7379);
     			attr_dev(div2, "class", "m-filtering svelte-1jgw4ey");
-    			add_location(div2, file, 239, 2, 6643);
-    			attr_dev(small, "class", "a-form-caption");
-    			add_location(small, file, 248, 187, 7414);
-    			attr_dev(label, "class", "a-switch-toggle show-dropped-out-candidates svelte-1jgw4ey");
-    			attr_dev(label, "for", "show-dropped-out-candidates");
-    			add_location(label, file, 248, 94, 7321);
-    			attr_dev(div3, "class", "a-filter-switch svelte-1jgw4ey");
-    			add_location(div3, file, 247, 2, 7197);
+    			add_location(div2, file, 249, 2, 7092);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div2, anchor);
@@ -11971,12 +11941,8 @@ var app = (function () {
     			append_dev(div2, div1);
     			mount_component(select1, div1, null);
     			insert_dev(target, t1, anchor);
-    			insert_dev(target, div3, anchor);
-    			mount_component(switch_1, div3, null);
-    			append_dev(div3, t2);
-    			append_dev(div3, label);
-    			append_dev(label, small);
-    			insert_dev(target, t4, anchor);
+    			if (if_block) if_block.m(target, anchor);
+    			insert_dev(target, t2, anchor);
     			key_block.m(target, anchor);
     			insert_dev(target, key_block_anchor, anchor);
     			current = true;
@@ -11988,15 +11954,29 @@ var app = (function () {
     			const select1_changes = {};
     			if (dirty & /*filteredList*/ 128) select1_changes.items = /*items*/ ctx[2].race_select;
     			select1.$set(select1_changes);
-    			const switch_1_changes = {};
 
-    			if (!updating_checked && dirty & /*showDroppedOutCandidates*/ 2) {
-    				updating_checked = true;
-    				switch_1_changes.checked = /*showDroppedOutCandidates*/ ctx[1];
-    				add_flush_callback(() => updating_checked = false);
+    			if (/*items*/ ctx[2].dropped_out_candidates.length > 0) {
+    				if (if_block) {
+    					if_block.p(ctx, dirty);
+
+    					if (dirty & /*filteredList*/ 128) {
+    						transition_in(if_block, 1);
+    					}
+    				} else {
+    					if_block = create_if_block(ctx);
+    					if_block.c();
+    					transition_in(if_block, 1);
+    					if_block.m(t2.parentNode, t2);
+    				}
+    			} else if (if_block) {
+    				group_outros();
+
+    				transition_out(if_block, 1, 1, () => {
+    					if_block = null;
+    				});
+
+    				check_outros();
     			}
-
-    			switch_1.$set(switch_1_changes);
 
     			if (dirty & /*params*/ 16 && safe_not_equal(previous_key, previous_key = /*params*/ ctx[4])) {
     				group_outros();
@@ -12014,14 +11994,14 @@ var app = (function () {
     			if (current) return;
     			transition_in(select0.$$.fragment, local);
     			transition_in(select1.$$.fragment, local);
-    			transition_in(switch_1.$$.fragment, local);
+    			transition_in(if_block);
     			transition_in(key_block);
     			current = true;
     		},
     		o: function outro(local) {
     			transition_out(select0.$$.fragment, local);
     			transition_out(select1.$$.fragment, local);
-    			transition_out(switch_1.$$.fragment, local);
+    			transition_out(if_block);
     			transition_out(key_block);
     			current = false;
     		},
@@ -12032,9 +12012,8 @@ var app = (function () {
     			/*select1_binding*/ ctx[13](null);
     			destroy_component(select1);
     			if (detaching) detach_dev(t1);
-    			if (detaching) detach_dev(div3);
-    			destroy_component(switch_1);
-    			if (detaching) detach_dev(t4);
+    			if (if_block) if_block.d(detaching);
+    			if (detaching) detach_dev(t2);
     			if (detaching) detach_dev(key_block_anchor);
     			key_block.d(detaching);
     		}
@@ -12044,14 +12023,98 @@ var app = (function () {
     		block,
     		id: create_then_block.name,
     		type: "then",
-    		source: "(239:1) {:then items}",
+    		source: "(249:1) {:then items}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (252:2) {#key params}
+    // (258:2) {#if items.dropped_out_candidates.length > 0}
+    function create_if_block(ctx) {
+    	let div;
+    	let switch_1;
+    	let updating_checked;
+    	let t0;
+    	let label;
+    	let small;
+    	let current;
+
+    	function switch_1_checked_binding(value) {
+    		/*switch_1_checked_binding*/ ctx[14](value);
+    	}
+
+    	let switch_1_props = { id: "show-dropped-out-candidates" };
+
+    	if (/*showDroppedOutCandidates*/ ctx[1] !== void 0) {
+    		switch_1_props.checked = /*showDroppedOutCandidates*/ ctx[1];
+    	}
+
+    	switch_1 = new Switch({ props: switch_1_props, $$inline: true });
+    	binding_callbacks.push(() => bind(switch_1, 'checked', switch_1_checked_binding));
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			create_component(switch_1.$$.fragment);
+    			t0 = space();
+    			label = element("label");
+    			small = element("small");
+    			small.textContent = "Show candidates who have dropped out";
+    			attr_dev(small, "class", "a-form-caption");
+    			add_location(small, file, 259, 188, 7913);
+    			attr_dev(label, "class", "a-switch-toggle show-dropped-out-candidates svelte-1jgw4ey");
+    			attr_dev(label, "for", "show-dropped-out-candidates");
+    			add_location(label, file, 259, 95, 7820);
+    			attr_dev(div, "class", "a-filter-switch svelte-1jgw4ey");
+    			add_location(div, file, 258, 3, 7695);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			mount_component(switch_1, div, null);
+    			append_dev(div, t0);
+    			append_dev(div, label);
+    			append_dev(label, small);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			const switch_1_changes = {};
+
+    			if (!updating_checked && dirty & /*showDroppedOutCandidates*/ 2) {
+    				updating_checked = true;
+    				switch_1_changes.checked = /*showDroppedOutCandidates*/ ctx[1];
+    				add_flush_callback(() => updating_checked = false);
+    			}
+
+    			switch_1.$set(switch_1_changes);
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(switch_1.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(switch_1.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    			destroy_component(switch_1);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block.name,
+    		type: "if",
+    		source: "(258:2) {#if items.dropped_out_candidates.length > 0}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (264:2) {#key params}
     function create_key_block(ctx) {
     	let switch_instance;
     	let switch_instance_anchor;
@@ -12133,14 +12196,14 @@ var app = (function () {
     		block,
     		id: create_key_block.name,
     		type: "key",
-    		source: "(252:2) {#key params}",
+    		source: "(264:2) {#key params}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (237:22)    Loading...  {:then items}
+    // (247:22)    Loading...  {:then items}
     function create_pending_block(ctx) {
     	let t;
 
@@ -12163,7 +12226,7 @@ var app = (function () {
     		block,
     		id: create_pending_block.name,
     		type: "pending",
-    		source: "(237:22)    Loading...  {:then items}",
+    		source: "(247:22)    Loading...  {:then items}",
     		ctx
     	});
 
@@ -12203,11 +12266,11 @@ var app = (function () {
     			info.block.c();
     			attr_dev(input, "placeholder", "Search for a candidate, party, or race");
     			attr_dev(input, "class", "a-filter-search svelte-1jgw4ey");
-    			add_location(input, file, 232, 1, 6418);
+    			add_location(input, file, 242, 1, 6867);
     			attr_dev(div, "class", "m-filtering svelte-1jgw4ey");
-    			add_location(div, file, 231, 0, 6391);
+    			add_location(div, file, 241, 0, 6840);
     			attr_dev(section, "class", "container m-zones m-homepage-zones");
-    			add_location(section, file, 235, 0, 6537);
+    			add_location(section, file, 245, 0, 6986);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -12307,7 +12370,14 @@ var app = (function () {
     	let items = [];
 
     	async function getData() {
+    		/*
+    for actual 2022 data:
+    https://s3.amazonaws.com/data.minnpost/projects/minnpost-whos-running-2022/candidate-tracker.json
+    for sample (changed based on 2020) data:
+    https://s3.amazonaws.com/data.minnpost/projects/minnpost-whos-running-2022/candidate-tracker-2020-sample-data.json
+    */
     		let res = await fetch(`https://s3.amazonaws.com/data.minnpost/projects/minnpost-whos-running-2022/candidate-tracker.json`);
+
     		let data = await res.json();
     		$$invalidate(2, items = data);
     		return items;
@@ -12343,6 +12413,11 @@ var app = (function () {
     	router.start();
 
     	// router base
+    	/*
+    if testing locally you can comment out the active router.base line.
+    the actual WP post we need to use is:
+    router.base('?p=2079676&preview=true');
+    */
     	router.base('?p=2079676&preview=true');
 
     	let selectParty;
@@ -12448,9 +12523,9 @@ var app = (function () {
 
     				let candidates = searchResults(searchTerm, items.candidates);
     				let active_candidates = matchResults("dropped-out", false, candidates);
+    				let dropped_out_candidates = matchResults("dropped-out", true, candidates);
 
     				if (showDroppedOutCandidates == true) {
-    					let dropped_out_candidates = matchResults("dropped-out", true, candidates);
     					candidates = active_candidates.concat(dropped_out_candidates);
     				} else {
     					candidates = active_candidates;
