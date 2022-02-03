@@ -49,8 +49,6 @@
 </style>
 
 <script>
-	// for lazy loading
-	import Lazy from 'svelte-lazy';
 	// a single candidate record from AllCandidates.svelte, ByOffice.svelte, or ByParty.svelte
 	export let candidate;
 
@@ -74,9 +72,7 @@
 	
 	{#if candidate["headshot-url"]}
 		<figure class="candidate-photo">
-			<Lazy height={130}>
-				<img src="{candidate['headshot-url']}" alt="photo of {candidate.name}" width=130 height=130 loading=lazy />
-			</Lazy>
+			<img src="{candidate['headshot-url']}" alt="photo of {candidate.name}" width=130 height=130 loading=lazy />
 		</figure>
 	{/if}
 	
