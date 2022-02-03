@@ -13323,7 +13323,7 @@ var app = (function () {
     	return block;
     }
 
-    // (254:1) {:then items}
+    // (257:1) {:then items}
     function create_then_block(ctx) {
     	let div2;
     	let div0;
@@ -13375,11 +13375,11 @@ var app = (function () {
     			key_block.c();
     			key_block_anchor = empty();
     			attr_dev(div0, "class", "a-filter-select svelte-4vjt5p");
-    			add_location(div0, file, 255, 3, 7227);
+    			add_location(div0, file, 258, 3, 7346);
     			attr_dev(div1, "class", "a-filter-select svelte-4vjt5p");
-    			add_location(div1, file, 258, 3, 7485);
+    			add_location(div1, file, 261, 3, 7604);
     			attr_dev(div2, "class", "m-filtering svelte-4vjt5p");
-    			add_location(div2, file, 254, 2, 7198);
+    			add_location(div2, file, 257, 2, 7317);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div2, anchor);
@@ -13471,14 +13471,14 @@ var app = (function () {
     		block,
     		id: create_then_block.name,
     		type: "then",
-    		source: "(254:1) {:then items}",
+    		source: "(257:1) {:then items}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (263:2) {#if items.dropped_out_candidates.length > 0}
+    // (266:2) {#if items.dropped_out_candidates.length > 0}
     function create_if_block(ctx) {
     	let div;
     	let switch_1;
@@ -13510,12 +13510,12 @@ var app = (function () {
     			small = element("small");
     			small.textContent = "Show candidates who have dropped out";
     			attr_dev(small, "class", "a-form-caption");
-    			add_location(small, file, 264, 188, 8019);
+    			add_location(small, file, 267, 188, 8138);
     			attr_dev(label, "class", "a-switch-toggle show-dropped-out-candidates svelte-4vjt5p");
     			attr_dev(label, "for", "show-dropped-out-candidates");
-    			add_location(label, file, 264, 95, 7926);
+    			add_location(label, file, 267, 95, 8045);
     			attr_dev(div, "class", "a-filter-switch svelte-4vjt5p");
-    			add_location(div, file, 263, 3, 7801);
+    			add_location(div, file, 266, 3, 7920);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -13555,14 +13555,14 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(263:2) {#if items.dropped_out_candidates.length > 0}",
+    		source: "(266:2) {#if items.dropped_out_candidates.length > 0}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (269:2) {#key params}
+    // (272:2) {#key params}
     function create_key_block(ctx) {
     	let switch_instance;
     	let switch_instance_anchor;
@@ -13644,14 +13644,14 @@ var app = (function () {
     		block,
     		id: create_key_block.name,
     		type: "key",
-    		source: "(269:2) {#key params}",
+    		source: "(272:2) {#key params}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (252:22)    Loading...  {:then items}
+    // (255:22)    Loading...  {:then items}
     function create_pending_block(ctx) {
     	let t;
 
@@ -13674,7 +13674,7 @@ var app = (function () {
     		block,
     		id: create_pending_block.name,
     		type: "pending",
-    		source: "(252:22)    Loading...  {:then items}",
+    		source: "(255:22)    Loading...  {:then items}",
     		ctx
     	});
 
@@ -13714,11 +13714,11 @@ var app = (function () {
     			info.block.c();
     			attr_dev(input, "placeholder", "Search for a candidate, party, or race");
     			attr_dev(input, "class", "a-filter-search svelte-4vjt5p");
-    			add_location(input, file, 247, 1, 6973);
+    			add_location(input, file, 250, 1, 7092);
     			attr_dev(div, "class", "m-filtering svelte-4vjt5p");
-    			add_location(div, file, 246, 0, 6946);
+    			add_location(div, file, 249, 0, 7065);
     			attr_dev(section, "class", "container m-zones m-homepage-zones");
-    			add_location(section, file, 250, 0, 7092);
+    			add_location(section, file, 253, 0, 7211);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -13858,7 +13858,8 @@ var app = (function () {
     	});
 
     	// Start the router
-    	router$1.start();
+    	// currently, if we don't use the hashbang, page reloads don't work
+    	router$1.start({ hashbang: true });
 
     	// router base
     	/*
@@ -13866,7 +13867,7 @@ var app = (function () {
     the actual WP post we need to use is:
     router.base('?p=2079676&preview=true');
     */
-    	router$1.base('?p=2079676&preview=true');
+    	router$1.base('elections/2022/02/whos-running-in-minnesota-in-2022/');
 
     	let selectParty;
     	let selectOffice;
