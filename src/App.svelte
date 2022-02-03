@@ -245,6 +245,29 @@
 		router('/by-office/' + selectedOffice.value);
 	}
 	
+	function setSelectedOffice(params, races) {
+		let selectedItem = undefined;
+		if (params && params.office) {
+			let officeObject = races.find(item => item["office-id"] === params["office"]);
+			if ( typeof officeObject !== "undefined" ) {
+				selectedItem = {value: params.office, label: officeObject.office};
+			}
+		}		
+		return selectedItem;
+	}
+
+	function setSelectedParty(params, all_party_ids, all_parties) {
+		let selectedItem = undefined;
+		if (params && params.party) {
+			let key = all_party_ids.indexOf(params.party);
+			let value = all_parties[key];
+			if ( typeof key !== "undefined" && typeof value !== "undefined" ) {
+				selectedItem = {value: params.party, label: all_parties[key]};
+			}
+		}		
+		return selectedItem;
+	}
+	
 </script>
 
 <div class="m-filtering">
@@ -257,10 +280,10 @@
 	{:then items}
 		<div class="m-filtering">
 			<div class="a-filter-select">
-				<Select inputStyles="font-size: 1em; letter-spacing: inherit;" placeholder="Choose a party..." items={items.party_select} on:select={handlePartySelect} on:clear={clearSelect} bind:this="{selectParty}"></Select>
+				<Select value={setSelectedParty(params, items.all_party_ids, items.all_parties)} inputStyles="font-size: 1em; letter-spacing: inherit;" placeholder="Choose a party..." items={items.party_select} on:select={handlePartySelect} on:clear={clearSelect} bind:this="{selectParty}"></Select>
 			</div>
 			<div class="a-filter-select">
-				<Select inputStyles="font-size: 1em; letter-spacing: inherit;" placeholder="Choose a race..."  items={items.race_select} on:select={handleOfficeSelect} on:clear={clearSelect} bind:this="{selectOffice}"></Select>
+				<Select value={setSelectedOffice(params, items.races)} inputStyles="font-size: 1em; letter-spacing: inherit;" placeholder="Choose a race..."  items={items.race_select} on:select={handleOfficeSelect} on:clear={clearSelect} bind:this="{selectOffice}"></Select>
 			</div>
 		</div>
 		{#if items.dropped_out_candidates.length > 0}
