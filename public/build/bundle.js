@@ -13321,7 +13321,7 @@ var app = (function () {
     	return block;
     }
 
-    // (280:1) {:then items}
+    // (288:1) {:then items}
     function create_then_block(ctx) {
     	let div2;
     	let div0;
@@ -13374,12 +13374,12 @@ var app = (function () {
     			t2 = space();
     			key_block.c();
     			key_block_anchor = empty();
-    			attr_dev(div0, "class", "a-filter-select svelte-4vjt5p");
-    			add_location(div0, file, 281, 3, 8084);
-    			attr_dev(div1, "class", "a-filter-select svelte-4vjt5p");
-    			add_location(div1, file, 284, 3, 8415);
-    			attr_dev(div2, "class", "m-filtering svelte-4vjt5p");
-    			add_location(div2, file, 280, 2, 8055);
+    			attr_dev(div0, "class", "a-filter-select svelte-1c5jedc");
+    			add_location(div0, file, 289, 3, 8196);
+    			attr_dev(div1, "class", "a-filter-select svelte-1c5jedc");
+    			add_location(div1, file, 292, 3, 8527);
+    			attr_dev(div2, "class", "m-filtering svelte-1c5jedc");
+    			add_location(div2, file, 288, 2, 8167);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div2, anchor);
@@ -13473,14 +13473,14 @@ var app = (function () {
     		block,
     		id: create_then_block.name,
     		type: "then",
-    		source: "(280:1) {:then items}",
+    		source: "(288:1) {:then items}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (289:2) {#if items.dropped_out_candidates.length > 0}
+    // (297:2) {#if items.dropped_out_candidates.length > 0}
     function create_if_block(ctx) {
     	let div;
     	let switch_1;
@@ -13512,12 +13512,12 @@ var app = (function () {
     			small = element("small");
     			small.textContent = "Show candidates who have dropped out";
     			attr_dev(small, "class", "a-form-caption");
-    			add_location(small, file, 290, 188, 8996);
-    			attr_dev(label, "class", "a-switch-toggle show-dropped-out-candidates svelte-4vjt5p");
+    			add_location(small, file, 298, 188, 9108);
+    			attr_dev(label, "class", "a-switch-toggle show-dropped-out-candidates svelte-1c5jedc");
     			attr_dev(label, "for", "show-dropped-out-candidates");
-    			add_location(label, file, 290, 95, 8903);
-    			attr_dev(div, "class", "a-filter-switch svelte-4vjt5p");
-    			add_location(div, file, 289, 3, 8778);
+    			add_location(label, file, 298, 95, 9015);
+    			attr_dev(div, "class", "a-filter-switch svelte-1c5jedc");
+    			add_location(div, file, 297, 3, 8890);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -13557,14 +13557,14 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(289:2) {#if items.dropped_out_candidates.length > 0}",
+    		source: "(297:2) {#if items.dropped_out_candidates.length > 0}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (295:2) {#key params}
+    // (303:2) {#key params}
     function create_key_block(ctx) {
     	let switch_instance;
     	let switch_instance_anchor;
@@ -13646,14 +13646,14 @@ var app = (function () {
     		block,
     		id: create_key_block.name,
     		type: "key",
-    		source: "(295:2) {#key params}",
+    		source: "(303:2) {#key params}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (278:22)    Loading...  {:then items}
+    // (286:22)    Loading...  {:then items}
     function create_pending_block(ctx) {
     	let t;
 
@@ -13676,7 +13676,7 @@ var app = (function () {
     		block,
     		id: create_pending_block.name,
     		type: "pending",
-    		source: "(278:22)    Loading...  {:then items}",
+    		source: "(286:22)    Loading...  {:then items}",
     		ctx
     	});
 
@@ -13715,12 +13715,12 @@ var app = (function () {
     			section = element("section");
     			info.block.c();
     			attr_dev(input, "placeholder", "Search for a candidate, party, or race");
-    			attr_dev(input, "class", "a-filter-search svelte-4vjt5p");
-    			add_location(input, file, 273, 1, 7830);
-    			attr_dev(div, "class", "m-filtering svelte-4vjt5p");
-    			add_location(div, file, 272, 0, 7803);
+    			attr_dev(input, "class", "a-filter-search svelte-1c5jedc");
+    			add_location(input, file, 281, 1, 7942);
+    			attr_dev(div, "class", "m-filtering svelte-1c5jedc");
+    			add_location(div, file, 280, 0, 7915);
     			attr_dev(section, "class", "container m-zones m-homepage-zones");
-    			add_location(section, file, 276, 0, 7949);
+    			add_location(section, file, 284, 0, 8061);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");

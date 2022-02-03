@@ -45,6 +45,14 @@
 	.a-filter-select {
 		width: 47.4576271186%;
 	}
+
+	@media screen and (max-width: 50em) {
+		.a-filter-select {
+			width: 100%;
+			margin-bottom: 0.25em;
+		}
+  }
+
 	.a-filter-switch {
 		display: flex;
 		justify-content: flex-end;
