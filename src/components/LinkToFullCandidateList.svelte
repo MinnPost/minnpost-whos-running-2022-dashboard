@@ -1,7 +1,6 @@
 <script>
-    export let router;
     function backToFullList() {
-		router('/');
-	}
+		  router('/');
+	  }
 </script>
 <a href="/" class="a-full-list-link" on:click={backToFullList}>See the full candidate&nbsp;list</a>.
