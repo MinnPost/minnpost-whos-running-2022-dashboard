@@ -221,7 +221,7 @@
 	the actual WP post we need to use is:
 	router.base('?p=2079676&preview=true');
 	*/
-	router.base('elections/2022/02/whos-running-in-minnesota-in-2022/');
+	router.base('/elections/2022/02/whos-running-in-minnesota-in-2022');
 
 	let selectParty;
 	let selectOffice;
