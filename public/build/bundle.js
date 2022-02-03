@@ -4165,6 +4165,8 @@ var app = (function () {
     function create_fragment$c(ctx) {
     	let a;
     	let t1;
+    	let mounted;
+    	let dispose;
 
     	const block = {
     		c: function create() {
@@ -4173,7 +4175,7 @@ var app = (function () {
     			t1 = text(".");
     			attr_dev(a, "href", "/");
     			attr_dev(a, "class", "a-full-list-link");
-    			add_location(a, file$c, 0, 0, 0);
+    			add_location(a, file$c, 6, 0, 92);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -4181,6 +4183,11 @@ var app = (function () {
     		m: function mount(target, anchor) {
     			insert_dev(target, a, anchor);
     			insert_dev(target, t1, anchor);
+
+    			if (!mounted) {
+    				dispose = listen_dev(a, "click", /*backToFullList*/ ctx[0], false, false, false);
+    				mounted = true;
+    			}
     		},
     		p: noop,
     		i: noop,
@@ -4188,6 +4195,8 @@ var app = (function () {
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(a);
     			if (detaching) detach_dev(t1);
+    			mounted = false;
+    			dispose();
     		}
     	};
 
@@ -4202,22 +4211,42 @@ var app = (function () {
     	return block;
     }
 
-    function instance$c($$self, $$props) {
+    function instance$c($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('LinkToFullCandidateList', slots, []);
-    	const writable_props = [];
+    	let { router } = $$props;
+
+    	function backToFullList() {
+    		router('/');
+    	}
+
+    	const writable_props = ['router'];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<LinkToFullCandidateList> was created with unknown prop '${key}'`);
     	});
 
-    	return [];
+    	$$self.$$set = $$props => {
+    		if ('router' in $$props) $$invalidate(1, router = $$props.router);
+    	};
+
+    	$$self.$capture_state = () => ({ router, backToFullList });
+
+    	$$self.$inject_state = $$props => {
+    		if ('router' in $$props) $$invalidate(1, router = $$props.router);
+    	};
+
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
+
+    	return [backToFullList, router];
     }
 
     class LinkToFullCandidateList extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$c, create_fragment$c, safe_not_equal, {});
+    		init(this, options, instance$c, create_fragment$c, safe_not_equal, { router: 1 });
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -4225,6 +4254,21 @@ var app = (function () {
     			options,
     			id: create_fragment$c.name
     		});
+
+    		const { ctx } = this.$$;
+    		const props = options.props || {};
+
+    		if (/*router*/ ctx[1] === undefined && !('router' in props)) {
+    			console.warn("<LinkToFullCandidateList> was created without expected prop 'router'");
+    		}
+    	}
+
+    	get router() {
+    		throw new Error("<LinkToFullCandidateList>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set router(value) {
+    		throw new Error("<LinkToFullCandidateList>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
     }
 
