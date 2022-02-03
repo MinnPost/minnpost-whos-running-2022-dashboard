@@ -5189,16 +5189,16 @@ var app = (function () {
     	let t1_value = /*office_candidates*/ ctx[3](/*office*/ ctx[2]["office-id"]).length + "";
     	let t1;
     	let t2;
-    	let show_if_1;
-    	let t3;
-    	let t4_value = /*office_candidate_parties*/ ctx[4](/*office_candidates*/ ctx[3](/*office*/ ctx[2]["office-id"])).length + "";
-    	let t4;
-    	let t5;
-    	let show_if;
-    	let t6;
     	let strong;
-    	let t7_value = /*office*/ ctx[2]["office"] + "";
+    	let t3_value = /*office*/ ctx[2]["office"] + "";
+    	let t3;
+    	let t4;
+    	let show_if_1;
+    	let t5;
+    	let t6_value = /*office_candidate_parties*/ ctx[4](/*office_candidates*/ ctx[3](/*office*/ ctx[2]["office-id"])).length + "";
+    	let t6;
     	let t7;
+    	let show_if;
     	let t8;
 
     	function select_block_type_2(ctx, dirty) {
@@ -5226,33 +5226,34 @@ var app = (function () {
     			t0 = text("Showing ");
     			t1 = text(t1_value);
     			t2 = space();
-    			if_block0.c();
-    			t3 = text(" in ");
-    			t4 = text(t4_value);
-    			t5 = space();
-    			if_block1.c();
-    			t6 = text(" for ");
     			strong = element("strong");
-    			t7 = text(t7_value);
+    			t3 = text(t3_value);
+    			t4 = space();
+    			if_block0.c();
+    			t5 = text(" in ");
+    			t6 = text(t6_value);
+    			t7 = space();
+    			if_block1.c();
     			t8 = text(".");
-    			add_location(strong, file$a, 51, 335, 1913);
+    			add_location(strong, file$a, 51, 59, 1637);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, t0, anchor);
     			insert_dev(target, t1, anchor);
     			insert_dev(target, t2, anchor);
-    			if_block0.m(target, anchor);
-    			insert_dev(target, t3, anchor);
-    			insert_dev(target, t4, anchor);
-    			insert_dev(target, t5, anchor);
-    			if_block1.m(target, anchor);
-    			insert_dev(target, t6, anchor);
     			insert_dev(target, strong, anchor);
-    			append_dev(strong, t7);
+    			append_dev(strong, t3);
+    			insert_dev(target, t4, anchor);
+    			if_block0.m(target, anchor);
+    			insert_dev(target, t5, anchor);
+    			insert_dev(target, t6, anchor);
+    			insert_dev(target, t7, anchor);
+    			if_block1.m(target, anchor);
     			insert_dev(target, t8, anchor);
     		},
     		p: function update(ctx, dirty) {
     			if (dirty & /*office*/ 4 && t1_value !== (t1_value = /*office_candidates*/ ctx[3](/*office*/ ctx[2]["office-id"]).length + "")) set_data_dev(t1, t1_value);
+    			if (dirty & /*office*/ 4 && t3_value !== (t3_value = /*office*/ ctx[2]["office"] + "")) set_data_dev(t3, t3_value);
 
     			if (current_block_type !== (current_block_type = select_block_type_2(ctx, dirty))) {
     				if_block0.d(1);
@@ -5260,11 +5261,11 @@ var app = (function () {
 
     				if (if_block0) {
     					if_block0.c();
-    					if_block0.m(t3.parentNode, t3);
+    					if_block0.m(t5.parentNode, t5);
     				}
     			}
 
-    			if (dirty & /*office*/ 4 && t4_value !== (t4_value = /*office_candidate_parties*/ ctx[4](/*office_candidates*/ ctx[3](/*office*/ ctx[2]["office-id"])).length + "")) set_data_dev(t4, t4_value);
+    			if (dirty & /*office*/ 4 && t6_value !== (t6_value = /*office_candidate_parties*/ ctx[4](/*office_candidates*/ ctx[3](/*office*/ ctx[2]["office-id"])).length + "")) set_data_dev(t6, t6_value);
 
     			if (current_block_type_1 !== (current_block_type_1 = select_block_type_3(ctx, dirty))) {
     				if_block1.d(1);
@@ -5272,23 +5273,21 @@ var app = (function () {
 
     				if (if_block1) {
     					if_block1.c();
-    					if_block1.m(t6.parentNode, t6);
+    					if_block1.m(t8.parentNode, t8);
     				}
     			}
-
-    			if (dirty & /*office*/ 4 && t7_value !== (t7_value = /*office*/ ctx[2]["office"] + "")) set_data_dev(t7, t7_value);
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(t0);
     			if (detaching) detach_dev(t1);
     			if (detaching) detach_dev(t2);
-    			if_block0.d(detaching);
-    			if (detaching) detach_dev(t3);
-    			if (detaching) detach_dev(t4);
-    			if (detaching) detach_dev(t5);
-    			if_block1.d(detaching);
-    			if (detaching) detach_dev(t6);
     			if (detaching) detach_dev(strong);
+    			if (detaching) detach_dev(t4);
+    			if_block0.d(detaching);
+    			if (detaching) detach_dev(t5);
+    			if (detaching) detach_dev(t6);
+    			if (detaching) detach_dev(t7);
+    			if_block1.d(detaching);
     			if (detaching) detach_dev(t8);
     		}
     	};
@@ -5396,7 +5395,7 @@ var app = (function () {
     	return block;
     }
 
-    // (52:124) {:else}
+    // (52:160) {:else}
     function create_else_block_3$1(ctx) {
     	let t;
 
@@ -5416,14 +5415,14 @@ var app = (function () {
     		block,
     		id: create_else_block_3$1.name,
     		type: "else",
-    		source: "(52:124) {:else}",
+    		source: "(52:160) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (52:59) {#if office_candidates(office["office-id"]).length == 1}
+    // (52:95) {#if office_candidates(office["office-id"]).length == 1}
     function create_if_block_8$1(ctx) {
     	let t;
 
@@ -5443,14 +5442,14 @@ var app = (function () {
     		block,
     		id: create_if_block_8$1.name,
     		type: "if",
-    		source: "(52:59) {#if office_candidates(office[\\\"office-id\\\"]).length == 1}",
+    		source: "(52:95) {#if office_candidates(office[\\\"office-id\\\"]).length == 1}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (52:311) {:else}
+    // (52:347) {:else}
     function create_else_block_2$2(ctx) {
     	let t;
 
@@ -5470,14 +5469,14 @@ var app = (function () {
     		block,
     		id: create_else_block_2$2.name,
     		type: "else",
-    		source: "(52:311) {:else}",
+    		source: "(52:347) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (52:224) {#if office_candidate_parties(office_candidates(office["office-id"])).length == 1}
+    // (52:260) {#if office_candidate_parties(office_candidates(office["office-id"])).length == 1}
     function create_if_block_7$2(ctx) {
     	let t;
 
@@ -5497,7 +5496,7 @@ var app = (function () {
     		block,
     		id: create_if_block_7$2.name,
     		type: "if",
-    		source: "(52:224) {#if office_candidate_parties(office_candidates(office[\\\"office-id\\\"])).length == 1}",
+    		source: "(52:260) {#if office_candidate_parties(office_candidates(office[\\\"office-id\\\"])).length == 1}",
     		ctx
     	});
 
@@ -5709,7 +5708,7 @@ var app = (function () {
     			h2 = element("h2");
     			t = text(t_value);
     			attr_dev(h2, "class", "m-archive-header");
-    			add_location(h2, file$a, 60, 4, 2077);
+    			add_location(h2, file$a, 60, 4, 2073);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h2, anchor);
@@ -5742,7 +5741,7 @@ var app = (function () {
     	const block = {
     		c: function create() {
     			p = element("p");
-    			add_location(p, file$a, 63, 4, 2158);
+    			add_location(p, file$a, 63, 4, 2154);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -5801,9 +5800,9 @@ var app = (function () {
 
     			t2 = space();
     			attr_dev(h3, "class", h3_class_value = "m-archive-header party-" + /*office_candidate_parties*/ ctx[4](/*office_candidates*/ ctx[3](/*race*/ ctx[6]["office-id"]))[/*key*/ ctx[8]].toLowerCase());
-    			add_location(h3, file$a, 68, 6, 2452);
+    			add_location(h3, file$a, 68, 6, 2448);
     			attr_dev(section, "class", "m-archive m-archive-homepage m-zone m-zone-homepage-more-top candidates-list");
-    			add_location(section, file$a, 67, 5, 2351);
+    			add_location(section, file$a, 67, 5, 2347);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, section, anchor);
@@ -6018,7 +6017,7 @@ var app = (function () {
     			if (if_block) if_block.c();
     			t = space();
     			attr_dev(section, "class", "race-listing");
-    			add_location(section, file$a, 57, 1, 2003);
+    			add_location(section, file$a, 57, 1, 1999);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, section, anchor);
@@ -6391,16 +6390,16 @@ var app = (function () {
     	let t1_value = /*party_candidates*/ ctx[3](/*parties*/ ctx[1][0]).length + "";
     	let t1;
     	let t2;
-    	let show_if_1;
-    	let t3;
-    	let t4_value = /*party_candidate_races*/ ctx[4](/*party_candidates*/ ctx[3](/*parties*/ ctx[1][0])).length + "";
-    	let t4;
-    	let t5;
-    	let show_if;
-    	let t6;
     	let strong;
-    	let t7_value = /*parties*/ ctx[1][0] + "";
+    	let t3_value = /*parties*/ ctx[1][0] + "";
+    	let t3;
+    	let t4;
+    	let show_if_1;
+    	let t5;
+    	let t6_value = /*party_candidate_races*/ ctx[4](/*party_candidates*/ ctx[3](/*parties*/ ctx[1][0])).length + "";
+    	let t6;
     	let t7;
+    	let show_if;
     	let t8;
 
     	function select_block_type_2(ctx, dirty) {
@@ -6428,33 +6427,34 @@ var app = (function () {
     			t0 = text("Showing ");
     			t1 = text(t1_value);
     			t2 = space();
-    			if_block0.c();
-    			t3 = text(" in ");
-    			t4 = text(t4_value);
-    			t5 = space();
-    			if_block1.c();
-    			t6 = text(" for ");
     			strong = element("strong");
-    			t7 = text(t7_value);
+    			t3 = text(t3_value);
+    			t4 = space();
+    			if_block0.c();
+    			t5 = text(" in ");
+    			t6 = text(t6_value);
+    			t7 = space();
+    			if_block1.c();
     			t8 = text(".");
-    			add_location(strong, file$9, 51, 286, 1853);
+    			add_location(strong, file$9, 51, 49, 1616);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, t0, anchor);
     			insert_dev(target, t1, anchor);
     			insert_dev(target, t2, anchor);
-    			if_block0.m(target, anchor);
-    			insert_dev(target, t3, anchor);
-    			insert_dev(target, t4, anchor);
-    			insert_dev(target, t5, anchor);
-    			if_block1.m(target, anchor);
-    			insert_dev(target, t6, anchor);
     			insert_dev(target, strong, anchor);
-    			append_dev(strong, t7);
+    			append_dev(strong, t3);
+    			insert_dev(target, t4, anchor);
+    			if_block0.m(target, anchor);
+    			insert_dev(target, t5, anchor);
+    			insert_dev(target, t6, anchor);
+    			insert_dev(target, t7, anchor);
+    			if_block1.m(target, anchor);
     			insert_dev(target, t8, anchor);
     		},
     		p: function update(ctx, dirty) {
     			if (dirty & /*parties*/ 2 && t1_value !== (t1_value = /*party_candidates*/ ctx[3](/*parties*/ ctx[1][0]).length + "")) set_data_dev(t1, t1_value);
+    			if (dirty & /*parties*/ 2 && t3_value !== (t3_value = /*parties*/ ctx[1][0] + "")) set_data_dev(t3, t3_value);
 
     			if (current_block_type !== (current_block_type = select_block_type_2(ctx, dirty))) {
     				if_block0.d(1);
@@ -6462,11 +6462,11 @@ var app = (function () {
 
     				if (if_block0) {
     					if_block0.c();
-    					if_block0.m(t3.parentNode, t3);
+    					if_block0.m(t5.parentNode, t5);
     				}
     			}
 
-    			if (dirty & /*parties*/ 2 && t4_value !== (t4_value = /*party_candidate_races*/ ctx[4](/*party_candidates*/ ctx[3](/*parties*/ ctx[1][0])).length + "")) set_data_dev(t4, t4_value);
+    			if (dirty & /*parties*/ 2 && t6_value !== (t6_value = /*party_candidate_races*/ ctx[4](/*party_candidates*/ ctx[3](/*parties*/ ctx[1][0])).length + "")) set_data_dev(t6, t6_value);
 
     			if (current_block_type_1 !== (current_block_type_1 = select_block_type_3(ctx, dirty))) {
     				if_block1.d(1);
@@ -6474,23 +6474,21 @@ var app = (function () {
 
     				if (if_block1) {
     					if_block1.c();
-    					if_block1.m(t6.parentNode, t6);
+    					if_block1.m(t8.parentNode, t8);
     				}
     			}
-
-    			if (dirty & /*parties*/ 2 && t7_value !== (t7_value = /*parties*/ ctx[1][0] + "")) set_data_dev(t7, t7_value);
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(t0);
     			if (detaching) detach_dev(t1);
     			if (detaching) detach_dev(t2);
-    			if_block0.d(detaching);
-    			if (detaching) detach_dev(t3);
-    			if (detaching) detach_dev(t4);
-    			if (detaching) detach_dev(t5);
-    			if_block1.d(detaching);
-    			if (detaching) detach_dev(t6);
     			if (detaching) detach_dev(strong);
+    			if (detaching) detach_dev(t4);
+    			if_block0.d(detaching);
+    			if (detaching) detach_dev(t5);
+    			if (detaching) detach_dev(t6);
+    			if (detaching) detach_dev(t7);
+    			if_block1.d(detaching);
     			if (detaching) detach_dev(t8);
     		}
     	};
@@ -6598,7 +6596,7 @@ var app = (function () {
     	return block;
     }
 
-    // (52:104) {:else}
+    // (52:134) {:else}
     function create_else_block_3(ctx) {
     	let t;
 
@@ -6618,14 +6616,14 @@ var app = (function () {
     		block,
     		id: create_else_block_3.name,
     		type: "else",
-    		source: "(52:104) {:else}",
+    		source: "(52:134) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (52:49) {#if party_candidates(parties[0]).length == 1}
+    // (52:79) {#if party_candidates(parties[0]).length == 1}
     function create_if_block_7$1(ctx) {
     	let t;
 
@@ -6645,14 +6643,14 @@ var app = (function () {
     		block,
     		id: create_if_block_7$1.name,
     		type: "if",
-    		source: "(52:49) {#if party_candidates(parties[0]).length == 1}",
+    		source: "(52:79) {#if party_candidates(parties[0]).length == 1}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (52:264) {:else}
+    // (52:294) {:else}
     function create_else_block_2$1(ctx) {
     	let t;
 
@@ -6672,14 +6670,14 @@ var app = (function () {
     		block,
     		id: create_else_block_2$1.name,
     		type: "else",
-    		source: "(52:264) {:else}",
+    		source: "(52:294) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (52:191) {#if party_candidate_races(party_candidates(parties[0])).length == 1}
+    // (52:221) {#if party_candidate_races(party_candidates(parties[0])).length == 1}
     function create_if_block_6$1(ctx) {
     	let t;
 
@@ -6699,7 +6697,7 @@ var app = (function () {
     		block,
     		id: create_if_block_6$1.name,
     		type: "if",
-    		source: "(52:191) {#if party_candidate_races(party_candidates(parties[0])).length == 1}",
+    		source: "(52:221) {#if party_candidate_races(party_candidates(parties[0])).length == 1}",
     		ctx
     	});
 
@@ -6772,7 +6770,7 @@ var app = (function () {
     			h2 = element("h2");
     			t = text(t_value);
     			attr_dev(h2, "class", h2_class_value = "m-archive-header party-" + /*items*/ ctx[0].all_party_ids[/*key*/ ctx[8]]);
-    			add_location(h2, file$9, 59, 3, 2001);
+    			add_location(h2, file$9, 59, 3, 1997);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h2, anchor);
@@ -6837,9 +6835,9 @@ var app = (function () {
     			}
 
     			attr_dev(h3, "class", "m-archive-header");
-    			add_location(h3, file$9, 63, 3, 2173);
+    			add_location(h3, file$9, 63, 3, 2169);
     			attr_dev(section, "class", "m-archive m-archive-homepage m-zone m-zone-homepage-more-top candidates-list");
-    			add_location(section, file$9, 67, 4, 2284);
+    			add_location(section, file$9, 67, 4, 2280);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h3, anchor);
@@ -6933,7 +6931,7 @@ var app = (function () {
     	const block = {
     		c: function create() {
     			p = element("p");
-    			add_location(p, file$9, 65, 4, 2245);
+    			add_location(p, file$9, 65, 4, 2241);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -7104,7 +7102,7 @@ var app = (function () {
 
     			t1 = space();
     			attr_dev(section, "class", "race-listing");
-    			add_location(section, file$9, 57, 1, 1940);
+    			add_location(section, file$9, 57, 1, 1936);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, section, anchor);
@@ -13323,7 +13321,7 @@ var app = (function () {
     	return block;
     }
 
-    // (265:1) {:then items}
+    // (288:1) {:then items}
     function create_then_block(ctx) {
     	let div2;
     	let div0;
@@ -13338,6 +13336,7 @@ var app = (function () {
     	let current;
 
     	let select0_props = {
+    		value: setSelectedParty(/*params*/ ctx[4], /*items*/ ctx[2].all_party_ids, /*items*/ ctx[2].all_parties),
     		inputStyles: "font-size: 1em; letter-spacing: inherit;",
     		placeholder: "Choose a party...",
     		items: /*items*/ ctx[2].party_select
@@ -13349,6 +13348,7 @@ var app = (function () {
     	select0.$on("clear", /*clearSelect*/ ctx[8]);
 
     	let select1_props = {
+    		value: setSelectedOffice(/*params*/ ctx[4], /*items*/ ctx[2].races),
     		inputStyles: "font-size: 1em; letter-spacing: inherit;",
     		placeholder: "Choose a race...",
     		items: /*items*/ ctx[2].race_select
@@ -13374,12 +13374,12 @@ var app = (function () {
     			t2 = space();
     			key_block.c();
     			key_block_anchor = empty();
-    			attr_dev(div0, "class", "a-filter-select svelte-1uern34");
-    			add_location(div0, file, 266, 3, 7459);
-    			attr_dev(div1, "class", "a-filter-select svelte-1uern34");
-    			add_location(div1, file, 269, 3, 7717);
-    			attr_dev(div2, "class", "m-filtering svelte-1uern34");
-    			add_location(div2, file, 265, 2, 7430);
+    			attr_dev(div0, "class", "a-filter-select svelte-1c5jedc");
+    			add_location(div0, file, 289, 3, 8196);
+    			attr_dev(div1, "class", "a-filter-select svelte-1c5jedc");
+    			add_location(div1, file, 292, 3, 8527);
+    			attr_dev(div2, "class", "m-filtering svelte-1c5jedc");
+    			add_location(div2, file, 288, 2, 8167);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div2, anchor);
@@ -13397,9 +13397,11 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			const select0_changes = {};
+    			if (dirty & /*params, filteredList*/ 144) select0_changes.value = setSelectedParty(/*params*/ ctx[4], /*items*/ ctx[2].all_party_ids, /*items*/ ctx[2].all_parties);
     			if (dirty & /*filteredList*/ 128) select0_changes.items = /*items*/ ctx[2].party_select;
     			select0.$set(select0_changes);
     			const select1_changes = {};
+    			if (dirty & /*params, filteredList*/ 144) select1_changes.value = setSelectedOffice(/*params*/ ctx[4], /*items*/ ctx[2].races);
     			if (dirty & /*filteredList*/ 128) select1_changes.items = /*items*/ ctx[2].race_select;
     			select1.$set(select1_changes);
 
@@ -13471,14 +13473,14 @@ var app = (function () {
     		block,
     		id: create_then_block.name,
     		type: "then",
-    		source: "(265:1) {:then items}",
+    		source: "(288:1) {:then items}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (274:2) {#if items.dropped_out_candidates.length > 0}
+    // (297:2) {#if items.dropped_out_candidates.length > 0}
     function create_if_block(ctx) {
     	let div;
     	let switch_1;
@@ -13510,12 +13512,12 @@ var app = (function () {
     			small = element("small");
     			small.textContent = "Show candidates who have dropped out";
     			attr_dev(small, "class", "a-form-caption");
-    			add_location(small, file, 275, 188, 8251);
-    			attr_dev(label, "class", "a-switch-toggle show-dropped-out-candidates svelte-1uern34");
+    			add_location(small, file, 298, 188, 9108);
+    			attr_dev(label, "class", "a-switch-toggle show-dropped-out-candidates svelte-1c5jedc");
     			attr_dev(label, "for", "show-dropped-out-candidates");
-    			add_location(label, file, 275, 95, 8158);
-    			attr_dev(div, "class", "a-filter-switch svelte-1uern34");
-    			add_location(div, file, 274, 3, 8033);
+    			add_location(label, file, 298, 95, 9015);
+    			attr_dev(div, "class", "a-filter-switch svelte-1c5jedc");
+    			add_location(div, file, 297, 3, 8890);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -13555,14 +13557,14 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(274:2) {#if items.dropped_out_candidates.length > 0}",
+    		source: "(297:2) {#if items.dropped_out_candidates.length > 0}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (280:2) {#key params}
+    // (303:2) {#key params}
     function create_key_block(ctx) {
     	let switch_instance;
     	let switch_instance_anchor;
@@ -13644,14 +13646,14 @@ var app = (function () {
     		block,
     		id: create_key_block.name,
     		type: "key",
-    		source: "(280:2) {#key params}",
+    		source: "(303:2) {#key params}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (263:22)    Loading...  {:then items}
+    // (286:22)    Loading...  {:then items}
     function create_pending_block(ctx) {
     	let t;
 
@@ -13674,7 +13676,7 @@ var app = (function () {
     		block,
     		id: create_pending_block.name,
     		type: "pending",
-    		source: "(263:22)    Loading...  {:then items}",
+    		source: "(286:22)    Loading...  {:then items}",
     		ctx
     	});
 
@@ -13713,12 +13715,12 @@ var app = (function () {
     			section = element("section");
     			info.block.c();
     			attr_dev(input, "placeholder", "Search for a candidate, party, or race");
-    			attr_dev(input, "class", "a-filter-search svelte-1uern34");
-    			add_location(input, file, 258, 1, 7205);
-    			attr_dev(div, "class", "m-filtering svelte-1uern34");
-    			add_location(div, file, 257, 0, 7178);
+    			attr_dev(input, "class", "a-filter-search svelte-1c5jedc");
+    			add_location(input, file, 281, 1, 7942);
+    			attr_dev(div, "class", "m-filtering svelte-1c5jedc");
+    			add_location(div, file, 280, 0, 7915);
     			attr_dev(section, "class", "container m-zones m-homepage-zones");
-    			add_location(section, file, 261, 0, 7324);
+    			add_location(section, file, 284, 0, 8061);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -13803,6 +13805,41 @@ var app = (function () {
     function matchResults(key, value, data) {
     	let result = data.filter(item => item[key] === value);
     	return result;
+    }
+
+    function setSelectedOffice(params, races) {
+    	let selectedItem = undefined;
+
+    	if (params && params.office) {
+    		let officeObject = races.find(item => item["office-id"] === params["office"]);
+
+    		if (typeof officeObject !== "undefined") {
+    			selectedItem = {
+    				value: params.office,
+    				label: officeObject.office
+    			};
+    		}
+    	}
+
+    	return selectedItem;
+    }
+
+    function setSelectedParty(params, all_party_ids, all_parties) {
+    	let selectedItem = undefined;
+
+    	if (params && params.party) {
+    		let key = all_party_ids.indexOf(params.party);
+    		let value = all_parties[key];
+
+    		if (typeof key !== "undefined" && typeof value !== "undefined") {
+    			selectedItem = {
+    				value: params.party,
+    				label: all_parties[key]
+    			};
+    		}
+    	}
+
+    	return selectedItem;
     }
 
     function instance($$self, $$props, $$invalidate) {
@@ -13944,6 +13981,8 @@ var app = (function () {
     		handlePartySelect,
     		selectedOffice,
     		handleOfficeSelect,
+    		setSelectedOffice,
+    		setSelectedParty,
     		filteredList
     	});
 
