@@ -45,6 +45,10 @@
 
 	.incumbent {color: #f74607;}
 	.dropped-out .icon {color: #C83D2D;}
+	.deg45 {
+		transform: rotate(45deg);
+		font-size: .7em;
+	}
 	
 </style>
 
@@ -56,7 +60,8 @@
 		"republican": "republican",
 		"dfl": "democrat",
 		"legal-marijuana-now": "cannabis",
-		"grassroots-legalize-cannabis": "cannabis"
+		"grassroots-legalize-cannabis": "cannabis",
+		"green": "square deg45"
 	};
 
 	function parseDropoutDate (dateString) {

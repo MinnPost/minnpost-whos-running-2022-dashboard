@@ -32,6 +32,7 @@
 	:global(.party-republican) {color: #A1000F}
 	:global(.party-legal-marijuana-now) {color: #286806;}
 	:global(.party-grassroots-legalize-cannabis) {color: #41AB07;}
+	:global(.party-green) {color: #07AB20;}
 
 	.m-filtering {
 		display: flex;
