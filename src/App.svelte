@@ -297,7 +297,7 @@
 		</div>
 		{#if items.dropped_out_candidates.length > 0}
 			<div class="a-filter-switch">
-				<Switch bind:checked={showDroppedOutCandidates} id="show-dropped-out-candidates"></Switch> <label class="a-switch-toggle show-dropped-out-candidates" for="show-dropped-out-candidates"><small class="a-form-caption">Show candidates who have dropped out</small></label>
+				<Switch bind:checked={showDroppedOutCandidates} id="show-dropped-out-candidates"></Switch> <label class="a-switch-toggle show-dropped-out-candidates" for="show-dropped-out-candidates"><small class="a-form-caption">Show candidates who are no longer running</small></label>
 			</div>
 		{/if}
 
