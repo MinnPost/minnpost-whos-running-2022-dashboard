@@ -86,11 +86,11 @@
 	async function getData() {
 		/*
 		for actual 2022 data:
-		https://s3.amazonaws.com/data.minnpost/projects/minnpost-whos-running-2022/candidate-tracker.json
+		https://s3.amazonaws.com/data.minnpost/projects/spreadsheets/1iQudNp6ip9BRrIfCBhDlogVMi3MeZQa_X071-o_Of_E-Candidates|Races-custom.json
 		for sample (changed based on 2020) data:
 		https://s3.amazonaws.com/data.minnpost/projects/minnpost-whos-running-2022/candidate-tracker-2020-sample-data.json
 		*/
-		let res = await fetch(`https://s3.amazonaws.com/data.minnpost/projects/minnpost-whos-running-2022/candidate-tracker.json`);
+		let res = await fetch(`https://s3.amazonaws.com/data.minnpost/projects/spreadsheets/1iQudNp6ip9BRrIfCBhDlogVMi3MeZQa_X071-o_Of_E-Candidates|Races-custom.json`);
 		let data = await res.json();
 		items = data
 		return items;
