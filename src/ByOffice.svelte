@@ -22,12 +22,12 @@
 	let office_candidates = function(office, party = '') {
 		if ( party !== '') {
 			return items.candidates.filter(
-				item => item["race-id"].indexOf(office) !== -1 && item["party"].indexOf(party) !== -1
-			)
+                item => item["race-id"] == office && item["party"] == party
+            );
 		} else {
 			return items.candidates.filter(
-				item => item["race-id"].indexOf(office) !== -1
-			)
+                item => item["race-id"] == office
+            );
 		}
 	}
 
