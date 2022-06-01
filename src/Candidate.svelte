@@ -100,7 +100,7 @@
 		{/if}
 
 		{#if candidate["dropped-out"]}
-		<div class="dropped-out"><span class="icon"><i class="fas fa-fw fa-times"></i></span> Out of the race on {parseDropoutDate(candidate["date-dropped-out"])}</div>
+		<div class="dropped-out"><span class="icon"><i class="fas fa-fw fa-times"></i></span> Out of the race</div>
 		{/if}
 	</div>
 	
