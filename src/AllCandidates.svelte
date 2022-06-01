@@ -11,7 +11,8 @@
     // create a list of candidates for a party
 	let party_candidates = function(party, office) {
 		return items.candidates.filter(
-			item => item["party"].indexOf(party) !== -1 && item["office-sought"].indexOf(office) !== -1
+			//item => item["party"].indexOf(party) !== -1 && item["office-sought"].indexOf(office) !== -1
+            item => item["party"] == party && item["office-sought"] == office
 		)
 	}
 
